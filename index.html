@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Astra Course Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root { --ink:#1f2937; --muted:#6b7280; --border:#e5e7eb; --bg:#fafafa; --card:#ffffff; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, Arial, sans-serif; color:var(--ink); background:var(--bg); }
+    header { padding:2rem 1rem; text-align:center; border-bottom:1px solid var(--border); background:linear-gradient(#fff,#fafafa); }
+    main { max-width:960px; margin:0 auto; padding:2rem 1rem; }
+    .grid { display:grid; gap:1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    a.card { display:block; padding:1.25rem; background:var(--card); border:1px solid var(--border); border-radius:12px; text-decoration:none; color:inherit; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+    .eyebrow { color:var(--muted); font-size:.9rem; margin:.25rem 0 .5rem; }
+    h1 { margin:0 0 .25rem; }
+    h2 { margin:.25rem 0 .25rem; font-size:1.1rem; }
+    p { margin:.25rem 0 0; color:var(--muted); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📚 Astra Course Hub</h1>
+    <p class="eyebrow">Fall 2025 • static site (Netlify-ready)</p>
+  </header>
+  <main>
+    <div class="grid">
+      <a class="card" href="./Algebra1/">
+        <h2>Algebra 1</h2>
+        <p>Module calendar, module overview, and classroom overview.</p>
+      </a>
+      <a class="card" href="./Geometry/">
+        <h2>Geometry</h2>
+        <p>Module calendar, module overview, and classroom overview.</p>
+      </a>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Algebra 1 Module Calendar</title>
+  <style>
+    :root{
+      --module0:#f3e5f5; /* purple tint */
+      --module1:#e0f2f1; /* teal tint */
+      --module2:#fff3e0; /* orange tint */
+      --module3:#e3f2fd; /* blue tint */
+      --ink:#222; --ink-muted:#555; --border:#ddd;
+      --paper:#fff;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Arial, sans-serif; line-height:1.6; margin:0; background:#fafafa; color:var(--ink);}
+    header{position:sticky; top:0; z-index:5; background:linear-gradient(#fff,#fafafa); border-bottom:1px solid var(--border); padding:1rem 2rem;}
+    h1{margin:0 0 .25rem 0; text-align:center;}
+    .routine{ text-align:center; color:var(--ink-muted); font-size:.95rem; margin:0 auto .5rem; max-width:1100px;}
+
+    .header-actions{display:flex; justify-content:center; gap:.5rem; flex-wrap:wrap; margin:.5rem auto 0; max-width:1100px}
+    .header-actions button{appearance:none; border:1px solid var(--border); background:#fff; padding:.35rem .75rem; border-radius:999px; font-weight:700; cursor:pointer; box-shadow:0 1px 0 rgba(0,0,0,.03)}
+    .header-actions button:hover{transform:translateY(-1px)}
+
+    /* Week Navigation */
+    .calendar-nav-wrap{position:static; background:linear-gradient(#fafafa,#f7f7f7); border-bottom:1px solid var(--border);}
+    .calendar-nav{display:flex; flex-wrap:wrap; justify-content:center; gap:.5rem; padding:.75rem 1rem; max-width:1100px; margin:0 auto;}
+    .calendar-nav .group-label{width:100%; text-align:center; font-weight:700; letter-spacing:.02em; color:var(--ink-muted); margin:.25rem 0 -.25rem;}
+    .calendar-nav a{padding:.4rem .8rem; border-radius:999px; text-decoration:none; color:#222; font-weight:700; border:1px solid var(--border);
+      background:var(--paper); transition:transform .05s ease, background .2s ease; box-shadow:0 1px 0 rgba(0,0,0,.03); white-space:nowrap;}
+    .calendar-nav a:hover{transform:translateY(-1px);}
+    .calendar-nav a.module0{background:var(--module0);}
+    .calendar-nav a.module1{background:var(--module1);}
+    .calendar-nav a.module2{background:var(--module2);}
+    .calendar-nav a.module3{background:var(--module3);}
+
+    main{padding:1rem 2rem 3rem; max-width:1100px; margin:0 auto;}
+    .break{height:14px; width:100%; margin:1rem 0;}
+    .break.module0{background:var(--module0); opacity:.6;}
+    .break.module1{background:var(--module1); opacity:.6;}
+    .break.module2{background:var(--module2); opacity:.6;}
+    .break.module3{background:var(--module3); opacity:.6;}
+
+    /* Collapsibles */
+    details.semester{border:1px solid var(--border); border-radius:10px; background:#fff; margin:1rem 0 2rem; box-shadow:0 2px 6px rgba(0,0,0,.04);}
+    details.semester>summary{padding:1rem 1.25rem; cursor:pointer; font-size:1.05rem; font-weight:700; list-style:none;}
+    details.semester[open]>summary{border-bottom:1px solid var(--border);}
+    details.week-section{margin:1rem; border:1px solid var(--border); border-radius:8px; padding:.5rem 1rem 1rem; background:#fff; box-shadow:0 1px 4px rgba(0,0,0,.03);}
+    details.week-section>summary{cursor:pointer; list-style:none; display:flex; align-items:center; gap:.5rem;}
+    details.week-section>summary h2{margin:.25rem 0; font-size:1.1rem;}
+    details.week-section.module0{background:var(--module0);}
+    details.week-section.module1{background:var(--module1);}
+    details.week-section.module2{background:var(--module2);}
+    details.week-section.module3{background:var(--module3);}
+    details.week-section .inner{background:#fff; margin:.5rem -1rem -1rem; padding:1rem; border-top:1px solid var(--border); border-radius:0 0 8px 8px;}
+    .top-link{display:inline-block; margin-top:.5rem; font-size:.9rem; color:#0645ad; text-decoration:none;}
+  </style>
+</head>
+<body>
+  <a id="top"></a>
+  <header>
+    <h1>📅 Algebra 1 Fall 2025 – Module Calendar</h1>
+    <p class="routine"><strong>Routine Key:</strong> Monday <em>Manila Folder Check</em> (distribute folders to tables; collect/return finished work; note missing submissions) · Daily warm‑up slips (extras in front bin) · Weekly Notebook Check (Google Form) due Fridays · DeltaMath due Fridays 10 PM · Groups (re)assigned Mondays as needed · Skill Points: earn all week; spend only on approved gates/challenges · Mastery Gates = short, targeted checks with DeltaMath review + retake path</p>
+    <div class="header-actions" role="group" aria-label="Expand or collapse all weeks">
+      <button id="expandAll" aria-controls="semester-container">Expand all weeks</button>
+      <button id="collapseAll" aria-controls="semester-container">Collapse all weeks</button>
+    </div>
+    <p class="routine"><strong>Folder System:</strong> <em>Manila folders</em> = this week’s handouts + unfinished work (lives at the table until finished/submitted). <em>Notebook divider folders</em> = finished/returned work for the current module (fold sheets to fit). We check manila folders every Monday when we set seats.</p>
+  </header>
+
+  <div class="calendar-nav-wrap">
+    <nav class="calendar-nav">
+      <div class="group-label">Module 0 • The Numbers in Order</div>
+      <a class="module0" href="#week1">Week 1</a>
+      <a class="module0" href="#week2">Week 2</a>
+      <a class="module0" href="#week3">Week 3</a>
+      <a class="module0" href="#week4">Week 4</a>
+      <a class="module0" href="#week5">Week 5</a>
+      <a class="module0" href="#week6">Week 6</a>
+      <div class="group-label">Module 1 • So You Want to Buy a Car</div>
+      <a class="module1" href="#week7">Week 7</a>
+      <a class="module1" href="#week8">Week 8</a>
+      <a class="module1" href="#week9">Week 9</a>
+      <a class="module1" href="#week10">Week 10</a>
+      <a class="module1" href="#week11">Week 11</a>
+      <a class="module1" href="#week12">Week 12</a>
+      <a class="module1" href="#week13">Week 13</a>
+      <a class="module1" href="#week14">Week 14</a>
+      <a class="module1" href="#week15">Week 15</a>
+      <a class="module1" href="#week16">Week 16</a>
+    </nav>
+  </div>
+
+  <main id="semester-container">
+<div id="week1" class="week-section module0">
+  <h2>Week 1: Number Line Walk & Classroom Foundations</h2>
+  <ul>
+    <li><strong>Monday:</strong> 
+      <ul>
+        <li>5 min – Welcome and settle in</li>
+        <li>10 min – Folder handout and math interest survey</li>
+        <li>15 min – One-page placement test with quiet music</li>
+        <li>20 min – Folder coloring, stickers, and optional coloring pages</li>
+        <li><em>Reflection:</em> “What part of today made this class feel doable for you? What will help you focus here?”</li>
+      </ul>
+    </li>
+    <li><strong>Tuesday:</strong> 
+      <ul>
+        <li>5 min – Folder-based seating and welcome back</li>
+        <li>10 min – Syllabus and classroom norms overview</li>
+        <li>10 min – Introduce group task structure</li>
+        <li>20 min – Launch Number Line Walk (integer addition/subtraction modeling)</li>
+        <li>Use Think-Pair-Share Talk Protocol: each student first writes an idea, shares with a partner, then pairs share highlights with the group.</li>
+        <li>5 min – Exit check: emoji poll on Classroom Screen</li>
+        <li><em>Reflection:</em> “What did the number line walk help you notice about addition and subtraction?”</li>
+        <li><strong>Skill Points:</strong> Quick intro to how to EARN this week (on‑task participation, helpful peer coaching, neat notebook setup). First SP handouts begin today; table scoreboard starts. Full menu comes Friday.</li>
+      </ul>
+    </li>
+    <li><strong>Thursday:</strong> 
+      <ul>
+        <li>10 min – Group warm-up and reflection from Tuesday</li>
+        <li>15 min – Number line modeling of multiplication</li>
+        <li>10 min – Notebook setup overview and structure explanation</li>
+        <li>10 min – Notebook reflection and decoration</li>
+        <li><em>Reflection:</em> “How does the multiplication model connect to the walk we did for addition/subtraction?”</li>
+      </ul>
+    </li>
+    <li><strong>Friday:</strong> 
+      <ul>
+        <li>10 min – Introduction to number systems and math warm-up</li>
+        <li>5 min – Graphic organizer setup in notebooks</li>
+        <li>15 min – Class notes: absolute value, integers and other number types and the history, additive inverse property (doc cam)</li>
+        <li>10 min – Number type sorting activity: classify example values into number sets before filling in the graphic organizer</li>
+        <li>10 min – Skill point system explanation and office hours incentive</li>
+        <li><strong>Skill Points:</strong> First weekly table award → Treasure Box pick (+2 SP to the table). Announce next week’s Office Hours Incentive (+1 SP for attending once in Week 2).</li>
+        <li><em>Reflection:</em> “Which number sets feel clear and which are still fuzzy? Add one example to your organizer.”</li>
+      </ul>
+    </li>
+    <li><em>Additional Notes:</em>
+      <ul>
+        <li>Introduce graphic organizer as a living note page — students will add more examples throughout the week.</li>
+        <li>Consider setting up a number history timeline (wall/board) as a reference point.</li>
+        <li>Preview warm-up routine and reinforce group role norms.</li>
+        <li>Close out week with name pronunciation check-in and survey highlights.</li>
+        <li>Reinforce inverse relationships through class discussions (e.g., 5 and -5) </li>
+        <li>Scaffold classroom reflections to foreshadow inverse and rational properties. </li>
+        <li>Ask which numbers are still missing</li>
+        <li>Notebook pages: insert numberline and graphic organizer</li>
+        <li>Introduce SP lightly Tue; do <em>not</em> over-explain on Day 1.</li>
+        <li>Track SP with notebook stamps + ClassroomScreen scoreboard.</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div id="week2" class="week-section module0">
+  <h2>Week 2: Fractions & Multiplication Models</h2>
+  <p><strong>Grouping & Roles (Week 2 reset):</strong> Keep Week 1 groups through Friday. Roles = <em>Facilitator</em>, <em>Recorder</em>, <em>Checker</em>, <em>Presenter</em>. Rotate roles <u>Tuesday ➝ Thursday</u> within the same table so each student performs a different role once this week. Use name tents with role stickers. Note patterns to inform the Week 7 reshuffle.</p>
+  <ul>
+    <li><strong>Monday:</strong>
+      <ul>
+        <li><strong>Routine:</strong> Monday Manila Folder Check — place folders at tables; quick scan for unfinished/returned work; mark missing items in gradebook notes.</li>
+        <li>Spiral Review Warm-Up: brief revisit of 1–2 key ideas from the prior week to strengthen retrieval.</li>
+        <li>5 min – Welcome & goal framing: expanding our number line with rational numbers; project the weekly outline; hand out today’s warm‑up slip (extras in bin)</li>
+        <li> Discuss Warmup sheet expectations and weekly turn in and absence procedures</li>
+        <li>10 min – Mini-lesson: What are rational numbers? Representations (fractions, decimals, terminating/repeating), benchmarks</li>
+        <li>5 min – The fraction bar as division: connect models to notation; quick examples on the doc cam</li>
+        <li>20 min – Group practice: place fraction/decimal cards on the projected number line; copy updates into notebooks and reflect</li>
+        <li>Use Fast Feedback Codes during practice: mark answers with quick codes like ‘R’ for recheck or ‘✓’ for correct to signal immediate next steps.</li>
+        <li>5 min – Launch DeltaMath Practice #1 (Integers and Rationals) 
+        <li><strong>Skill Points:</strong> EARN +1 SP for on‑time DeltaMath (Fri 10 PM), +1 SP for notebook neatness stamp, +1 SP for visiting Office Hours once this week.</li>
+        <li><em>Reflection:</em> “Where would you place 0.3, 1/3, and 0.\overline{3} on your line—and why?”</li>
+      </ul>
+      <li><em>Reflection:</em> “What mistake with fractions do you catch yourself making? How will you avoid it next time?”</li>
+    </li>
+    <li><strong>Tuesday:</strong>
+      <ul>
+        <li>5 min – Warm-up: estimate which is larger and why (benchmarking)</li>
+        <li>20 min – Notebook foldable: fraction operations refresher (common denominators, mixed numbers, improper ↔ mixed)</li>
+        <li>15 min – Guided practice from foldable examples; partners check each step</li>
+        <li>10 min – Work time: continue DeltaMath Practice #1 (teacher circulates for support)</li>
+      </ul>
+    </li>
+    <li><strong>Thursday:</strong>
+      <ul>
+        <li>5 min – Warm-up: quick product/quotient predictions (signs & magnitude)</li>
+        <li>10 min – Mini-lesson: multiplication models; division as multiplication by the multiplicative inverse</li>
+        <li>15 min – Practice: mixed rational multiplication/division (area/number-line models → symbolic)</li>
+        <li>10 min – Work time: DeltaMath Practice #1 (last in-class push)</li>
+        <li>10 min – exit check Error analysis: choose the correct step and justify</li>
+        <li><em>Reflection:</em> “When does division by a fraction make a number bigger? Explain with an example.”</li>
+      </ul>
+    </li>
+    <li><strong>Friday:</strong>
+      <ul>
+        <li>10 min – Review & questions</li>
+        <li>20 min – <strong>Mastery Gate 0A: Integers &amp; Rationals</strong> (in-class)</li>
+        <li><em>Gate 0A — DeltaMath skills checked:</em> Compare/Order Rational Numbers; Convert Fractions ↔ Decimals; Add/Subtract Fractions; Multiply/Divide Fractions; Integer Operations; Absolute Value (basic).</li>
+        <li>10 min – Reflection & quick re-teach by need</li>
+        <li><strong>SP options (Gate 0A):</strong> Swap‑One (2 SP) to replace one problem with a parallel version; Check‑One‑Step (1 SP) for a single step validity check; Hint Unlock (1 SP) for a non‑leading nudge.</li>
+        <li><em>Reflection:</em> “Which rational-number skill helped you most on today’s check? What’s your next step?”</li>
+        <li>10 min – Logistics: DeltaMath Practice #1 due tonight by 10 PM; preview next week</li>
+        <li>5 min – Submit Weekly Notebook Check (Google Form)</li>
+      </ul>
+    </li>
+    <li><em>Additional Notes:</em>
+      <ul>
+        <li>Embed short in-class work blocks Mon/Tue/Thu for DeltaMath to support access and reduce homework load.</li>
+        <li>Foldable acts as a reference for future Skill Checks; consider a quick stamp for neatness/completeness.</li>
+        <li>Have fraction/decimal magnet cards, projected number line, and foldable master ready.</li>
+        <li>Encourage group checking and peer coaching</li>
+        <li>Ask which numbers are still missing from the numer line</li>
+        <li>Check notebooks for setup completion and that foldables/graphic organizers are glued in.</li>
+        <li>Reinforce warm-up routine and weekly turn-in/absence procedures.</li>
+        <li>Hand out skill points for notebook neatness, DeltaMath help, and strong group participation.</li>
+        <li>First group award Friday after the skill check — tie it to participation or a theme like “Best Fraction Coaches.”</li>
+        <li>Add quick notebook reflection prompts at the end of Mon/Tue/Thu to build metacognitive habits.</li>
+        <li>Post a large classroom number line with fraction/decimal benchmarks for ongoing reference.</li>
+        <li>Include a short misconceptions check activity mid-week to catch confusion early.</li>
+        <li>Explicitly teach and highlight rational number vocabulary in foldables (terminating, repeating, benchmark, reciprocal, multiplicative inverse, etc.).</li>
+        <li>Prep all materials in advance: fraction/decimal cards, foldables, error analysis slips, printed skill check, prize box/menu.</li>
+        <li>Notebook pages: Fraction Operations Foldable, update - numberline + graphic organizer </li>
+        <li>Office Hours goal: every student attends once → +1 SP.</li>
+        <li>Table scoreboard winner Friday: +2 SP and Treasure Box pick.</li>
+        <li><strong>Table Award Theme:</strong> Best Fraction Coaching (+2 SP).</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<!-- Add the rest of your weeks here, using the same structure -->
+<div id="week3" class="week-section module0">
+  <h2>Week 3: Exponents → Scientific Notation → Roots</h2>
+  <ul>
+    <li><strong>Monday:</strong>
+      <ul>
+        <li><strong>Routine:</strong> Monday Manila Folder Check — place folders at tables; quick scan for unfinished/returned work; mark missing items in gradebook notes.</li>
+        <li>Spiral Review Warm-Up: brief revisit of 1–2 key ideas from the prior week to strengthen retrieval.</li>
+        <li>5 min – Warm-up: quick exponent pattern recognition (e.g., 2¹, 2², 2³...)</li>
+        <li>30 min – <strong>Whiteboard Zombie Game</strong> introduction to exponents and laws:
+          <ul>
+            <li>Names written on board; correct answers let students “bite” (choose a person to turn into a zombie). Three bites = zombie.</li>
+            <li>Start with expanding & condensing examples to introduce exponent notation and meaning.</li>
+            <li>Introduce <em>Multiplication Law</em> with whiteboard examples and challenges.</li>
+            <li>Introduce <em>Power Law</em> with similar example/challenge flow.</li>
+            <li>Include a 0 exponent as a surprise “challenge” or “healing” round (no derivation, just reveal and discuss).</li>
+            <li>End with a division example leading into discussion of negative exponents.</li>
+            <li>Multiple rounds or extra challenges if time allows.</li>
+          </ul>
+        </li>
+        <li>Assign DeltaMath: Exponent Laws & Scientific Notation (Due Friday)</li>
+        <li>10 min – Notebook reflection: rules learned today with labeled examples for each (multiplication, power, 0 exponent, negative exponent)</li>
+        <li><em>Reflection:</em> “Which exponent rule feels most reliable to you right now, and why?”</li>
+        <li>Quick remediation setup: Review Week 2 Skill Check results, assign DeltaMath auto-review for students scoring under 80%, and note individual goals.</li>
+      </ul>
+    </li>
+    <li><strong>Tuesday:</strong>
+      <ul>
+        <li>5 min – Warm-up (Gimkit/Formative): mixed exponents (product, power, 0, negative)</li>
+        <li>10 min – Rapid recap mini-lesson: same-base multiply ⇒ add exponents; power of a power ⇒ multiply exponents; 0 exponent ⇒ 1 (a≠0); negative exponent ⇒ reciprocal</li>
+        <li>15 min – Scientific Notation launch: powers of 10, why negative exponents mean very small numbers; convert standard ⇄ scientific (both big & small)</li>
+        <li>15 min – Practice mash-up: compare & compute with scientific notation using exponent laws (e.g., (3×10^4)·(2×10^3), 6×10^-2 vs 2×10^-3); quick whiteboard checks</li>
+        <li>5 min – Exit check: convert one big & one small number to scientific notation and order them</li>
+        <li><em>Reflection:</em> “How do negative exponents connect to small numbers in scientific notation?”</li>
+        <li><strong>Skill Points (practice only):</strong> Check‑One‑Step (1 SP) allowed during practice rounds today (not on the Skill Check).</li>
+      </ul>
+    </li>
+    <li><strong>Thursday:</strong>
+      <ul>
+        <li>5 min – Warm-up: perfect squares & cubes (quick recall)</li>
+        <li>10 min – Mini-lesson: square & cube roots as inverse operations; notation and evaluating perfect roots</li>
+        <li>15 min – Activities: root estimation (between which integers?), perfect square/cube sort, calculator check & reasonableness</li>
+        <li>10 min – Work time: Deltamath practice #2</li>
+        <li>5 min – Exit check: estimate √7 and justify between which integers it lies</li>
+        <li><em>Reflection:</em> “How did estimation help you decide where √n belongs between two integers?”</li>
+      </ul>
+    </li>
+    <li><strong>Friday:</strong>
+      <ul>
+        <li>5 min – Warm-up: quick review of exponent, scientific notation, and root concepts</li>
+        <li>25 min – <strong>Mastery Gate 0B: Exponents, Scientific Notation &amp; Roots</strong></li>
+        <li><em>Gate 0B — DeltaMath skills checked:</em> Exponent Rules (product, power, zero, negative exponents with same base); Scientific Notation (convert, compare, compute with powers of 10); Perfect Squares/Cubes &amp; Root Estimation (place between integers).</li>
+        <li>10 min – Quick reteach and clarification for most-missed concepts</li>
+        <li>10 min – SP awards and notebook reflection: one area I feel confident in, one I want to strengthen</li>
+        <li><strong>SP options (Gate 0B):</strong> Swap‑One (2 SP) or Check‑One‑Step (1 SP). No extra‑time purchases; students finish in class or complete corrections during office hours.</li>
+        <li>Reminders: DeltaMath due and submit Weekly Notebook Check (Google Form)</li>
+        <li><em>Reflection:</em> “What is one adjustment you’ll make before next week based on today’s results?”</li>
+      </ul>
+    </li>
+    <li><em>Additional Notes:</em>
+      <ul>
+        <li>Use visual aids (number line scaling, area models, cube models) for conceptual grounding.</li>
+        <li>Highlight inverse relationships between powers and roots explicitly.</li>
+        <li>Embed estimation strategies before calculator use to build number sense.</li>
+        <li>Include magnitude comparisons in warm-ups to strengthen intuition.</li>
+        <li>Prep: exponent/root card sets, visual models, DeltaMath assignments.</li>
+        <li>Tuesday: tie negative exponents directly to small values in scientific notation; emphasize place value shifts.</li>
+        <li>Thursday: keep roots conceptual (inverse operations & estimation) without heavy radical rules.</li>
+        <li>Friday: ensure tasks include at least one of each form (fraction, decimal, root, π, scientific notation) in every set.</li>
+        <li>Notebook pages: Exponent Rules, Scientific Notation, Roots, update - numberline + graphic organizer</li>
+        <li>EARN: on‑time DeltaMath (+1), strong notebook stamp (+1).</li>
+        <li><strong>Table Award Theme:</strong> Clearest Scientific‑Notation Talk (+2 SP).</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div id="week4" class="week-section module0">
+  <h2>Week 4: Order of Operations & Bridging Concepts</h2>
+  <ul>
+    <li><strong>Monday:</strong>
+      <ul>
+        <li><strong>Routine:</strong> Monday Manila Folder Check — place folders at tables; quick scan for unfinished/returned work; mark missing items in gradebook notes.</li>
+        <li>Spiral Review Warm-Up: brief revisit of 1–2 key ideas from the prior week to strengthen retrieval.</li>
+        <li>5 min – Warm-up: quick number magnitude estimation (mixed forms)</li>
+        <li>25 min – Group Challenge: Compare & Order Across Forms (integers, fractions, decimals, scientific notation, roots, π) – review strategies from Week 3</li>
+        <li>10 min – Debrief: connect magnitude and form to operation order reasoning</li>
+        <li>10 min – Notebook reflection: “How does knowing which numbers are bigger help me decide which calculations to do first?”</li>
+        <li>
+          <strong>Ambiguous Ranking – with Hidden Conventions</strong><br>
+          Groups are given 5–6 expressions designed to be easy to misinterpret:
+          <ul>
+            <li>Division/multiplication tie: 8 ÷ 2 × 4</li>
+            <li>Negative sign with powers: -3^2 vs. (-3)^2</li>
+            <li>Fraction bar precedence: 10 – 4 / 2 and 3 / 1/2</li>
+            <li>Roots with multiplication: √4 × 9 vs. √(4 × 9)</li>
+            <li>Implied multiplication vs. explicit: 1/2x vs. (1/2)·x</li>
+          </ul>
+          Groups rank the list from smallest to largest, then compare with a different group who got a different order and debate which conventions are correct. 
+          Leave some disputes unresolved as a teaser for Tuesday’s formal discussion of order of operations.
+        </li>
+      </ul>
+    </li>
+    <li><strong>Tuesday:</strong>
+      <ul>
+        <li>5 min – Warm-up: simple mixed operations without parentheses</li>
+        <li>15 min – Mini-lesson: Order of Operations (PEMDAS as a hierarchy, not just a list); connect to real number system work</li>
+        <li>20 min – Guided practice: mixed operations and return to Monday's ambiguous hierarchy (integers, fractions, decimals)</li>
+        <li>12 min – <strong>Mastery Gate 0C: Order of Operations (numeric) &amp; Evaluating simple expressions</strong> — short in‑class gate to confirm readiness for Thursday variables and Friday scavenger hunt.</li>
+        <li>8 min – Start DeltaMath #3: Order of Operations &amp; Evaluating Expressions (due Friday); students below threshold get an auto‑assigned review + office hours invite.</li>
+        <li><em>Reflection:</em> “Write one expression that could be misread and explain how you’d make it unambiguous.”</li>
+      </ul>
+    </li>
+    <li><strong>Thursday:</strong>
+      <ul>
+        <li>5 min – Warm-up: If x = 3, which is greater: 2x + 5 or 2(x + 5)?</li>
+        <li>15 min – Mini-lesson: Introducing variables as placeholders for numbers. Explain that variables are symbols (like x) that can stand for different values, and that they allow us to write rules and expressions that work for many numbers. Demonstrate evaluating expressions by substituting specific values for variables and show that variables follow the same arithmetic rules as numbers. Emphasize that sometimes expressions with variables cannot be simplified further unless we know the value of the variable.</li>
+        <li>15 min – Practice: Evaluate expressions with given variable values and identify expressions that cannot be simplified without knowing the variable. Reinforce the idea that variables behave like numbers in arithmetic operations.</li>
+        <li>10 min – Work time: continue DeltaMath #3 Order of Operations and practice evaluating expressions with variables and numbers.</li>
+        <li>5 min – Exit check/reflection: How is evaluating an expression with a variable similar to and different from working with plain numbers?</li>
+      </ul>
+    </li>
+    <li><strong>Friday:</strong>
+      <ul>
+        <li>5 min – Introduction: Explain the Order of Operations & Evaluating Expressions Scavenger Hunt. Review expectations, materials, and how to rotate through stations. Highlight how this activity will help prepare for future skills and assessments.</li>
+        <li>40 min – Scavenger Hunt Stations: Students rotate through a series of stations, each featuring a different problem or puzzle related to order of operations and evaluating expressions (with and without variables). Encourage collaboration and discussion at each station. Teacher circulates to support and check for understanding.</li>
+        <li>5 min – Wrap-up/Reflection: Gather students to share strategies, discuss the most challenging problems, and highlight key takeaways. Prompt reflection: “What’s one thing you’ll watch for when simplifying expressions?” Remind students to check that all their work is recorded in their notebooks.</li>
+        <li><strong>SP options (Challenge):</strong> Hint Card (2 SP), Notes Peek – your own notebook, 30s (3 SP), Check‑One‑Step (1 SP). Optionally, fastest accurate path earns table +2 SP.</li>
+        <li><strong>Absent students or those needing more time:</strong> May continue the scavenger hunt during office hours on Monday or Tuesday of Week 5; final due date for completion is Wednesday of Week 5.</li>
+        <li><strong>Improving scores:</strong> Students may improve their Skill Check scores by completing a DeltaMath review assignment, then scheduling a retake after the review is complete.</li>
+        <li>10 min – Logistics: DeltaMath due (10 PM), submit Weekly Notebook Check (Google Form), preview Week 5 (properties & simplifying expressions)</li>
+      </ul>
+    </li>
+    <li><em>Additional Notes:</em>
+      <ul>
+        <li>Comparing & Ordering task serves as a conceptual bridge from magnitude sense to operation reasoning.</li>
+        <li>Highlight the connection between number sense and correct order of operations.</li>
+        <li>Use examples with both known values and variable placeholders to build flexibility.</li>
+        <li>Reinforce notebook use: all warm-ups and reflections should be glued or written in.</li>
+        <li>EARN: on‑time DeltaMath (+1), collaborative norms observed (+1).</li>
+        <li><strong>Table Award Theme:</strong> Most Respectful Disagreement in Ambiguous Ranking (+2 SP).</li>
+      </ul>
+    </li>
+  </ul>
+  </div>
+
+  <div id="week5" class="week-section module0">
+    <h2>Week 5: Properties of Real Numbers – Family Weekend Mode</h2>
+    <ul>
+      <li><strong>Monday:</strong>
+        <ul>
+          <li><strong>Routine:</strong> Monday Manila Folder Check — place folders at tables; quick scan for unfinished/returned work; mark missing items in gradebook notes.</li>
+          <li>Spiral Review Warm-Up: brief revisit of 1–2 key ideas from the prior week to strengthen retrieval.</li>
+          <li>5 min – Warm-up: “same value” teaser: Show two different expressions equal to the same thing (e.g., 3(x+4) and 3x+12) and ask “Why are these equal?” Collect a few student guesses without naming properties.</li>
+          <li>20–25 min – Discovery Task: Matching Equivalent Expressions — students get a set of expression cards; find matches and write in their own words why the match works. (No property names yet.) (Uses the expression-only half of a master card sort set; students will re-use this set with added property names/definitions on Tuesday.)</li>
+          <li>10 min – Whole-class share: groups present matches and reasoning; teacher records student language for later linking to formal property names.</li>
+          <li>5 min – Closure: Reflection prompt: “What’s one thing you noticed about how expressions can change but keep the same value?” Tape into notebook for later revisiting.</li>
+        </ul>
+      </li>
+      <li><strong>Tuesday:</strong>
+        <ul>
+          <li>5 min – Warm-up (bridge to Monday): Project 2 pairs from Monday’s set. Prompt on slide: “How do you know these pairs are the same value? Describe the move in your own words (no names yet).” (Pair A: 3(x+4) → 3x+12; Pair B: (4·2)·6 → 4·(2·6))</li>
+          <li>10 min – <strong>Name the moves</strong>: introduce commutative, associative, distributive, identity (0 and 1), and inverse properties with concise examples that match Monday’s puzzles.</li>
+          <li>Post Success Criteria visibly: what mastery of each property looks like, with examples.</li>
+          <li>10 min – <strong>Card Sort</strong>: Students use the full card sort set (expressions plus property names/definitions) to match each “move” to its property. Groups discuss and justify matches, using Monday’s language and new property names. Teacher circulates to prompt and clarify. Require a one‑line justification per match. Keep property names visible in a word bank for reference.</li>
+          <li>15 min – <strong>Guided → Independent Practice with Group Support</strong>: Use the provided property practice sheet. In groups, each member must choose a different example if possible, complete it, then explain their reasoning aloud to the group. Rotate until all have shared. Teacher circulates to check accuracy and understanding. On the practice sheet, include a margin column for “Property” and “Because…” so students must pair the name with their reason.</li>
+          <li>5 min – Bonus/extension: Groups create one original example for a property not in their set, swap with another group, and identify each other’s property.</li>
+          <li><em>Reflection:</em> “When would naming the property help you communicate or check your work?”</li>
+          <li>5 min – Logistics: launch DeltaMath #4 (Properties & Simplifying) — short set; open through next Friday.</li>
+        </ul>
+      </li>
+      <li><strong>Thursday (Family Weekend visitors likely):</strong>
+        <ul>
+          <li>5–7 min – Warm-Up: “Spot the mistake” problem on board; pairs discuss and write which property was violated.</li>
+          <li>10 min – Mini-Lesson: Model 2–3 step simplifications, pausing for students to name the property after each step. Include distributive + combining like terms + identity/inverse examples.</li>
+          <li>15–18 min – Main Activity: Visitor-friendly paired challenge — solve 2–3 multi-step problems, labeling each step with the property name and a short “because” statement. Encourage color-coding property names.</li>
+          <li>10 min – Error Analysis: Use simplification error analysis set. Small groups identify and correct each error, explaining which property misuse caused it.</li>
+          <li><strong>Skill Points:</strong> During paired challenge/error analysis: Hint Card (2 SP) and Check‑One‑Step (1 SP) available.</li>
+          <li>5 min – Wrap-Up/Reflection: “Which property did you use most today? Which one tripped you up?”</li>
+        </ul>
+      </li>
+      <li><strong>Friday (Family Weekend, possible altered schedule):</strong>
+        <ul>
+          <li>5–7 min – Warm-Up: Error Analysis Mini-Set — 2–3 short simplification problems with deliberate mistakes. Students identify the error, name the violated property, and fix it.</li>
+          <li>3–5 min – Mini-Intro to “Sell That Property” (Week 6 project): Explain that students will become “salespeople” for a math property next week. Show 1–2 fun analogy examples (e.g., Distributive = “the buy-one-get-one of math,” Identity = “an invisibility cloak for numbers”).</li>
+          <li>15–20 min – Brainstorm Challenge: Students choose one property they like or understand best. Create a draft analogy, metaphor, slogan, or skit idea for that property. They can write, doodle, or sketch their idea.</li>
+          <li>5–10 min – Quick Share-Out: A few volunteers share their analogy/slogan. Class discusses what made them memorable. Teacher records standout ideas to bring into Week 6.</li>
+          <li>10–15 min – Housekeeping / Work Time: Complete DeltaMath #4, submit Weekly Notebook Check (Google Form), organize handouts, or catch up on missing work.</li>
+          <li><strong>Skill Points:</strong> EARN +1 SP for DeltaMath catch‑up, +1 SP for notebook polish stamp. Light‑stakes SP week due to Family Weekend.</li>
+          <li><em>Reflection:</em> “If you had to ‘sell’ one math property today, which would you pick and what’s your opening line?”</li>
+        </ul>
+      </li>
+      <li><em>Additional Notes:</em>
+        <ul>
+          <li>Homework and assessments lighter this week to accommodate Family Weekend schedules.</li>
+          <li>Encourage <strong>verbal explanations</strong> and "because" statements; value the explanation over the label early in the week.</li>
+          <li>Build <strong>informal familiarity before formal naming</strong> (Mon → Tue).</li>
+          <li>Thread properties into earlier contexts (integers, rationals, fraction operations) to avoid feeling abstract.</li>
+          <li>Include <strong>reflexive, symmetric, transitive</strong> in equation-justification puzzles so students see them as reasoning tools, not trivia.</li>
+          <li>Keep groups stable through Week 5; plan reshuffle for Week 7 (new groups begin Monday of Week 7).</li>
+          <li><strong>Table Award Theme:</strong> Sharpest Property Justification (+2 SP).</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+<div id="week6" class="week-section module0">
+  <h2>Week 6: Recovery & Properties Wrap – Family Weekend Mode</h2>
+  <ul>
+    <li><strong>Monday:</strong> <em>No class</em> — Family Weekend recovery. All active deadlines (DeltaMath #4, Notebook Form #3, scavenger hunt/retakes) are extended to <strong>Wednesday 10:00 PM</strong>. This week is intended for recovery and consolidation after Family Weekend.</li>
+
+    <li><strong>Tuesday – Sell That Property (Performance Task):</strong>
+      <ul>
+        <li><strong>Routine:</strong> Tuesday Manila Folder Check — place folders at tables; quick scan for unfinished/returned work; mark missing items in gradebook notes.</li>
+        <li>5 min – Warm-Up: Matching activity (properties ↔ examples) from earlier in the unit. Students complete individually, then check in pairs.</li>
+        <li>10 min – Launch: Review brainstorm examples from Family Weekend; clarify expectations (property name, analogy/slogan, worked math example, visual element).</li>
+        <li>25–30 min – Work Time: Students work individually or in pairs. Teacher circulates for property accuracy and analogy clarity.</li>
+        <li><strong>SP options (Performance Task):</strong> Notes Peek – your own notebook, 30s (3 SP); Check‑One‑Step (1 SP); Layout Template access (1 SP). EARN +2 SP for “clearest analogy” or “best mathematical example.”</li>
+        <li>End of Period: Finished projects share out today; unfinished projects continue Thursday and share via gallery walk or quick presentation.</li>
+        <li><em>Reflection:</em> “What makes your analogy memorable and mathematically correct?”</li>
+      </ul>
+    </li>
+
+    <li><strong>Thursday – Wrap & Share:</strong>
+      <ul>
+        <li>10–15 min – Gallery walk or quick shares for anyone who didn’t present Tuesday.</li>
+        <li>20 min – Multi-step simplification with explicit property labeling + short error analysis set.</li>
+        <li>5–10 min – Address last-minute misconceptions before Skill Check.</li>
+      </ul>
+    </li>
+
+    <li><strong>Friday – Culminating Performance Challenge: Final Challenge – Group vs. Individual</strong>
+      <ul>
+        <li><strong>This is the culminating performance challenge for Module 0.</strong></li>
+        <li>
+          <strong>Group Challenge: Properties Relay</strong><br>
+          In your group, you’ll receive a set of multi-step expressions. As a team, simplify each expression step by step. For every step, you must:
+          <ul>
+            <li>Write the property used (e.g., Distributive, Associative, Identity, Inverse, etc.)</li>
+            <li>Justify your move in a short sentence (“Because…”)</li>
+          </ul>
+          <strong>SP options (Group):</strong> One total Hint Card (2 SP) and Check‑One‑Step (1 SP) per team. No time purchases; unfinished items move to office hours/retake flow.</li>
+        <li>
+          <strong>Individual Challenge: Property Justification & Error Analysis</strong><br>
+          Each student will receive 2–3 short problems:
+          <ul>
+            <li>One requires identifying and naming the property used in a given step.</li>
+            <li>One asks you to spot and correct a property mistake in a simplification (error analysis).</li>
+            <li>One “explain your thinking” prompt: “Why is the distributive property sometimes called the ‘unpacking’ property? Give an example.”</li>
+            <li>SP options (Individual): Swap‑One (2 SP) for one problem; no Notes Peek.</li>
+          </ul>
+          Show your work and explanations clearly.
+        </li>
+        <li>
+          <em>Reflection:</em> “What’s one property or simplification step you feel most confident in now, and why?”<br>
+          <strong>Housekeeping:</strong> Submit Weekly Notebook Check (Google Form), finish any DeltaMath (#4), organize handouts, preview next unit.
+        </li>
+        <li><strong>Retake Path:</strong> Students below threshold complete DeltaMath review + corrections by Wednesday to unlock a retake in office hours. Office hours visit earns +1 SP toward next assessment.</li>
+      </ul>
+    </li>
+
+    <li><em>Additional Notes:</em>
+      <ul>
+        <li>Use Tuesday’s task to merge creativity with precision; require math examples to reinforce property meaning.</li>
+        <li>Thursday serves as both wrap-up and extra practice before Friday’s assessment.</li>
+        <li>Gallery walk ensures all students’ work is seen, even if unfinished on Tuesday.</li>
+        <li><strong>Groups:</strong> Keep current groups through Week 6; <u>new groups begin Monday of Week 7</u>.</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div id="week7" class="week-section module1">
+  <h2>Week 7 (Oct 13–17): Module 1 Launch – Paper Percent Challenge (no spreadsheets yet)</h2>
+  <p><strong>Grouping & Roles (new unit):</strong> Reshuffle tables today using Week 0–5 observations. Roles reset (Facilitator, Recorder, Checker, Presenter). Rotate roles every class meeting this week (Mon/Tue/Thu/Fri) so each student tries multiple roles early in M1. Start a fresh table scoreboard.</p>
+  <ul>
+    <li><strong>Monday:</strong>
+      <ul>
+        <li><strong>Routine:</strong> Monday Manila Folder Check — place folders at tables; quick scan for unfinished/returned work; mark missing items in gradebook notes.</li>
+        <li>3 min – Warm‑up (new groups): “In my new group, I want to be the teammate who ______.”</li>
+        <li>10 min – Hook video: new vs. used, financial pitfalls; discuss takeaways.</li>
+        <li>10 min – Brainstorm: What matters in a car? (aesthetics, safety, mpg, ethics, price, repairs)</li>
+        <li>10 min – Sort: statistical vs. non‑statistical questions (gallery share).</li>
+        <li>12 min – Mini‑lesson: percent change (increase/decrease) in car pricing contexts; benchmark mental math.</li>
+        <li>5 min – Journal launch (Slides or notebook): “What decisions should math inform here?”</li>
+        <li><em>Reflection:</em> “One place % change could fool a buyer is… because…”</li>
+      </ul>
+    </li>
+    <li><strong>Tuesday:</strong>
+      <ul>
+        <li>5 min – Warm‑up: quick % increase/decrease without calculators.</li>
+        <li>10 min – <strong>Bad Deal Detective</strong>: analyze 3 short ads (e.g., double discount wording, tax on wrong base, fees hidden). For each, circle the trap and write the correct calculation flow.</li>
+        <li>12 min – Mini‑lesson: sticker price vs. out‑the‑door (fees, tax as %, discounts). Emphasize order: apply discount first → then tax/fees.</li>
+        <li>18 min – Guided practice set: layered % (discounts + tax) with reasonableness checks.</li>
+        <li>5 min – Launch DeltaMath #M1‑1 (Percent Change & Layered Percents) – due Fri 10 PM.</li>
+        <li><em>Reflection:</em> “What’s your ‘sanity check’ step before trusting a % answer?”</li>
+      </ul>
+    </li>
+    <li><strong>Thursday:</strong>
+      <ul>
+        <li>5 min – Warm‑up: compare two advertised deals; which is actually better?</li>
+        <li>15 min – Mini‑lesson: reading a sales form; connecting each line to a % operation.</li>
+        <li>25 min – <strong>Paper Car‑Buying Percent Challenge (Part A)</strong>: begin teacher worksheet on paper only; show work clearly.</li>
+        <li>5 min – Collect common pitfalls for tomorrow’s launch.</li>
+      </ul>
+    </li>
+    <li><strong>Friday:</strong>
+      <ul>
+        <li>5 min – Quick briefing: % pitfalls + expectations for complete work.</li>
+        <li><strong>End‑of‑Week Formative (paper, 6 items)</strong>: brief layered‑percent check to sort students into Week‑8 spreadsheet groups (light / standard / boost).</li>
+        <li>35 min – <strong>Paper Car‑Buying Percent Challenge (Part B)</strong>: finish the paper task; turn in for feedback.</li>
+        <li>5 min – Exit ticket: “What line item on the sales form changes the total the most and why?”</li>
+        <li>5 min – Logistics: DeltaMath due 10 PM; submit Weekly Notebook Check (Google Form).</li>
+      </ul>
+    </li>
+    <li><em>Additional Notes:</em>
+      <ul>
+        <li><strong>DeltaMath #M1‑1 — Percents Core (due Fri 10 PM):</strong> Percent More or Less Word Problems; Percent Change (L1–L2; L3 as challenge); Multistep Percent More or Less (L1); Multistep Percent Increase/Decrease; Percent Increase/Decrease Expressions; Percent Error; Relative Error (1D). <em>(Assign 8–12 items total; allow choice.)</em></li>
+        <li><strong>No spreadsheets this week.</strong> The goal is conceptual & procedural fluency with layered percents on paper.</li>
+        <li>SP: +1 on‑time DeltaMath; +1 neat, complete notebook page; Check‑One‑Step available during practice only.</li>
+        <li>Artifacts: percent journal page, completed paper Car‑Buying Percent Challenge.</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div id="week8" class="week-section module1">
+  <h2>Week 8 (Oct 20–24): How to Use Spreadsheets — IM Unit 1 Section C</h2>
+  <p><em>Section C Goals:</em> Use a spreadsheet as a tool for calculating values quickly; create basic formulas; interpret results. Assume zero prior experience. (Optional sequence; no IM checkpoint.)</p>
+  <ul>
+    <li><strong>Monday — Lesson 6: Mystery Computations (Optional)</strong>
+      <ul>
+        <li><strong>Routine:</strong> Monday Manila Folder Check — place folders at tables; quick scan for unfinished/returned work; mark missing items in gradebook notes.</li>
+        <li>5 min – Warm‑up (Algebra ↔ Spreadsheet bridge):
+          <ul>
+            <li><strong>Q1 (tip expression):</strong> Ariana leaves a 32% tip on a bill of <em>d</em> dollars. Write an algebraic expression for the total cost (dinner + tip). Then write the spreadsheet formula you would type. <em>(Expected: 1.32d; in a cell: =d_cell*(1+0.32))</em></li>
+            <li><strong>Q2 (percent decrease):</strong> The number 20 decreases to 19. What percent decrease is that (nearest tenth)? How would a spreadsheet compute it from two cells old and new? <em>(Expected: 5.0%; formula: =(old-new)/old)</em></li>
+            <li><em>Teacher move:</em> 60‑second share‑out: 2–3 students read the algebra, then 2–3 read the spreadsheet formula; stress equivalence.</li>
+          </ul>
+        </li>
+        <li>15 min – Orientation to the grid: cells, addresses, = sign, constants vs references. <strong>Require one absolute reference</strong> example (e.g., <code>=$B$2*A3</code>) and explain why it’s locked.</li>
+        <li>18 min – Mystery operations in a toy sheet; students change inputs, observe outputs, and conjecture the rule. Plant one intentional bug (e.g., tax applied to MSRP instead of discounted price) for pairs to find and fix.</li>
+        <li>2 min – Create a <strong>Sanity‑Check cell</strong>: an estimate range; it flags red if outside expected bounds.</li>
+        <li>5 min – Reflection: “How can you tell if a cell is a formula or a fixed value—and when should you lock a reference?”</li>
+      </ul>
+    </li>
+    <li><strong>Tuesday — Lesson 7: Spreadsheet Computations (Optional)</strong>
+      <ul>
+        <li>5 min – Warm‑up: evaluate a short chain of referenced cells by hand first.</li>
+        <li>12 min – Build & compute: =A1+B1, copy down, <strong>absolute vs relative refs</strong> (lock one). % formatting; currency formatting.</li>
+        <li>10 min – Add a <strong>Sanity‑Check cell</strong> that compares a hand‑estimate to computed value (conditional format if off by &gt;5%).</li>
+        <li>10 min – Error‑hunt mini: fix ####, #VALUE!, and a wrong‑base tax bug.</li>
+        <li>3 min – Exit: “When would you lock a reference?”</li>
+      </ul>
+    </li>
+    <li><strong>Thursday — Lesson 8: Spreadsheet Shortcuts (Optional)</strong>
+      <ul>
+        <li>5 min – Warm‑up: pattern fill; recognize a simple recursion.</li>
+        <li>15 min – Shortcuts: fill handle, autofill series, simple recursive formulas.</li>
+        <li>20 min – Mini challenge: model a running total or depreciation with a single formula copied down.</li>
+        <li>5 min – Exit: “What shortcut reduced your clicks the most today?”</li>
+      </ul>
+    </li>
+    <li><strong>Friday — Assessment: Conversion Challenge (Recreate Your Paper)</strong>
+      <ul>
+        <li>30–35 min – <strong>Assessment build</strong>: Using only the provided template and your <em>paper</em> Car‑Buying Percent Challenge, recreate the out‑the‑door calculator. <u>Requirements:</u> inputs area; formulas must use cell references; correct currency/% formats; one “sanity‑check” cell.</li>
+        <li>3 min – Mini prompt on the slide: “Write your tip line two ways: algebra (e.g., 1.32d) and spreadsheet (e.g., =B4*(1+0.32)). Why are they the same?”</li>
+        <li>10 min – Peer debug swap; submit link for feedback.</li>
+        <li>5 min – Logistics: light DeltaMath (optional review) and Weekly Notebook Check.</li>
+      </ul>
+    </li>
+    <li><em>Notes:</em>
+      <ul>
+        <li>Teacher Reflection prompts (from IM): What spreadsheet understandings are essential for later data analysis and functions? What activity timing would you adjust next time?</li>
+        <li>Access & Equity: Provide sentence frames for partner talk during “mystery ops.”</li>
+        <li>SP: Check‑One‑Step allowed during Mon–Thu practice; <strong>no SP on the Friday assessment</strong>.</li>
+        <li>Require: (a) one locked reference, (b) one sanity‑check cell, (c) one intentional bug fix before Friday’s assessment.</li>
+        <li><strong>Table Award Theme:</strong> Best Debugger (+2 SP) — for the group that finds and fixes the most spreadsheet bugs accurately.</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div id="week9" class="week-section module1">
+  <h2>Week 9 (Oct 27–31): Extend Your Calculator — Interest & Long‑Term Cost</h2>
+  <p><strong>Grouping cadence:</strong> Keep Week 7 groups; rotate roles only on <u>Tuesday</u> this week to preserve continuity during multi‑day builds.</p>
+  <ul>
+    <li><strong>Monday:</strong>
+      <ul>
+        <li>5 min – Warm‑up: simple vs compound quick compare.</li>
+        <li>15 min – Mini‑lesson: total cost of ownership (fuel, insurance, maintenance, depreciation).</li>
+        <li>20 min – <strong>Add Finance tab v1</strong>: link “amount financed” from your assessed sheet; simple interest table or =PMT exploration.</li>
+        <li>10 min – Exit: What cost surprised you most and why?</li>
+      </ul>
+    </li>
+    <li><strong>Tuesday:</strong>
+      <ul>
+        <li>5 min – Warm‑up: APR ad critique.</li>
+        <li>20 min – Build: payment schedule (table) and graph balance over time.</li>
+        <li>5 min – <strong>Sensitivity note</strong>: “If APR increases by 1%, my total paid changes by ≈ ____.” (Use a copy of the sheet to compute.)</li>
+        <li>15 min – Compare two financing options; write a short recommendation.</li>
+        <li>10 min – Open DeltaMath #M1‑2 (Interest & TCO) – due Fri.</li>
+      </ul>
+    </li>
+    <li><strong>Thursday:</strong>
+      <ul>
+        <li>5 min – Warm‑up: which car is cheaper at 3 years vs 6 years?</li>
+        <li>15 min – Measures of center/spread refresher; choose appropriate display (histogram/box/line).</li>
+        <li>20 min – <strong>TCO tab v1</strong> with monthly table; link to Out‑the‑Door price and to Finance tab; create one display.</li>
+        <li>10 min – Reflection: “Which statistic tells the story here?”</li>
+      </ul>
+    </li>
+    <li><strong>Friday:</strong>
+      <ul>
+        <li>10 min – Review; notebook check.</li>
+        <li>25 min – Mini‑write: Compare two vehicles with evidence (spreadsheet + display).</li>
+        <li>10 min – Peer review with checklist; revise.</li>
+        <li>5 min – Logistics: DeltaMath due, submit Google Form.</li>
+      </ul>
+    </li>
+    <li><strong>DeltaMath #M1‑2 — Finance & Long‑Term Cost (due Fri 10 PM):</strong> Compounding – Solve for Principal; Find Monthly Payment on a Loan; (optional) Simple Interest – custom items.</li>
+    <li><em>Additional Notes:</em>
+      <ul>
+        <li>Artifacts: Assessed Out‑the‑Door calculator; Finance tab v1; TCO tab v1; one statistical display; comparison paragraph.</li>
+        <li>SP: +1 DeltaMath on time; +1 strong evidence in mini‑write; Check‑One‑Step during build time.</li>
+        <li><strong>Table Award Theme:</strong> Best Debugger (+2 SP) — finance formulas.</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div id="week10" class="week-section module1">
+  <h2>Week 10 (Nov 3–7): Data Displays & Comparisons</h2>
+  <ul>
+    <li><strong>Monday:</strong>
+      <ul>
+        <li>5 min – Warm‑up: read a histogram/box plot; what story does it tell?</li>
+        <li>15 min – Mini‑lesson: choosing displays (histogram vs box vs dot); tie to car data questions.</li>
+        <li>25 min – Build displays from your TCO tab; annotate “What this shows / What this doesn’t.”</li>
+        <li>5 min – Exit: which display fits your question best and why?</li>
+      </ul>
+    </li>
+    <li><strong>Tuesday:</strong>
+      <ul>
+        <li>5 min – Warm‑up: spot a misleading display.</li>
+        <li>15 min – Mini‑lesson: center &amp; spread (mean/median/MAD, IQR). <strong>Decision rule:</strong> When skewed right/left, prefer median + IQR; when roughly symmetric, mean + MAD.</li>
+        <li>20 min – Add stats cells linked to your data; write 3 comparison claims. For one claim, state whether the data are skewed and justify your choice of statistic.</li>
+        <li>10 min – Peer feedback: checklist on accuracy, clarity, relevance.</li>
+      </ul>
+    </li>
+    <li><strong>Thursday:</strong>
+      <ul>
+        <li>5 min – Warm‑up: which statistic changes most if an outlier appears?</li>
+        <li>15 min – Spreadsheet polish: named ranges, number formats, error traps.</li>
+        <li>20 min – Draft comparison paragraph; cite at least one display + one statistic.</li>
+        <li>10 min – Teacher conference rotations (targeted).</li>
+      </ul>
+    </li>
+    <li><strong>Friday — Mastery Gate 1A: Percents & Spreadsheet Mechanics</strong>
+      <ul>
+        <li>10 min – Review & question burst.</li>
+        <li>25 min – Mastery Gate 1A (individual): percent change & layered percents + basic spreadsheet referencing on a small build task.</li>
+        <li><em>Rubric note:</em> includes rows for percent reasoning, spreadsheet integrity (correct references, formats, one sanity‑check cell), and a short written reasonableness check.</li>
+        <li>5 min – Submit Weekly Notebook Check (Google Form).</li>
+        <li>10 min – Sorting: assign DeltaMath review + office hours to students below threshold; green‑light others to deepen displays.</li>
+        <li><em>Gate 1A — DeltaMath skills checked:</em> Percent More or Less Word Problems; Percent Change (L1–L2; L3 optional); Multistep Percent Increase/Decrease (including layered tax/discount); Percent Increase/Decrease Expressions; Spreadsheet Basics (cell references, absolute vs relative, correct formats).</li>
+      </ul>
+    </li>
+    <li><strong>DeltaMath #M1‑3 — Displays & Stats (due Fri 10 PM):</strong> Finding the Mean Graphically (Guided); Finding the Mean from a Frequency Table; Interpreting Calculator Output (Stats); Interpret Histograms/Bar Charts; Create Histograms; Interpret Box Plot (Basic) + Interpret Box Plot; Create Box Plot; Center and Spread Visually; Compare Representations of Data. These items align to Gate 1C.</li>
+    <li><em>Notes:</em>
+      <ul>
+        <li>Artifacts: 2 cleaned displays + stats cells + comparison draft.</li>
+        <li>SP: +1 on‑time DeltaMath; +1 strong evidence revisions; Check‑One‑Step only during practice (not on Mastery Gate).</li>
+        <li><strong>Table Award Theme:</strong> Most Honest Display Caption (+2 SP) — clearest “what this shows / doesn’t show.”</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div id="week11" class="week-section module1">
+  <h2>Week 11 (Nov 10–14): Spreadsheet Calculator Completion & Comparison Writing</h2>
+  <p><strong>Grouping & Roles (productivity focus):</strong> Keep Week 7 groups intact. Assign a rotating <em>Timekeeper</em> add‑on role for this week to help teams hit milestones. Rotate Timekeeper each day (Mon/Tue/Thu/Fri).</p>
+  <ul>
+    <li><strong>Monday:</strong>
+      <ul>
+        <li><strong>Routine:</strong> Monday Manila Folder Check — place folders at tables; quick scan for unfinished/returned work; mark missing items in gradebook notes.</li>
+        <li>5 min – Warm‑up: simple vs compound interest quick check.</li>
+        <li>20 min – Finance tab v2: either simple‑interest table or PMT‑based monthly payment; link to Out‑the‑Door.</li>
+        <li>20 min – Debug round: units, formats, formula auditing.</li>
+        <li>5 min – Exit: “What input changes your total the most?”</li>
+      </ul>
+    </li>
+    <li><strong>Tuesday:</strong>
+      <ul>
+        <li>5 min – Warm‑up: APR ad critique (what’s missing?).</li>
+        <li>15 min – Add a scenario switcher (data validation or dropdown) to compare two options.</li>
+        <li>20 min – Write a short recommendation comparing options using stats + displays.</li>
+        <li>10 min – Launch DeltaMath #M1‑5 (Interest & TCO) — due Fri 10 PM.</li>
+      </ul>
+    </li>
+    <li><strong>Thursday — Mastery Gate 1B: Interest & TCO Modeling</strong>
+      <ul>
+        <li>10 min – Review core formulas (simple interest, payment idea, linking tabs).</li>
+        <li>25 min – Mastery Gate 1B (individual build & interpret): create or critique a small finance calc and answer questions about total paid, interest, and sensitivity to inputs.</li>
+        <li><em>Rubric note:</em> includes integrity checks (linked tabs, units, formats) and an interpretation item (which input most affects total?).</li>
+        <li><li><em>Gate 1B — DeltaMath skills checked:</em> Compounding – Solve for Principal; Find Monthly Payment on a Loan (evaluate expressions correctly); Interpreting Calculator Output (Stats) when used to justify cost claims.</li></li>
+        <li>10 min – Immediate triage: assign mini‑workshops/office hours for those below threshold.</li>
+        <li>5 min – Notebook check reminder; SP: +1 for attending targeted OH before next Tuesday.</li>
+      </ul>
+    </li>
+    <li><strong>Friday:</strong>
+      <ul>
+        <li>10 min – Polish day: address feedback from Gate B; finish calculator features.</li>
+        <li>25 min – <strong>Calculator Challenge Submission</strong>: structure + correct formulas + meaningful customization; quick gallery mini‑walk.</li>
+        <li>5 min – Submit Weekly Notebook Check (Google Form); DeltaMath due 10 PM.</li>
+      </ul>
+    </li>
+    <li><strong>DeltaMath #M1‑2b — Finance Tune‑Up (due Fri 10 PM):</strong> Compounding – Solve for Principal; Find Monthly Payment on a Loan; targeted items tied to Mastery Gate B feedback.</li>
+    <li><em>Notes:</em>
+      <ul>
+        <li>Artifacts: Finance v2, scenario switcher, recommendation blurb, Calculator Challenge (final).</li>
+        <li>SP: Hint Card (2 SP) and Check‑One‑Step (1 SP) allowed during practice/polish; none on Mastery Gate.</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div id="week12" class="week-section module1">
+  <h2>Week 12 (Nov 17–21): Cumulative Review & Project Setup</h2>
+  <ul>
+    <li><strong>Monday — Spiral Review Stations:</strong>
+      <ul>
+        <li><strong>Routine:</strong> Monday Manila Folder Check — place folders at tables; quick scan for unfinished/returned work; mark missing items in gradebook notes.</li>
+        <li>Stations on layered percents, interest, interpreting displays; quick checks at each.</li>
+        <li>Reflection: “How has building a calculator changed how you compare?”</li>
+      </ul>
+    </li>
+    <li><strong>Tuesday — Project Launch:</strong>
+      <ul>
+        <li>5 min – Mini: <strong>Source reliability</strong> (official site vs forum; date; consistency). Start a sources box in the Project Plan Doc.</li>
+        <li>Choose 3–4 vehicles; define personal criteria; collect 2+ data sources each.</li>
+        <li>Create a <strong>Project Plan Doc</strong> (template): questions, data fields, intended displays, timeline.</li>
+        <li>2 min – Note‑to‑self: record two initial sources with URLs/titles in your plan.</li>
+      </ul>
+    </li>
+    <li><strong>Thursday — Project Sheet Setup:</strong>
+      <ul>
+        <li>Duplicate your assessed calculator into a project copy; add tabs (Finance, TCO, Displays).</li>
+        <li>Decide which displays and statistics will support your argument.</li>
+      </ul>
+    </li>
+    <li><strong>Friday — Milestone 0 (Approval):</strong>
+      <ul>
+        <li>Teacher conference: approve project plan + sources + sheet skeleton.</li>
+        <li>Light mastery checks as needed; organize assets for after break.</li>
+      </ul>
+    </li>
+    <li><em>Notes:</em>
+      <ul>
+        <li>Students below Gate A/B thresholds have targeted tasks and office hours this week to catch up.</li>
+        <li>SP: +1 for an approved, organized project plan.</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div id="week13" class="week-section module1">
+  <h2>Week 13 (Nov 24–28): Fall Break</h2>
+  <p>No formal classes. Students travel home. Optional: tidy spreadsheets; optional SP +1 for attending one office hour for project planning (if applicable).</p>
+</div>
+
+<div id="week14" class="week-section module1">
+  <h2>Week 14 (Dec 1–5): Mastery & Project Preparation</h2>
+  <ul>
+    <li><strong>Monday — Milestone 1:</strong> (includes Monday Manila Folder Check) Completed calculators copied to project file, initial data entered, one draft display.</li>
+    <li><strong>Tuesday:</strong>
+      <ul>
+        <li><strong>Tuesday:</strong> Mini‑lessons by need (interest nuance, display choice, <strong>claim–evidence–warrant</strong>). Peer feedback on clarity.</li>
+      </ul>
+    </li>
+    <li><strong>Thursday:</strong> Build day; teacher conferences focus on evidence quality and source reliability.</li>
+    <li><strong>Friday — Mastery Gate 1C: Displays & Comparative Writing</strong>
+      <ul>
+        <li>20 min – Mastery Gate 1C (individual): interpret one display (histogram or box plot), choose appropriate center/spread (mean/median with MAD/IQR) and justify; short comparison write‑up using a provided mini‑dataset.</li>
+        <li>10 min – Quick reteach for common misses; assign targeted DeltaMath for those below threshold.</li>
+        <li>10–15 min – Project checkpoint: two finalized displays + a comparison paragraph drafted.</li>
+        <li>Preview: Next week includes a brief connection to <em>solving one‑step equations</em> drawn from project formulas (kept short so build time remains primary).</li>
+        <li><em>Gate 1C — DeltaMath skills checked:</em> Interpret Histograms; Create Histograms; Interpret Box Plot (Basic) & Interpret Box Plot; Create Box Plot; Center and Spread Visually; Compare Representations of Data; Interpreting Calculator Output.</li>
+      </ul>
+    </li>
+    <li><em>Notes:</em> Keep one float block available if needed for make‑ups or reteach.</li>
+    <li><strong>DeltaMath #M1‑4 — Scatter & Association (due Fri 10 PM):</strong> Create Scatter Plot from Data Table; Association/Correlation (Scatter Plot). <em>(Light set to support project visuals.)</em></li>
+  </ul>
+</div>
+
+<div id="week15" class="week-section module1">
+  <h2>Week 15 (Dec 8–12): Build Week – Car‑Buying Comparison Project</h2>
+  <ul>
+    <li><strong>Build Week — Milestone 2:</strong>
+      <ul>
+        <li>Data complete; calculators correct; visuals refined; written justification in progress.</li>
+        <li>10–12 min warm‑up (one day only): <strong>One‑Step Equations from your calculator</strong> — pick one formula from your Out‑the‑Door or Finance tab and write a one‑step equation for an unknown (e.g., total = 1.32d → solve for d). Solve and sanity‑check.</li>
+        <li>15 min mini‑lesson (same day): <strong>Solving one‑step percent equations</strong> — structure T = d(1+r); isolating a variable by undoing multiply/divide; quick check and a spreadsheet cross‑check.</li>
+        <li><em>Note:</em> Keep this insert lightweight; students return to build work immediately after. This closes Module 1 by connecting algebraic solving to the spreadsheet formulas they’ve been using.</li>
+        <li>Peer feedback cycles using presentation rubric; teacher conferences target gaps.</li>
+        <li>Optional SP: +1 exceptional peer coaching; +1 robust, readable visuals.</li>
+        <li><strong>Optional DM catch‑up:</strong> Any open #M1‑x sets may be reassigned for students who need practice tied to project feedback.</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div id="week16" class="week-section module1">
+  <h2>Week 16 (Dec 15–19): Presentations & Semester Wrap</h2>
+  <ul>
+    <li><strong>Presentations — Milestone 3:</strong> Presentations (poster/slides/sheet walk/video/article); gallery walk + rubric scoring.</li>
+    <li><strong>Reflection:</strong> “How did math change your decision—and what would you do next with two more weeks?”</li>
+    <li><strong>Wrap:</strong> Clean‑up, backups, and preview of Module 2 start after break.</li>
+    <li><em>Retake/Make‑up Flow:</em> Any student still below a mastery gate completes the matching DeltaMath review + office hours check‑in to unlock a targeted retake the following week.</li>
+    <li><strong>Optional Gate 1D (make‑ups/retakes):</strong> Available during presentation week by appointment for students who completed required DeltaMath review and office hours check‑in.</li>
+  </ul>
+</div>
+
+  </main>
+
+  <script>
+  (function() {
+    const el = (tag, attrs={}, html='') => {
+      const e = document.createElement(tag);
+      Object.entries(attrs).forEach(([k,v]) => e.setAttribute(k,v));
+      if (html) e.innerHTML = html;
+      return e;
+    };
+    const container = document.getElementById('semester-container');
+    if (!container) return;
+    const weeks = Array.from(container.querySelectorAll('div.week-section'));
+    if (weeks.length) {
+      const sem1 = el('details', {class:'semester', open:''});
+      sem1.appendChild(el('summary', {}, 'Semester 1 (Fall 2025)'));
+      sem1.appendChild(el('div', {class:'break module0', 'aria-hidden':'true'}));
+      weeks.forEach((div, idx) => {
+        const id = div.id || `week-${idx+1}`;
+        const moduleClass = (div.className.match(/module\d/) || [''])[0];
+        const h2 = div.querySelector('h2');
+        const title = h2 ? h2.outerHTML : `<h2>Week</h2>`;
+        const details = el('details', {id, class:`week-section ${moduleClass}`, open:''});
+        const summary = el('summary', {}, title);
+        const inner = el('div', {class:'inner'}, '');
+        if (h2) h2.remove();
+        while (div.firstChild) inner.appendChild(div.firstChild);
+        inner.appendChild(el('a', {class:'top-link', href:'#top'}, '↑ Back to Week Buttons'));
+        details.appendChild(summary);
+        details.appendChild(inner);
+        sem1.appendChild(details);
+        if (id.toLowerCase() === 'week6') {
+          sem1.appendChild(el('div', {class:'break module1', 'aria-hidden':'true'}));
+        }
+      });
+      container.innerHTML = '';
+      container.appendChild(sem1);
+      const sem2 = el('details', {class:'semester'});
+      sem2.appendChild(el('summary', {}, 'Semester 2 (Spring 2026) — collapsed (planning in progress)'));
+      const p = el('div', {}, 'Module 2 and 3 timelines will appear here. Use the colored week buttons above to jump when added.');
+      p.style.padding = '1rem 1.25rem'; p.style.color = 'var(--ink-muted)';
+      sem2.appendChild(p);
+      container.appendChild(sem2);
+    }
+    document.querySelectorAll('.calendar-nav a[href^="#week"]').forEach(a => {
+      a.addEventListener('click', () => {
+        const id = a.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if (target && target.tagName.toLowerCase()==='details') {
+          target.setAttribute('open','');
+          setTimeout(()=> target.scrollIntoView({behavior:'smooth', block:'start'}), 0);
+        }
+      });
+    });
+
+    // Expand/Collapse All Weeks controls (in sticky header)
+    const expandBtn = document.getElementById('expandAll');
+    const collapseBtn = document.getElementById('collapseAll');
+    if (expandBtn) {
+      expandBtn.addEventListener('click', () => {
+        document.querySelectorAll('details.week-section').forEach(d => d.setAttribute('open',''));
+        // ensure Semester 1 is open so content is visible
+        document.querySelectorAll('details.semester').forEach(s => s.setAttribute('open',''));
+      });
+    }
+    if (collapseBtn) {
+      collapseBtn.addEventListener('click', () => {
+        document.querySelectorAll('details.week-section').forEach(d => d.removeAttribute('open'));
+        // keep semesters as-is; user can toggle them separately
+      });
+    }
+  })();
+  </script>
+</body>
+</html>

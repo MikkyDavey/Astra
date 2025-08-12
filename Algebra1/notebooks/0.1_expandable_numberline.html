@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Expandable Number Line – Notebook View</title>
+<style>
+  :root{
+    --line:#333; --tick:#555; --label:#222;
+    --rational:#1e88e5; --irrational:#8e24aa; --inset:#f7f7f7; --box:#cfcfcf;
+    --big:#2e7d32; --small:#ef6c00;
+    --bg:#fff; --note:#fafafa;
+  }
+  html,body{margin:0;padding:0;background:var(--note);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#222;}
+  .page{max-width:1100px;margin:28px auto;padding:28px;background:var(--bg);box-shadow:0 4px 24px rgba(0,0,0,.06);border-radius:12px}
+  h1{margin:0 0 8px;font-size:1.4rem}
+  p.lead{margin:0 0 18px;color:#444}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin:8px 0 24px}
+  .chip{display:inline-flex;align-items:center;gap:8px;background:#f2f2f2;border-radius:999px;padding:6px 12px;font-size:.9rem}
+  .dot{width:10px;height:10px;border-radius:50%}
+  .dot.rational{background:var(--rational)}
+  .dot.irrational{background:var(--irrational)}
+  .dot.big{background:var(--big)}
+  .dot.small{background:var(--small)}
+
+  /* Main number line */
+  .board{
+    position:relative;
+    background:linear-gradient(#fff,#fff) padding-box;
+    border:1px solid #e5e5e5;border-radius:12px;
+    padding:28px 24px 40px;
+  }
+  .line{
+    position:relative;height:2px;background:var(--line);margin:56px 40px;
+  }
+  /* Ticks every 1 unit from -3 to 3 */
+  .tick{position:absolute;bottom:0;width:1px;background:var(--tick);height:16px;transform:translateX(-.5px)}
+  .label{position:absolute;top:20px;font-size:.95rem;color:var(--label);transform:translateX(-50%);background:#fff;border:1px solid #ddd;border-radius:999px;padding:3px 10px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+  .label.below{top:auto;bottom:20px}
+  /* point markers */
+  .point{position:absolute;top:-6px;width:12px;height:12px;border-radius:50%;transform:translate(-50%,-50%)}
+  .point.rational{background:var(--rational)}
+  .point.irrational{background:var(--irrational)}
+  /* point labels */
+  .pt-label{position:absolute;top:-34px;white-space:nowrap;font-size:.9rem;transform:translateX(-50%);color:#222;background:#fff;border:1px solid #ddd;border-radius:999px;padding:3px 10px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+  .pt-label.below{top:18px}
+
+  /* Insets for big/small magnitudes */
+  .insets{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:28px 16px 0}
+  /* Insets: give more breathing room */
+  .inset{background:var(--inset);border:1px solid var(--box);border-radius:12px;padding:24px 24px;position:relative;min-height:170px}
+  .inset h3{margin:0 0 8px;font-size:1rem;display:flex;align-items:center;gap:8px}
+  .scale{position:relative;height:2px;background:var(--tick);margin:26px 16px}
+  .tick-sm{position:absolute;bottom:0;width:1px;background:var(--tick);height:12px;transform:translateX(-.5px)}
+  .tag{position:absolute;top:18px;font-size:.85rem;transform:translateX(-50%);color:#333;background:#fff;border:1px solid #ddd;border-radius:999px;padding:4px 8px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+  .tag.below{top:auto;bottom:18px}
+  /* Example chips above scales with slight shadow */
+  .ex{position:absolute;top:-34px;font-size:.9rem;padding:4px 10px;border-radius:8px;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+  .ex.row2{top:-58px}
+  .ex.big{background:var(--big)}
+  .ex.small{background:var(--small)}
+
+  /* Off-scale marker (e.g., pi to the right) */
+  .offscale{position:absolute;top:-28px;right:-8px;font-size:.85rem;background:#fff;border:1px solid #ddd;border-radius:999px;padding:2px 8px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+  .note{margin-top:12px;font-size:0.9rem;color:#666;line-height:1.5}
+  /* utility */
+  .center{display:flex;justify-content:center}
+
+  /* dashed visual connectors from main line to zoom boxes */
+  .connector{position:absolute;width:0;border-left:2px dashed #bdbdbd;opacity:.9}
+  .connector::after{content:"";position:absolute;bottom:-3px;left:-4px;width:8px;height:8px;border-radius:50%;background:#bdbdbd}
+
+  /* give insets a bit more height/space for readability */
+  .inset{min-height:190px}
+  .scale{margin:30px 20px}
+
+  /* Updated styles as per instructions */
+  .zoom-box {
+    padding: 20px 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  .zoom-title {
+    margin-bottom: 12px;
+    gap: 6px;
+  }
+  .zoom-line {
+    height: 50px;
+    margin: 10px 0;
+  }
+  .zoom-label {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  .highlight {
+    padding: 4px 8px;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <h1>📏 Expandable Number Line (Notebook View)</h1>
+    <p class="lead">Keep the core line neat. Use inset “zoom boxes” for very big/small numbers. Place irrationals between integers on the main line.</p>
+
+    <div class="legend">
+      <span class="chip"><span class="dot rational"></span> Rational</span>
+      <span class="chip"><span class="dot irrational"></span> Irrational</span>
+      <span class="chip"><span class="dot big"></span> Very Big (scientific notation)</span>
+      <span class="chip"><span class="dot small"></span> Very Small (scientific notation)</span>
+    </div>
+
+    <!-- Main number line: -3 to 3 -->
+    <div class="board">
+      <div class="line" id="main-line">
+        <!-- Integers -5 to 5 at 10% intervals -->
+        <div class="tick" style="left:0%"></div><div class="label" style="left:0%">-5</div>
+        <div class="tick" style="left:10%"></div><div class="label below" style="left:10%">-4</div>
+        <div class="tick" style="left:20%"></div><div class="label" style="left:20%">-3</div>
+        <div class="tick" style="left:30%"></div><div class="label below" style="left:30%">-2</div>
+        <div class="tick" style="left:40%"></div><div class="label" style="left:40%">-1</div>
+        <div class="tick" style="left:50%"></div><div class="label below" style="left:50%">0</div>
+        <div class="tick" style="left:60%"></div><div class="label" style="left:60%">1</div>
+        <div class="tick" style="left:70%"></div><div class="label below" style="left:70%">2</div>
+        <div class="tick" style="left:80%"></div><div class="label" style="left:80%">3</div>
+        <div class="tick" style="left:90%"></div><div class="label below" style="left:90%">4</div>
+        <div class="tick" style="left:100%"></div><div class="label" style="left:100%">5</div>
+
+        <!-- Sample rational placements between 0 and 2 on a -5..5 scale -->
+        <div class="point rational" style="left:55%"></div>
+        <div class="pt-label" style="left:55%">1/2 = 0.5</div>
+
+        <div class="point rational" style="left:65%"></div>
+        <div class="pt-label below" style="left:65%">1.5 = 3/2</div>
+
+        <div class="point rational" style="left:56.667%"></div>
+        <div class="pt-label" style="left:56.667%">2/3 ≈ 0.67</div>
+
+        <!-- Irrationals on the main line -->
+        <div class="point irrational" style="left:64.14%"></div>
+        <div class="pt-label" style="left:64.14%">√2 ≈ 1.414</div>
+
+        <div class="point irrational" style="left:81.416%"></div>
+        <div class="pt-label" style="left:81.416%">π ≈ 3.1416</div>
+      </div>
+
+      <!-- Visual connectors to indicate what the zoom boxes represent -->
+      <div class="connector" style="left:50%; top:132px; height:96px;"></div>  <!-- near 0 → Very Small inset -->
+      <div class="connector" style="left:88%; top:132px; height:96px;"></div>  <!-- far right → Very Big inset -->
+
+      <!-- Insets (zoom boxes) -->
+      <div class="insets">
+        <!-- Big numbers inset -->
+        <div class="inset">
+          <h3><span class="dot big"></span> Very Big<br><br></h3>
+          <div class="scale">
+            <div class="tick-sm" style="left:10%"></div>
+            <div class="tag below" style="left:10%">10² = 100</div>
+
+            <div class="tick-sm" style="left:30%"></div>
+            <div class="tag below" style="left:30%">10³ = 1000</div>
+
+            <div class="tick-sm" style="left:55%"></div>
+            <div class="tag below" style="left:55%">10⁴ = 10,000</div>
+
+            <div class="tick-sm" style="left:90%"></div>
+            <div class="tag below" style="left:90%">10⁶ = 1,000,000</div>
+
+            <div class="ex big" style="left:34%; top:20px;">3 × 10³ (3,000)</div>
+            <div class="ex big" style="left:84%; top:20px;">5 × 10⁵ (500,000)</div>
+          </div>
+          <div class="note"><br><br>These would sit far to the right of our main line. We compress them here to show relative scale.</div>
+        </div>
+
+        <!-- Small numbers inset -->
+        <div class="inset">
+          <h3><span class="dot small"></span> Very Small<br><br></h3>
+          <div class="scale">
+            <div class="tick-sm" style="left:15%"></div>
+            <div class="tag below" style="left:15%">10⁻¹ = 0.1</div>
+
+            <div class="tick-sm" style="left:35%"></div>
+            <div class="tag below" style="left:35%">10⁻² = 0.01</div>
+
+            <div class="tick-sm" style="left:65%"></div>
+            <div class="tag below" style="left:65%">10⁻³ = 0.001</div>
+
+            <div class="tick-sm" style="left:92%"></div>
+            <div class="tag below" style="left:92%">10⁻⁶ = 0.000001</div>
+
+    <div class="ex small" style="left:39%; top:20px;">6 × 10⁻² (0.06)</div>
+            <div class="ex small" style="left:88%; top:20px;">2 × 10⁻⁶ (0.000002)</div>
+          </div>
+          <div class="note"><br><br>These would sit very close to zero on the main line. We zoom in to see differences clearly.</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="lead" style="margin-top:18px">
+      📝 <strong>Notebook move:</strong> students copy the main line and add <em>tiny</em> colored dots for rationals vs. irrationals.
+      The two inset boxes can be drawn as small “zoom” panels above/below the line to show scientific notation without needing a huge page.
+    </p>
+  </div>
+</body>
+</html>
