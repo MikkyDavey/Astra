@@ -54,45 +54,30 @@
     details.week-section{margin:1rem; border:1px solid var(--border); border-radius:8px; padding:.5rem 1rem 1rem; background:#fff; box-shadow:0 1px 4px rgba(0,0,0,.03);}
     details.week-section>summary{cursor:pointer; list-style:none; display:flex; align-items:center; gap:.5rem;}
     details.week-section>summary h2{margin:.25rem 0; font-size:1.1rem;}
-    details.week-section.module1{background:var(--mod1-bg);}
-    details.week-section.module2{background:var(--mod2-bg);}
-    details.week-section.module3{background:var(--mod3-bg);}
-    details.week-section.module4{background:var(--mod4-bg);}
-    details.week-section.module5{background:var(--mod5-bg);}
+    details.week-section.module1{background:var(--module1);}
+    details.week-section.module2{background:var(--module2);}
+    details.week-section.module3{background:var(--module3);}
+    details.week-section.module4{background:var(--module4);}
+    details.week-section.module5{background:var(--module5);}
     details.week-section.synth{background:var(--synthesis);}
     details.week-section .inner{background:#fff; margin:.5rem -1rem -1rem; padding:1rem; border-top:1px solid var(--border); border-radius:0 0 8px 8px;}
     .top-link{display:inline-block; margin-top:.5rem; font-size:.9rem; color:#0645ad; text-decoration:none;}
     .tag{display:inline-block; font-size:.8rem; padding:.15rem .5rem; border:1px solid var(--border); border-radius:999px; margin-right:.4rem; background:#fff;}
-    .role-key{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin:.5rem auto 0;max-width:1100px}
-    .badge{display:inline-block;padding:.15rem .5rem;border-radius:.4rem;border:1px solid var(--border);font-size:.8rem;line-height:1;background:#fff}
-    .badge.launch{background:var(--role-launch)}
-    .badge.practice{background:var(--role-practice)}
-    .badge.apply{background:var(--role-synthesis)}
-    .badge.assess{background:var(--role-assess)}
-    /* Softer module backgrounds on week sections */
-    details.week-section.module1{background:var(--mod1-bg)}
-    details.week-section.module2{background:var(--mod2-bg)}
-    details.week-section.module3{background:var(--mod3-bg)}
-    details.week-section.module4{background:var(--mod4-bg)}
-    details.week-section.module5{background:var(--mod5-bg)}
+    
   </style>
 </head>
 <body>
   <a id="top"></a>
   <header>
-    <h1>📅 Geometry 2025–2026 — Module Calendar</h1>
+    <h1><small>(test 12:34)</small>📅 Geometry 2025–2026 — Module Calendar</h1>
     <p class="routine"><strong>Daily Rhythm:</strong> Warm‑up &amp; tape‑in → mini → work block → reflection. <strong>Folders:</strong> <em>Manila</em> (unfinished/loose) • <em>Mini‑folders</em> (finished artifacts by module) • <em>Notebook</em> (scrapbook‑style textbook).</p>
     <div class="header-actions" role="group" aria-label="Expand or collapse all weeks">
       <button id="expandAll" aria-controls="semester-container">Expand all weeks</button>
       <button id="collapseAll" aria-controls="semester-container">Collapse all weeks</button>
     </div>
-    <div class="role-key" aria-label="Day role key (for planning)">
-      <span class="badge launch">Concept Launch</span>
-      <span class="badge practice">Applied Studio / Practice</span>
-      <span class="badge apply">Synthesis / Project</span>
-      <span class="badge assess">Assessment &amp; Reflection</span>
-    </div>
+    
     <p class="routine"><strong>Notebook Inserts:</strong> vocab/definitions pages, construction step cards, transformation organizer, proof‑flow templates. <strong>Capstones:</strong> M1 3D‑Printed Tile • M4 Trig‑in‑Action • M5 Circle Design.</p>
+    <p class="routine"><strong>Daily Notebook Handout (from Thu W1 onward):</strong> Each day students receive a color‑coded sheet with a titled Warm‑Up at the top (tape in at start of class) and a Reflection prompt at the bottom. The Reflection stays clipped to the page with a paper clip until prompted on a later day.</p>
   </header>
 
   <div class="calendar-nav-wrap">
@@ -156,99 +141,106 @@
   <p><strong>Focus:</strong> IM U1.L1–L2 • Launch precise definitions & tool fluency; set classroom systems. Day 1 mirrors Algebra 1 welcome flow.</p>
   <h3>Daily Plan (50 min each)</h3>
   <ul>
-    <li><strong><span class="badge launch">Launch</span> Mon — First Day: Welcome & Norms</strong>
+    <li><strong>Mon — First Day: Welcome & Norms</strong>
       <ul>
-        <li><em>0–4</em> Warm‑Up: “What is a definition?” (2 examples, 1 counterexample) → pair share.</li>
-        <li><em>5–13</em> Mini: Course overview, color‑band rhythm, notebook setup (tape‑in covers + table of contents).</li>
-        <li><em>14–34</em> Activity: A1‑style community builder + quick tool tour; pass manila folder & mini‑folders.</li>
-        <li><em>34–39</em> Peer Check: Materials check + expectations.</li>
-        <li><em>39–45</em> Debrief: Why precision matters in geometry.</li>
-        <li><em>45–50</em> Reflection Prompt: “Write a precise definition of ‘segment’ and give a non‑example.”</li>
+        <li>5 min – Welcome and settle in</li>
+        <li>10 min – Folder handout and math interest survey</li>
+        <li>15 min – One-page placement test with quiet music</li>
+        <li>20 min – Folder coloring, stickers, and optional coloring pages</li>
+        <li>Reflection: “What part of today made this class feel doable for you? What will help you focus here?”</li>
       </ul>
     </li>
-    <li><strong><span class="badge practice">Applied Studio</span> Tue — IM U1.L1: Build It</strong>
+    <li><strong>Tue — IM U1 Lesson 1: 1.1 The Right Tool + 1.2 Illegal Construction Moves</strong>
       <ul>
-        <li><em>0–4</em> Warm‑Up: Label & mark a diagram (⟂, ∥, ≅).</li>
-        <li><em>5–13</em> Mini: Compass & straightedge safety; markings convention anchor.</li>
-        <li><em>14–34</em> Activity: L1 Build‑It stations (draw, label, justify choices).</li>
-        <li><em>34–39</em> Color‑Swap Peer Check on accuracy.</li>
-        <li><em>39–45</em> Notebook Insert: “Markings Quick‑Guide” + definition table.</li>
-        <li><em>45–50</em> Reflection: “Which marking did you misuse at first? Fix it with a counterexample.”</li>
+        <li>5 min – Folder‑based seating and welcome back</li>
+        <li>10 min – Syllabus and classroom norms overview</li>
+        <li>10 min – Introduce group task structure + Skill Points (how to earn this week)</li>
+        <li>10 min – Activity: IM U1 L1.1 “The Right Tool” (quick tool choice exploration; keep notation minimal—points only as needed)</li>
+        <li>20 min – Activity: IM U1 L1.2 “Illegal Construction Moves” (test moves, decide legal/illegal, record brief notes)</li>
+        <li>Reflection: “What makes this construction more precise than the sketch you made in the Warm‑up?”</li>
+        <li class="tag">SP: on‑task participation • helpful peer coaching • neat notebook setup</li>
       </ul>
     </li>
-    <li><strong><span class="badge apply">Synthesis</span> Thu — IM U1.L2: Constructing Patterns</strong>
+    <li><strong>Thu — IM U1 Lesson 1: 1.3 Can You Make a Perfect Copy? (Hexagon)</strong>
       <ul>
-        <li><em>0–4</em> Warm‑Up: Pattern noticing (What stays invariant?).</li>
-        <li><em>5–13</em> Mini: Precision sentence stems (“because…”, “therefore…”).</li>
-        <li><em>14–34</em> Activity: L2 construction prompts → pattern tiles.</li>
-        <li><em>34–39</em> Gallery stroll + 1 sticky question per tile.</li>
-        <li><em>39–45</em> Tape‑in best artifact; annotate steps with verbs.</li>
-        <li><em>45–50</em> Reflection: “Rewrite a classmate’s step set to be more precise.”</li>
+        <li>Warm‑Up Handout (at entry) — Students complete the pencil‑only hexagon sketch on the color‑coded warm‑up/reflection sheet (tape Warm‑Up at start); <em>clip the Reflection prompt to the page</em> for later use; keep sheet in folder until notebook time.</li>
+        <li>5 min – IM 1.3 Launch: Legal vs. illegal moves (recap from Tue); record in IM handout (not in notebook yet).</li>
+        <li>10 min – Independent construction attempt: Build a regular hexagon using only legal moves (compass + straightedge). <span class="tag">SP: accuracy • productive struggle</span></li>
+        <li>5 min – Teacher demo & discussion: Model a perfect hexagon; how to detect precision vs. inaccuracy (use point/line/plane vocabulary naturally).</li>
+        <li>15 min – Notebook Launch: Expectations & procedure; create the Module 1 mini‑folder; decorate covers; add reinforcements/tabs.</li>
+        <li>15 min – First Notebook Entries: Tape in today’s warm‑up sheet and the final hexagon attempt side‑by‑side; write the first reflection on the facing page.</li>
+        <li class="tag">SP: organized setup • neat tape‑ins • clear reflection comparing sketch vs. construction</li>
       </ul>
     </li>
-    <li><strong><span class="badge assess">Assess/Buffer</span> Fri — Skill/Buffer</strong>
+    <li><strong>Fri — Discovering Geometry: Building Blocks of Geometry (Point • Line • Plane)</strong>
       <ul>
-        <li><em>0–4</em> Warm‑Up Check: 3 quick ID items (point, segment, ray).</li>
-        <li><em>5–20</em> Mini Skill‑Check S0 (tools & markings) — redoable.</li>
-        <li><em>20–40</em> Constructions practice lab (free choice from L1–L2).</li>
-        <li><em>40–50</em> Notebook Quick‑Flip & Stamps; Reflection: “One definition I’ll defend next week is…”</li>
+        <li>5 min – Warm‑Up (image set): Find examples/non‑examples of point, line, and plane in photos/diagrams</li>
+        <li>7 min – Mini context: Why these are "undefined" terms; ancient attempts at definitions (short quotes)</li>
+        <li>8 min – Individual write: Draft your own definitions for point, line, plane</li>
+        <li>12 min – Small‑group protocol: Read each person’s definitions aloud, explain, question, then revise together to a group definition</li>
+        <li>10 min – Whole‑class “balloon up”: Groups propose their best wording; converge on concise class definitions; record on board</li>
+        <li>5 min – Notebook tape‑in: Create the first vocabulary pages (point • line • plane) with the class consensus + one non‑example each</li>
+        <li>Unclip & complete today’s Reflection prompt on the taped handout page: “What makes a definition ‘good’? Which of today’s was hardest to pin down and why?”</li>
+        <li class="tag">SP: clear mathematical language • example/non‑example justification • collaborative listening • tidy handout management (tape/clip)</li>
       </ul>
     </li>
   </ul>
-  <p><strong>Notebook Inserts:</strong> Definition table • Markings Quick‑Guide • L1/L2 best‑work artifact</p>
-  <p><strong>Resources:</strong> IM G U1.L1–L2; Discovering Geometry openers; All Things Algebra vocab cards</p>
-  <p><strong>Next Steps:</strong> Print bisector step cards; prep GeoGebra file for locus trace; queue Desmos Transformations Golf for Week 4.</p>
+  <p><strong>Notebook Inserts:</strong> Weekly warm‑up/reflection handout (color‑coded) • Legal/Illegal Moves mini‑list • Hexagon attempt tape‑in • Vocabulary pages: point/line/plane</p>
+  <p><strong>Resources:</strong> IM Geometry U1.L1 full (1.1–1.3) • Discovering Geometry “Building Blocks of Geometry” (undefined terms) • All Things Algebra vocab cards (optional)</p>
+  <p><strong>Next Steps:</strong> Print bisector step cards; prep GeoGebra file for locus trace; queue Desmos Transformations Golf for Week 4. Generate daily handouts (Mon–Fri) with titles, Warm‑Ups, and clipped Reflections for Weeks 1–2.</p>
   <a class="top-link" href="#top">↑ Back to Week Buttons</a>
 </div>
       </details>
 
       <details id="w2" class="week-section module1" open>
-        <summary><h2>Week 2 (Sept 8–12) — Bisectors &amp; Why‑They‑Work</h2></summary>
+        <summary><h2>Week 2 (Sept 8–12) — Constructing Patterns + Perpendicular Bisectors</h2></summary>
         <div class="inner">
-  <p><strong>Focus:</strong> IM U1.L3–L4 • Perpendicular bisector, angle bisector, equilateral triangle; introduce “because” justifications.</p>
+  <p><strong>Focus:</strong> IM U1.L2–L3 • Precision in written instructions; vocabulary for lines (parallel, perpendicular) and perpendicular bisector as an equidistance locus; early reasoning/proof language (“because…” stems).</p>
   <h3>Daily Plan (50 min each)</h3>
   <ul>
-    <li><strong><span class="badge launch">Launch</span> Mon — IM U1.L3: Perpendicular Bisectors</strong>
+    <li><strong>Mon — IM U1.L2: Constructing Patterns</strong>
       <ul>
-        <li><em>0–4</em> Warm‑Up: Equidistance quick‑sketch (two points → locus guess).</li>
-        <li><em>5–13</em> Mini: Why ⟂ bisector is the equidistance locus.</li>
-        <li><em>14–34</em> Activity: L3 constructions; measure & highlight equal distances.</li>
-        <li><em>34–39</em> Peer Check: “Because…” sentence stems.</li>
-        <li><em>39–45</em> Tape‑in exemplar with 3 justifications.</li>
-        <li><em>45–50</em> Reflection: “Where did your intuition disagree with the result?”</li>
+        <li>5 min – Warm‑Up: Math Talk prompt on radii/equidistance (L2.1) — hand signal routine</li>
+        <li>8 min – Mini: What makes instructions precise? Labels, defined moves, orientation cues</li>
+        <li>20 min – Activity 2.2 “Make Your Own”: Create a pattern from a circle+radius; record every step with precise language</li>
+        <li>12 min – Activity 2.3 “Make Someone Else’s”: Trade & recreate; highlight clear vs. ambiguous wording</li>
+        <li>5 min – Cool‑down 2.4: Quick revisions to instructions (save in mini‑folder)</li>
+        <li class="tag">SP: precision in language • complete labeling • thoughtful revision</li>
       </ul>
     </li>
-    <li><strong><span class="badge practice">Applied Studio</span> Tue — IM U1.L4: Equilateral Triangles</strong>
+    <li><strong>Tue — IM U1.L2 wrap + IM U1.L3 Launch</strong>
       <ul>
-        <li><em>0–4</em> Warm‑Up: Two circles → what triangle forms?</li>
-        <li><em>5–13</em> Mini: Congruent segments & triangle properties.</li>
-        <li><em>14–34</em> Activity: L4 equilateral builds; variant challenges.</li>
-        <li><em>34–39</em> Peer Check for equal radii & marked congruence.</li>
-        <li><em>39–45</em> Tape‑in + annotate construction reasons.</li>
-        <li><em>45–50</em> Reflection: “Write a 2‑sentence proof that your triangle is equilateral.”</li>
+        <li>5 min – Warm‑Up: Identify parallel vs. “seems parallel” in a student‑made pattern (ties to L2 parallel‑line construction)</li>
+        <li>10 min – Mini: Read/perform IM’s step‑by‑step parallel‑line construction (from 2.3); add to “Legal Moves” list</li>
+        <li>15 min – Activity 3.1 “Find All the Points!”: Circles as sets of equidistant points; mark intersections</li>
+        <li>15 min – Activity 3.2 “Human Perpendicular Bisector”: Class physically finds the equidistance set; capture conjecture</li>
+        <li>5 min – Reflection (tape‑in): “Our conjecture says ______. What evidence did we produce?”</li>
+        <li class="tag">SP: participation in human model • clear diagram capturing the conjecture line</li>
       </ul>
     </li>
-    <li><strong><span class="badge apply">Synthesis</span> Thu — Studio: Compass Flower (Art Integration)</strong>
+    <li><strong>Thu — IM U1.L3: How Well Can You Slice It?</strong>
       <ul>
-        <li><em>0–4</em> Warm‑Up: Invariance in repeating distances.</li>
-        <li><em>5–13</em> Mini: From bisectors/equilateral to design constraints.</li>
-        <li><em>14–39</em> Activity: Compass Flower tile; emphasize clean construction marks.</li>
-        <li><em>39–45</em> Tape‑in photo or paper artifact.</li>
-        <li><em>45–50</em> Reflection: “Name the constructions hiding in your design.”</li>
+        <li>5 min – Warm‑Up: Diagnose a “not a perpendicular bisector” example (angle vs. midpoint error)</li>
+        <li>10 min – Mini: Definitions & notation: ⟂, right angle marker, congruent segment ticks; “because…” stems</li>
+        <li>20 min – Activity 3.3: Construct the perpendicular bisector by compass/straightedge; optionally compare to paper‑fold</li>
+        <li>10 min – Notebook tape‑ins: final construction with 2–3 justification sentences; add to “Legal/Illegal Moves” page</li>
+        <li>5 min – Reflection: “How does the intersecting‑circles method guarantee both perpendicular and midpoint?”</li>
+        <li class="tag">SP: accurate construction • justification quality • tidy tape‑ins</li>
       </ul>
     </li>
-    <li><strong><span class="badge assess">Assess/Buffer</span> Fri — Skill Check S1 + Practice</strong>
+    <li><strong>Fri — Skill Gate SG1 + Targeted Practice</strong>
       <ul>
-        <li><em>0–10</em> Warm‑Up Review: L3/L4 quick IDs.</li>
-        <li><em>10–25</em> Skill Check S1 (bisectors & equilateral) — redoable.</li>
-        <li><em>25–45</em> Targeted practice (A.T. Algebra sheets); optional extensions.</li>
-        <li><em>45–50</em> Reflection: “One precise step I’ll never skip again is…”</li>
+        <li>8 min – Warm‑Up: Quick ID — which instructions would reproduce the pattern? (choose best of 3)</li>
+        <li>12 min – <strong>Skill Gate SG1</strong>: Construct a perpendicular bisector from a fresh segment and write 2 “because…” statements</li>
+        <li>20 min – Targeted practice: IM practice set + All Things Algebra items (parallel line via construction; bisector fluency)</li>
+        <li>5 min – Notebook check stamps (peer‑assisted) & SP nominations via Google Form (due tonight)</li>
+        <li>5 min – Reflection: “One wording change that makes my instructions unambiguous is…”</li>
       </ul>
     </li>
   </ul>
-  <p><strong>Notebook Inserts:</strong> Bisector step cards • Equilateral construction steps • “Because” stem bank</p>
-  <p><strong>Resources:</strong> IM G U1.L3–L4; All Things Algebra practice; GeoGebra locus demo</p>
-  <p><strong>Next Steps:</strong> Print ∥/⟂ through a point guide; prep Square‑in‑Circle template for Week 3.</p>
+  <p><strong>Notebook Inserts:</strong> “Make Your Own” instruction sheet (original + revised) • Parallel‑line construction steps (from L2.3) • Perpendicular bisector exemplar with reasons • “Because…” stem bank.</p>
+  <p><strong>Resources:</strong> IM G U1.L2–L3; GeoGebra Constructions Tool; All Things Algebra targeted practice.</p>
+  <p><strong>Next Steps:</strong> Prep ∥/⟂‑through‑a‑point guides for Week 3; print Square‑in‑Circle template; queue short gallery of strong instruction rewrites for Monday SP stamps.</p>
   <a class="top-link" href="#top">↑ Back to Week Buttons</a>
 </div>
       </details>
@@ -259,40 +251,41 @@
   <p><strong>Focus:</strong> IM U1.L5–L6–L7 • Perpendicular/angle bisectors through a point; parallel lines; inscribed square construction.</p>
   <h3>Daily Plan (50 min each)</h3>
   <ul>
-    <li><strong><span class="badge launch">Launch</span> Mon — IM U1.L5: ⟂ through a Point & Angle Bisector</strong>
+    <li><strong>Mon — IM U1.L5: ⟂ through a Point & Angle Bisector</strong>
       <ul>
-        <li><em>0–4</em> Warm‑Up: Diagnose a flawed bisector.</li>
-        <li><em>5–13</em> Mini: Angle bisector justification via symmetry.</li>
-        <li><em>14–34</em> Activity: L5 builds; justify with equal arcs/radii.</li>
-        <li><em>34–39</em> Peer Check on correctness of intersections.</li>
-        <li><em>39–45</em> Tape‑in + margin proof sentence.</li>
-        <li><em>45–50</em> Reflection: “What would break this construction?”</li>
+        <li>5 min – Warm‑Up: Diagnose a flawed bisector</li>
+        <li>10 min – Mini: Angle bisector justification via symmetry</li>
+        <li>20 min – Activity: IM U1.L5 builds; justify with equal arcs/radii</li>
+        <li>5 min – Peer Check on correctness of intersections</li>
+        <li>5 min – Tape‑in + margin proof sentence</li>
+        <li>5 min – Reflection: “What would break this construction?”</li>
       </ul>
     </li>
-    <li><strong><span class="badge practice">Applied Studio</span> Tue — IM U1.L6: ∥ & ⟂ Lines Through a Point</strong>
+    <li><strong>Tue — IM U1.L6: ∥ & ⟂ Lines Through a Point</strong>
       <ul>
-        <li><em>0–4</em> Warm‑Up: Parallel intuition sketch.</li>
-        <li><em>5–13</em> Mini: Parallel via equal corresponding angles.</li>
-        <li><em>14–34</em> Activity: L6 constructions; quick ∥ checker.</li>
-        <li><em>34–39</em> Peer Check: angle mark consistency.</li>
-        <li><em>39–45</em> Tape‑in + 2 justifications.</li>
-        <li><em>45–50</em> Reflection: “Where do we ‘use’ parallel lines later?”</li>
+        <li>5 min – Warm‑Up: Parallel intuition sketch</li>
+        <li>10 min – Mini: Parallel via equal corresponding angles</li>
+        <li>20 min – Activity: IM U1.L6 constructions; quick ∥ checker</li>
+        <li>5 min – Peer Check: angle mark consistency</li>
+        <li>5 min – Tape‑in + 2 justifications</li>
+        <li>5 min – Reflection: “Where do we ‘use’ parallel lines later?”</li>
       </ul>
     </li>
-    <li><strong><span class="badge apply">Synthesis</span> Thu — IM U1.L7: Squares (Inscribed & Given Side)</strong>
+    <li><strong>Thu — IM U1.L7: Squares (Inscribed & Given Side)</strong>
       <ul>
-        <li><em>0–4</em> Warm‑Up: What makes a square “square” (definition quality)?</li>
-        <li><em>5–13</em> Mini: Two constructions; pitfalls.</li>
-        <li><em>14–39</em> Activity: L7 builds; choose one to perfect for tape‑in.</li>
-        <li><em>39–45</em> Notebook: Annotate constraints & right‑angle evidence.</li>
-        <li><em>45–50</em> Reflection: “Which step ensured equal sides?”</li>
+        <li>5 min – Warm‑Up: What makes a square “square” (definition quality)?</li>
+        <li>10 min – Mini: Two constructions; pitfalls</li>
+        <li>25 min – Activity: IM U1.L7 builds; choose one to perfect for tape‑in</li>
+        <li>5 min – Notebook: Annotate constraints & right‑angle evidence</li>
+        <li>5 min – Reflection: “Which step ensured equal sides?”</li>
       </ul>
     </li>
-    <li><strong><span class="badge assess">Assess/Buffer</span> Fri — Studio + Buffer</strong>
+    <li><strong>Fri — Studio + Buffer</strong>
       <ul>
-        <li><em>0–10</em> Warm‑Up: Wild Wonders Midpoint (mini) — connect to loci.</li>
-        <li><em>10–40</em> Choice Studio: refine L5–L7 artifacts or extension challenges.</li>
-        <li><em>40–50</em> Reflection: “Map a real object that could be built from these constructions.”</li>
+        <li>10 min – Warm‑Up: Wild Wonders Midpoint (mini) — connect to loci</li>
+        <li>25 min – Choice Studio: refine L5–L7 artifacts or extension challenges</li>
+        <li>10 min – Circulate for targeted feedback</li>
+        <li>5 min – Reflection: “Map a real object that could be built from these constructions.”</li>
       </ul>
     </li>
   </ul>
@@ -309,40 +302,40 @@
   <p><strong>Focus:</strong> IM U1.L8 + Transformations On‑Ramp • Using technology for constructions; symmetry & rigid motions; CAD prototype mapping.</p>
   <h3>Daily Plan (50 min each)</h3>
   <ul>
-    <li><strong><span class="badge launch">Launch</span> Mon — IM U1.L8: Using Technology for Constructions</strong>
+    <li><strong>Mon — IM U1.L8: Using Technology for Constructions</strong>
       <ul>
-        <li><em>0–4</em> Warm‑Up: Paper → digital mapping question.</li>
-        <li><em>5–13</em> Mini: GeoGebra tool palette → construction equivalents.</li>
-        <li><em>14–34</em> Activity: L8 guided digital builds (capture screenshots).</li>
-        <li><em>34–39</em> Peer Check: compare paper vs digital steps.</li>
-        <li><em>39–45</em> Tape‑in printouts/screenshots.</li>
-        <li><em>45–50</em> Reflection: “What changed (or didn’t) when moving to tech?”</li>
+        <li>5 min – Warm‑Up: Paper → digital mapping question</li>
+        <li>10 min – Mini: GeoGebra tool palette → construction equivalents</li>
+        <li>20 min – Activity: IM U1.L8 guided digital builds (capture screenshots)</li>
+        <li>5 min – Peer Check: compare paper vs digital steps</li>
+        <li>5 min – Tape‑in printouts/screenshots</li>
+        <li>5 min – Reflection: “What changed (or didn’t) when moving to tech?”</li>
       </ul>
     </li>
-    <li><strong><span class="badge practice">Applied Studio</span> Tue — Symmetry Studio + Desmos Transformations Golf</strong>
+    <li><strong>Tue — Symmetry Studio + Desmos Transformations Golf</strong>
       <ul>
-        <li><em>0–4</em> Warm‑Up: Line vs rotational symmetry ID.</li>
-        <li><em>5–13</em> Mini: Rigid motion recap to set up Golf.</li>
-        <li><em>14–39</em> Activity: Golf holes 1–9 (screenshot best 2).</li>
-        <li><em>39–45</em> Tape‑in screenshots + short sequence descriptions.</li>
-        <li><em>45–50</em> Reflection: “Which move combination saved the most time?”</li>
+        <li>5 min – Warm‑Up: Line vs rotational symmetry ID</li>
+        <li>10 min – Mini: Rigid motion recap to set up Desmos Golf</li>
+        <li>20 min – Activity: Golf holes 1–9 (screenshot best 2)</li>
+        <li>5 min – Tape‑in screenshots + short sequence descriptions</li>
+        <li>10 min – Reflection & share-out: “Which move combination saved the most time?”</li>
       </ul>
     </li>
-    <li><strong><span class="badge apply">Synthesis</span> Thu — CAD On‑Ramp: From Compass to Tinkercad</strong>
+    <li><strong>Thu — CAD On‑Ramp: From Compass to Tinkercad</strong>
       <ul>
-        <li><em>0–4</em> Warm‑Up: Identify printability constraints vocab (wall, tolerance).</li>
-        <li><em>5–13</em> Mini: Mapping constructions → CAD primitives & align tools.</li>
-        <li><em>14–39</em> Activity: Prototype tile plan; start CAD sketch.</li>
-        <li><em>39–45</em> Peer Critique #0: feasibility checklist.</li>
-        <li><em>45–50</em> Reflection: “Name two geometric constraints your tile must satisfy.”</li>
+        <li>5 min – Warm‑Up: Identify printability constraints vocab (wall, tolerance)</li>
+        <li>10 min – Mini: Mapping constructions → CAD primitives & align tools</li>
+        <li>25 min – Activity: Prototype tile plan; start CAD sketch</li>
+        <li>5 min – Peer Critique #0: feasibility checklist</li>
+        <li>5 min – Reflection: “Name two geometric constraints your tile must satisfy.”</li>
       </ul>
     </li>
-    <li><strong><span class="badge assess">Assess/Buffer</span> Fri — Skill Check S2 + Buffer</strong>
+    <li><strong>Fri — Skill Check S2 + Buffer</strong>
       <ul>
-        <li><em>0–10</em> Warm‑Up: Identify transformation sequences (2 items).</li>
-        <li><em>10–25</em> Skill Check S2 (transformation ID/describe).</li>
-        <li><em>25–45</em> CAD work time or L8 extensions.</li>
-        <li><em>45–50</em> Reflection: “What will you prototype first next week?”</li>
+        <li>10 min – Warm‑Up: Identify transformation sequences (2 items)</li>
+        <li>15 min – Skill Check S2 (transformation ID/describe)</li>
+        <li>20 min – CAD work time or L8 extensions</li>
+        <li>5 min – Reflection: “What will you prototype first next week?”</li>
       </ul>
     </li>
   </ul>
@@ -359,34 +352,34 @@
   <p><strong>Focus:</strong> Capstone Build I (Family Weekend) • CAD tile with ≥2 constructions + ≥1 symmetry; manage print queue.</p>
   <h3>Daily Plan (50 min each)</h3>
   <ul>
-    <li><strong><span class="badge launch">Launch</span> Mon — CAD Work Block</strong>
+    <li><strong>Mon — CAD Work Block</strong>
       <ul>
-        <li><em>0–4</em> Warm‑Up: “Show one geometric constraint you enforced in CAD.”</li>
-        <li><em>5–13</em> Mini: Export STL checklist; scale & tolerance tips.</li>
-        <li><em>14–45</em> Build: Model v1; screenshot & annotate mapping from paper.</li>
-        <li><em>45–50</em> Reflection: “Biggest risk to print success?”</li>
+        <li>5 min – Warm‑Up: “Show one geometric constraint you enforced in CAD.”</li>
+        <li>10 min – Mini: Export STL checklist; scale & tolerance tips</li>
+        <li>25 min – Build: Model v1; screenshot & annotate mapping from paper</li>
+        <li>5 min – Reflection: “Biggest risk to print success?”</li>
       </ul>
     </li>
-    <li><strong><span class="badge practice">Applied Studio</span> Tue — Peer Critique #1</strong>
+    <li><strong>Tue — Peer Critique #1</strong>
       <ul>
-        <li><em>0–4</em> Warm‑Up: Identify symmetry in a peer’s tile.</li>
-        <li><em>5–13</em> Mini: Gallery protocol & feedback stems.</li>
-        <li><em>14–39</em> Critique rounds (2×12 min) with rubric checkpoints.</li>
-        <li><em>39–45</em> Plan revisions.</li>
-        <li><em>45–50</em> Reflection: “One revision I will implement and why.”</li>
+        <li>5 min – Warm‑Up: Identify symmetry in a peer’s tile</li>
+        <li>10 min – Mini: Gallery protocol & feedback stems</li>
+        <li>25 min – Critique rounds (2×12 min) with rubric checkpoints</li>
+        <li>5 min – Plan revisions; commit to one change</li>
+        <li>5 min – Reflection: “One revision I will implement and why.”</li>
       </ul>
     </li>
-    <li><strong><span class="badge apply">Synthesis</span> Thu — Print Queue Launch</strong>
+    <li><strong>Thu — Print Queue Launch</strong>
       <ul>
-        <li><em>0–8</em> Warm‑Up: G‑code preview — what do you notice?</li>
-        <li><em>8–15</em> Mini: Slicing basics; infill & layer height.</li>
-        <li><em>15–45</em> Exports + submit to queue; begin v2 polish.</li>
-        <li><em>45–50</em> Reflection: “If the print fails, my backup plan is…”</li>
+        <li>8 min – Warm‑Up: G‑code preview — what do you notice?</li>
+        <li>7 min – Mini: Slicing basics; infill & layer height</li>
+        <li>30 min – Exports + submit to queue; begin v2 polish</li>
+        <li>5 min – Reflection: “If the print fails, my backup plan is…”</li>
       </ul>
     </li>
-    <li><strong><span class="badge assess">Assess/Buffer</span> Fri — Family Weekend Gallery (optional) / Buffer</strong>
+    <li><strong>Fri — Family Weekend Gallery (optional) / Buffer</strong>
       <ul>
-        <li>Showcase prints/prototypes; parent walk‑through boards; or continue build if no event.</li>
+        <li>10–50 min – Family Weekend Gallery (optional) / Buffer build time</li>
       </ul>
     </li>
   </ul>
@@ -404,28 +397,28 @@
   <p><strong>Focus:</strong> Capstone Build II & Share • Finalize STL, document mapping from constructions to CAD; mini‑share. <span class="tag">Mon 10/6: Reflection Day – no class</span></p>
   <h3>Daily Plan (50 min each)</h3>
   <ul>
-    <li><strong><span class="badge practice">Applied Studio</span> Tue — Final Build & Troubleshoot</strong>
+    <li><strong>Tue — Final Build & Troubleshoot</strong>
       <ul>
-        <li><em>0–4</em> Warm‑Up: “What geometric guarantee did you rely on?”</li>
-        <li><em>5–13</em> Mini: Common print failures → quick fixes.</li>
-        <li><em>14–45</em> Build & test; re‑slice; submit final queue.</li>
-        <li><em>45–50</em> Reflection: “What would you prove about your design?”</li>
+        <li>5 min – Warm‑Up: “What geometric guarantee did you rely on?”</li>
+        <li>10 min – Mini: Common print failures → quick fixes</li>
+        <li>30 min – Build & test; re‑slice; submit final queue</li>
+        <li>5 min – Reflection: “What would you prove about your design?”</li>
       </ul>
     </li>
-    <li><strong><span class="badge apply">Synthesis</span> Thu — Documentation & Artist’s Statement</strong>
+    <li><strong>Thu — Documentation & Artist’s Statement</strong>
       <ul>
-        <li><em>0–8</em> Warm‑Up: Select best photos/screens.</li>
-        <li><em>8–20</em> Mini: Artist’s statement model; connect to definitions & constructions.</li>
-        <li><em>20–45</em> Assemble packet: photos, mapping notes, statement draft.</li>
-        <li><em>45–50</em> Reflection: “Where does symmetry show up in your tile?”</li>
+        <li>8 min – Warm‑Up: Select best photos/screens</li>
+        <li>12 min – Mini: Artist’s statement model; connect to definitions & constructions</li>
+        <li>25 min – Assemble packet: photos, mapping notes, statement draft</li>
+        <li>5 min – Reflection: “Where does symmetry show up in your tile?”</li>
       </ul>
     </li>
-    <li><strong><span class="badge assess">Assessment</span> Fri — Mini‑Share & Live Construction</strong>
+    <li><strong>Fri — Mini‑Share & Live Construction</strong>
       <ul>
-        <li><em>0–10</em> Warm‑Up: 3 rapid construction prompts.</li>
-        <li><em>10–25</em> Skill Check S3: live construction (teacher‑chosen).</li>
-        <li><em>25–45</em> Mini‑share gallery; peer sticky‑notes.</li>
-        <li><em>45–50</em> Reflection: “What did you learn from another design you’ll borrow?”</li>
+        <li>5 min – Warm‑Up: 3 rapid construction prompts</li>
+        <li>15 min – Skill Check S3: live construction (teacher‑chosen)</li>
+        <li>25 min – Mini‑share gallery; peer sticky‑notes</li>
+        <li>5 min – Reflection: “What did you learn from another design you’ll borrow?”</li>
       </ul>
     </li>
   </ul>
