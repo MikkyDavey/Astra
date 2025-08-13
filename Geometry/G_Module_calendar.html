@@ -5,22 +5,19 @@
   <title>📐 Geometry — Full-Year Module Calendar</title>
   <style>
     :root{
-      --module1:#e0f2f1; /* teal tint */
-      --module2:#fff3e0; /* orange tint */
-      --module3:#e3f2fd; /* blue tint */
-      --module4:#fff8e1; /* light amber */
-      --module5:#f1f8e9; /* light green */
-      --synthesis:#f3e5f5; /* light purple */
-      --ink:#222; --ink-muted:#555; --border:#ddd; --paper:#fff;
-      --role-launch:#cfe8fc; /* Concept Launch */
-      --role-practice:#fff7c2; /* Applied Studio / Practice */
-      --role-synthesis:#d4f5d0; /* Synthesis / Project */
-      --role-assess:#fbd4d4; /* Assessment & Reflection */
-      --mod1-bg:#f5f5ff; --mod2-bg:#fff5f5; --mod3-bg:#f5fff5; --mod4-bg:#fffaf5; --mod5-bg:#f5ffff;
+      --module1:#cfe8e6; /* deeper teal tint */
+      --module2:#ffe3bf; /* deeper orange tint */
+      --module3:#c9e0ff; /* deeper blue tint */
+      --module4:#ffefc2; /* deeper amber tint */
+      --module5:#d9f0c8; /* deeper green tint */
+      --synthesis:#e7d5f0; /* deeper purple tint */
+      --ink:#111; --ink-muted:#444; --border:#cfcfcf; --paper:#ffffff;
+      --role-launch:#cfe8fc; --role-practice:#fff2a6; --role-synthesis:#c9efc6; --role-assess:#f6baba;
+      --m1-accent:#1f8a83; --m2-accent:#d07b00; --m3-accent:#2a6ad3; --m4-accent:#bf8c00; --m5-accent:#5b8f2a; --syn-accent:#7a3ea3;
     }
     *{box-sizing:border-box}
     body{font-family:Arial, sans-serif; line-height:1.6; margin:0; background:#fafafa; color:var(--ink);}
-    header{position:sticky; top:0; z-index:5; background:linear-gradient(#fff,#fafafa); border-bottom:1px solid var(--border); padding:1rem 2rem;}
+    header{position:static; z-index:5; background:#fff; border-bottom:1px solid var(--border); padding:1rem 2rem;}
     h1{margin:0 0 .25rem 0; text-align:center;}
     .routine{ text-align:center; color:var(--ink-muted); font-size:.95rem; margin:0 auto .5rem; max-width:1100px;}
     .header-actions{display:flex; justify-content:center; gap:.5rem; flex-wrap:wrap; margin:.5rem auto 0; max-width:1100px}
@@ -40,26 +37,49 @@
     .calendar-nav a.synth{background:var(--synthesis);}
 
     main{padding:1rem 2rem 3rem; max-width:1100px; margin:0 auto;}
-    .break{height:14px; width:100%; margin:1rem 0;}
-    .break.module1{background:var(--module1); opacity:.6;}
-    .break.module2{background:var(--module2); opacity:.6;}
-    .break.module3{background:var(--module3); opacity:.6;}
-    .break.module4{background:var(--module4); opacity:.6;}
-    .break.module5{background:var(--module5); opacity:.6;}
-    .break.synth{background:var(--synthesis); opacity:.6;}
+    .break{height:16px; width:100%; margin:1rem 0;}
+    .break.module1{background:var(--module1);}
+    .break.module2{background:var(--module2);}
+    .break.module3{background:var(--module3);}
+    .break.module4{background:var(--module4);}
+    .break.module5{background:var(--module5);}
+    .break.synth{background:var(--synthesis);}
 
     details.semester{border:1px solid var(--border); border-radius:10px; background:#fff; margin:1rem 0 2rem; box-shadow:0 2px 6px rgba(0,0,0,.04);}
     details.semester>summary{padding:1rem 1.25rem; cursor:pointer; font-size:1.05rem; font-weight:700; list-style:none;}
     details.semester[open]>summary{border-bottom:1px solid var(--border);}
-    details.week-section{margin:1rem; border:1px solid var(--border); border-radius:8px; padding:.5rem 1rem 1rem; background:#fff; box-shadow:0 1px 4px rgba(0,0,0,.03);}
-    details.week-section>summary{cursor:pointer; list-style:none; display:flex; align-items:center; gap:.5rem;}
-    details.week-section>summary h2{margin:.25rem 0; font-size:1.1rem;}
-    details.week-section.module1{background:var(--module1);}
-    details.week-section.module2{background:var(--module2);}
-    details.week-section.module3{background:var(--module3);}
-    details.week-section.module4{background:var(--module4);}
-    details.week-section.module5{background:var(--module5);}
-    details.week-section.synth{background:var(--synthesis);}
+    details.week-section{
+      margin:1rem;
+      border:1px solid var(--border);
+      border-radius:8px;
+      padding:.5rem 1rem 1rem;
+      background:#fff;
+      box-shadow:0 1px 4px rgba(0,0,0,.03);
+      border-left-width:6px;
+    }
+    details.week-section.module1{border-left-color:var(--m1-accent);}
+    details.week-section.module2{border-left-color:var(--m2-accent);}
+    details.week-section.module3{border-left-color:var(--m3-accent);}
+    details.week-section.module4{border-left-color:var(--m4-accent);}
+    details.week-section.module5{border-left-color:var(--m5-accent);}
+    details.week-section.synth{border-left-color:var(--syn-accent);}
+    details.week-section>summary{
+      position: sticky; top: 0; z-index: 6;
+      background:#fff;
+      padding:.6rem 1rem;
+      margin:0 -1rem;
+      border-bottom:1px solid var(--border);
+      box-shadow:0 2px 4px rgba(0,0,0,.06);
+      cursor:pointer; list-style:none; display:flex; align-items:center; gap:.5rem;
+    }
+    details.week-section>summary h2{ margin:.15rem 0; font-size:1.12rem; }
+    /* Remove tinted backgrounds on week sections (keep only accent border) */
+    /* details.week-section.module1{background:var(--module1);} */
+    /* details.week-section.module2{background:var(--module2);} */
+    /* details.week-section.module3{background:var(--module3);} */
+    /* details.week-section.module4{background:var(--module4);} */
+    /* details.week-section.module5{background:var(--module5);} */
+    /* details.week-section.synth{background:var(--synthesis);} */
     details.week-section .inner{background:#fff; margin:.5rem -1rem -1rem; padding:1rem; border-top:1px solid var(--border); border-radius:0 0 8px 8px;}
     .top-link{display:inline-block; margin-top:.5rem; font-size:.9rem; color:#0645ad; text-decoration:none;}
     .tag{display:inline-block; font-size:.8rem; padding:.15rem .5rem; border:1px solid var(--border); border-radius:999px; margin-right:.4rem; background:#fff;}
@@ -69,7 +89,7 @@
 <body>
   <a id="top"></a>
   <header>
-    <h1><small>(test 12:34)</small>📅 Geometry 2025–2026 — Module Calendar</h1>
+    <h1>📅 Geometry 2025–2026 — Module Calendar</h1>
     <p class="routine"><strong>Daily Rhythm:</strong> Warm‑up &amp; tape‑in → mini → work block → reflection. <strong>Folders:</strong> <em>Manila</em> (unfinished/loose) • <em>Mini‑folders</em> (finished artifacts by module) • <em>Notebook</em> (scrapbook‑style textbook).</p>
     <div class="header-actions" role="group" aria-label="Expand or collapse all weeks">
       <button id="expandAll" aria-controls="semester-container">Expand all weeks</button>
@@ -78,6 +98,7 @@
     
     <p class="routine"><strong>Notebook Inserts:</strong> vocab/definitions pages, construction step cards, transformation organizer, proof‑flow templates. <strong>Capstones:</strong> M1 3D‑Printed Tile • M4 Trig‑in‑Action • M5 Circle Design.</p>
     <p class="routine"><strong>Daily Notebook Handout (from Thu W1 onward):</strong> Each day students receive a color‑coded sheet with a titled Warm‑Up at the top (tape in at start of class) and a Reflection prompt at the bottom. The Reflection stays clipped to the page with a paper clip until prompted on a later day.</p>
+    <p class="routine"><strong>Flashcard Factory cadence:</strong> The FF deck returns periodically as short warm‑ups (2‑card redraw + notation explanation) to keep vocabulary active and visual.</p>
   </header>
 
   <div class="calendar-nav-wrap">
@@ -139,7 +160,7 @@
         <summary><h2>Week 1 (Sept 1–5) — First Breath: Definitions &amp; Tools</h2></summary>
         <div class="inner">
   <p><strong>Focus:</strong> IM U1.L1–L2 • Launch precise definitions & tool fluency; set classroom systems. Day 1 mirrors Algebra 1 welcome flow.</p>
-  <h3>Daily Plan (50 min each)</h3>
+  <h3>Class Outline (50 min each)</h3>
   <ul>
     <li><strong>Mon — First Day: Welcome & Norms</strong>
       <ul>
@@ -185,9 +206,27 @@
       </ul>
     </li>
   </ul>
-  <p><strong>Notebook Inserts:</strong> Weekly warm‑up/reflection handout (color‑coded) • Legal/Illegal Moves mini‑list • Hexagon attempt tape‑in • Vocabulary pages: point/line/plane</p>
-  <p><strong>Resources:</strong> IM Geometry U1.L1 full (1.1–1.3) • Discovering Geometry “Building Blocks of Geometry” (undefined terms) • All Things Algebra vocab cards (optional)</p>
-  <p><strong>Next Steps:</strong> Print bisector step cards; prep GeoGebra file for locus trace; queue Desmos Transformations Golf for Week 4. Generate daily handouts (Mon–Fri) with titles, Warm‑Ups, and clipped Reflections for Weeks 1–2.</p>
+  <h3>Resources</h3>
+  <ul>
+    <li>IM Geometry U1.L1 full (1.1–1.3)</li>
+    <li>Discovering Geometry – “Building Blocks of Geometry” (undefined terms)</li>
+    <li>All Things Algebra – vocabulary cards (optional)</li>
+  </ul>
+
+  <h3>To Do / Prep</h3>
+  <ul>
+    <li>Print daily warm‑up/reflection handouts (Mon–Fri, W1–W2) with titles and clip‑ready reflections.</li>
+    <li>Prep Legal/Illegal Moves mini‑list (quarter‑sheet) for tape‑in next week.</li>
+    <li>Set up GeoGebra file for locus trace; queue Desmos Transformations Golf for Week 4.</li>
+  </ul>
+
+  <h3>Additional Notes</h3>
+  <ul>
+    <li><strong>Notebook Inserts:</strong> Weekly warm‑up/reflection handout (color‑coded); Legal/Illegal Moves mini‑list; Hexagon attempt tape‑in; Vocabulary pages: point/line/plane.</li>
+    <li>SP focus this week: on‑task participation, helpful peer coaching, neat notebook setup, clear reflections.</li>
+    <li><strong>Friday:</strong> Close class with <em>Group SP Awards</em> from the class scoreboard. Week 1 awards emphasize groups following procedures quickly and cleanly.</li>
+    <li><strong>Note:</strong> The placement test on Monday takes most of the period; keep housekeeping light.</li>
+  </ul>
   <a class="top-link" href="#top">↑ Back to Week Buttons</a>
 </div>
       </details>
@@ -195,106 +234,157 @@
       <details id="w2" class="week-section module1" open>
         <summary><h2>Week 2 (Sept 8–12) — Constructing Patterns + Perpendicular Bisectors</h2></summary>
         <div class="inner">
-  <p><strong>Focus:</strong> IM U1.L2–L3 • Precision in written instructions; vocabulary for lines (parallel, perpendicular) and perpendicular bisector as an equidistance locus; early reasoning/proof language (“because…” stems).</p>
-  <h3>Daily Plan (50 min each)</h3>
+  <p><strong>Focus:</strong> IM U1.L2–L3 + Math Medic 2.1 “Match Mine” • Precision in written instructions; diagramming & notation (segments, rays, lines); vocabulary for lines (parallel, perpendicular); perpendicular bisector as an equidistance locus; early reasoning/proof language (“because…” stems).</p>
+  <h3>Class Outline (50 min each)</h3>
   <ul>
     <li><strong>Mon — IM U1.L2: Constructing Patterns</strong>
       <ul>
-        <li>5 min – Warm‑Up: Math Talk prompt on radii/equidistance (L2.1) — hand signal routine</li>
-        <li>8 min – Mini: What makes instructions precise? Labels, defined moves, orientation cues</li>
-        <li>20 min – Activity 2.2 “Make Your Own”: Create a pattern from a circle+radius; record every step with precise language</li>
-        <li>12 min – Activity 2.3 “Make Someone Else’s”: Trade & recreate; highlight clear vs. ambiguous wording</li>
-        <li>5 min – Cool‑down 2.4: Quick revisions to instructions (save in mini‑folder)</li>
-        <li class="tag">SP: precision in language • complete labeling • thoughtful revision</li>
+        <li>5 min – <strong>Warm‑Up (tape‑in):</strong> Math Talk prompt on radii/equidistance (L2.1) — hand‑signal routine <span class="tag">Resource: IM 1.2</span></li>
+        <li>5 min – <strong>Mini:</strong> What makes instructions precise? Labels, defined moves, orientation cues <span class="tag">Resource: IM 1.2</span></li>
+        <li>15 min – <strong>Activity 2.2 “Make Your Own” (in notebook):</strong> Create a pattern from a circle+radius; <em>write each step directly in the notebook</em>. Plan to <em>tape the finished design on top of the written steps</em> so it lifts to reveal the directions. <span class="tag">Resource: IM 1.2 “Make Your Own / Make Someone Else’s”</span></li>
+        <li>15 min – <strong>Activity 2.3 “Make Someone Else’s”:</strong> Trade & recreate from a partner’s notebook steps; highlight clear vs. ambiguous wording <span class="tag">Resource: IM 1.2</span></li>
+        <li>10 min – <strong>Cool‑down 2.4:</strong> Quick revision notes to improve precision (leave space for a taped design flap) <span class="tag">Resource: IM 1.2</span></li>
+        <li><strong>DeltaMath Intro:</strong> Launch first DM assignment (skills TBD for Module 1); share join code and deadlines (work time tomorrow) <span class="tag">Resource: DeltaMath #1</span></li>
+        <li><strong>Exit & Reflection:</strong> ClassroomScreen quick check; tape‑in Reflection prompt: “Which wording change today most improved reproducibility?”</li>
+        <li class="tag">SP: precision in language • complete labeling • thoughtful revision • organized notebook layout (flap‑over design)</li>
       </ul>
     </li>
-    <li><strong>Tue — IM U1.L2 wrap + IM U1.L3 Launch</strong>
+    <li><strong>Tue — Math Medic 2.1: Match Mine (Diagramming &amp; Notation)</strong>
       <ul>
-        <li>5 min – Warm‑Up: Identify parallel vs. “seems parallel” in a student‑made pattern (ties to L2 parallel‑line construction)</li>
-        <li>10 min – Mini: Read/perform IM’s step‑by‑step parallel‑line construction (from 2.3); add to “Legal Moves” list</li>
-        <li>15 min – Activity 3.1 “Find All the Points!”: Circles as sets of equidistant points; mark intersections</li>
-        <li>15 min – Activity 3.2 “Human Perpendicular Bisector”: Class physically finds the equidistance set; capture conjecture</li>
-        <li>5 min – Reflection (tape‑in): “Our conjecture says ______. What evidence did we produce?”</li>
-        <li class="tag">SP: participation in human model • clear diagram capturing the conjecture line</li>
+        <li>3 min – <strong>Warm‑Up (tape‑in):</strong> Notice/Wonder on three unlabeled mini‑diagrams showing tick marks, parallel arrows, and a right‑angle box (no symbols yet). Jot 1 notice + 1 wonder. <span class="tag">Resource: Math Medic 2.1</span></li>
+        <li>2 min – <strong>Launch:</strong> Today is discovery‑first. In pairs, silently sort and match the cards by intuition. No symbol talk yet—lock your matches with a star. <span class="tag">Resource: Math Medic 2.1</span></li>
+        <li>20 min – <strong>Partner Discovery:</strong> <em>Match Mine</em> card sort (students attempt all matches first). Circulate to note common confusions for debrief. <span class="tag">Resource: Math Medic 2.1</span></li>
+        <li>10 min – <strong>Debrief (whole‑class):</strong> Tape in the mathmedic sheet and discuss correct matches and terminology. Reveal meanings of ≅, ⟂, ∥. Discuss when <em>order</em> matters (rays) vs. when it doesn’t (segments, lines). Quick oral checks: “Is <code>\overrightarrow{AB}</code> the same as <code>\overrightarrow{BA}</code>? Why?” Add a legend box to the sheet. <span class="tag">Resource: Math Medic 2.1</span></li>
+        <li>10 min – <strong>DeltaMath Work Time:</strong> Quiet start on the Module 1 set (introduced Monday). Log one sticky “stuck spot” if needed. <span class="tag">Resource: DeltaMath #1</span></li>
+        <li><strong>Exit & Reflection:</strong> ClassroomScreen quick check → tape‑in prompt: “What features in a diagram help me know exactly what it represents?”</li>
+        <li class="tag">SP: discovery persistence • precise notation after debrief • neat highlighting legend • focused DM minutes</li>
       </ul>
     </li>
     <li><strong>Thu — IM U1.L3: How Well Can You Slice It?</strong>
       <ul>
-        <li>5 min – Warm‑Up: Diagnose a “not a perpendicular bisector” example (angle vs. midpoint error)</li>
-        <li>10 min – Mini: Definitions & notation: ⟂, right angle marker, congruent segment ticks; “because…” stems</li>
-        <li>20 min – Activity 3.3: Construct the perpendicular bisector by compass/straightedge; optionally compare to paper‑fold</li>
-        <li>10 min – Notebook tape‑ins: final construction with 2–3 justification sentences; add to “Legal/Illegal Moves” page</li>
-        <li>5 min – Reflection: “How does the intersecting‑circles method guarantee both perpendicular and midpoint?”</li>
-        <li class="tag">SP: accurate construction • justification quality • tidy tape‑ins</li>
+        <li>5 min – <strong>Warm‑Up (tape‑in):</strong> IM L3.1 “Find All the Points!” — quickly mark the locus of points equidistant from A and B on a segment; 30‑sec pair share: what pattern do you see? <span class="tag">Resource: IM 1.3</span></li>
+        <li>10 min – <strong>Activity 3.2:</strong> Human Perpendicular Bisector (whole‑class model). Stand on the floor line where you’re equally distant from the endpoints; a recorder traces the class “locus.” Capture a one‑sentence conjecture on the board. <span class="tag">Resource: IM 1.3</span></li>
+        <li>20 min – <strong>Activity 3.3:</strong> Compass‑and‑straightedge construction of the perpendicular bisector for two different segments. Quick partner check for midpoint and right angle markers. <span class="tag">Resource: IM 1.3</span></li>
+        <li>5 min – <strong>Reflection (tape‑in):</strong> Complete the claim as a biconditional and support both directions: “A point lies on the perpendicular bisector of segment \(AB\) <strong>iff</strong> it is equidistant from \(A\) and \(B\).” Give one piece of evidence from today for each arrow (→ from locus to equidistance, ← from equidistance to locus). <span class="tag">Resource: IM 1.3</span></li>
+        <li>10 min - <strong>DM#1 work time</strong> and class screen exit check <span class="tag">Resource: DeltaMath #1</span></li>
+        <li class="tag">SP: clear locus reasoning • accurate constructions • concise verbal defense • thoughtful synthesis reflection</li>
       </ul>
     </li>
-    <li><strong>Fri — Skill Gate SG1 + Targeted Practice</strong>
+    <li><strong>Fri — Skill Gate & Vocabulary Build</strong>
       <ul>
-        <li>8 min – Warm‑Up: Quick ID — which instructions would reproduce the pattern? (choose best of 3)</li>
-        <li>12 min – <strong>Skill Gate SG1</strong>: Construct a perpendicular bisector from a fresh segment and write 2 “because…” statements</li>
-        <li>20 min – Targeted practice: IM practice set + All Things Algebra items (parallel line via construction; bisector fluency)</li>
-        <li>5 min – Notebook check stamps (peer‑assisted) & SP nominations via Google Form (due tonight)</li>
-        <li>5 min – Reflection: “One wording change that makes my instructions unambiguous is…”</li>
+        <li>5 min – <strong>Warm‑Up:</strong> MathMedic 2.1 diagram interpretation (quick share‑out to set context for the Skill Gate) <span class="tag">Resource: Math Medic 2.1</span></li>
+        <li>15–20 min – <strong>Skill Gate (DeltaMath mini quiz, 10–12 items):</strong> naming lines/segments/rays; naming planes; interpreting diagram marks (∥, ⟂, ≅). Immediate DM feedback; automatic review set assigned for any misses. <strong>Retakes:</strong> specific missed sections only, available during office hours through end of day Wednesday (Mon/Tue office hours, Mon night block, Wed block). Score can replace up to 100%. Managed via DeltaMath. <span class="tag">Resource: DeltaMath #1</span></li>
+        <li>20–25 min – <strong>Vocabulary Build (self‑paced):</strong> Half‑sheet pages for 12 terms (ray, line segment, endpoints, coplanar, collinear, intersection, congruent, parallel, perpendicular, bisector, circle, radius/center). Pre‑printed models & labels; students identify symbols, cut & tape definitions, and add examples as needed.</li>
+        <li>5 min – <strong>Weekly Notebook Google Form:</strong> Submit photos of current notebook pages; self‑select any SP for design and defend choice. Responses reviewed Monday; stamps awarded and examples shared.</li>
+        <li><strong>Reflection:</strong> “Which notation or diagram marker is most likely to trip you up next week, and what cue will you use to avoid it?”</li>
+        <li class="tag">SP: precise diagram reading • focused DM effort • tidy tape‑ins • clear reflection</li>
       </ul>
     </li>
   </ul>
-  <p><strong>Notebook Inserts:</strong> “Make Your Own” instruction sheet (original + revised) • Parallel‑line construction steps (from L2.3) • Perpendicular bisector exemplar with reasons • “Because…” stem bank.</p>
-  <p><strong>Resources:</strong> IM G U1.L2–L3; GeoGebra Constructions Tool; All Things Algebra targeted practice.</p>
-  <p><strong>Next Steps:</strong> Prep ∥/⟂‑through‑a‑point guides for Week 3; print Square‑in‑Circle template; queue short gallery of strong instruction rewrites for Monday SP stamps.</p>
+  <h3>Resources</h3>
+  <ul>
+    <li>IM Geometry U1.L2–L3</li>
+    <li>Math Medic 2.1 “Match Mine” (lesson + cards)</li>
+    <li>GeoGebra Constructions Tool</li>
+    <li>All Things Algebra – targeted practice</li>
+  </ul>
+
+  <h3>To Do / Prep</h3>
+  <ul>
+    <li>Prep ∥/⟂‑through‑a‑point guides for Week 3.</li>
+    <li>Print Square‑in‑Circle template for Week 3.</li>
+    <li>Queue short gallery of strong instruction rewrites for Monday SP stamps.</li>
+    <li>Copy half‑sheet vocabulary pages (12 terms) plus definition strips for Friday.</li>
+  </ul>
+
+  <h3>Additional Notes</h3>
+  <ul>
+    <li><strong>Notebook Inserts:</strong> “Make Your Own” instruction sheet (original + revised); Parallel‑line construction steps (from L2.3); Perpendicular bisector exemplar with reasons; “Because…” stem bank.</li>
+    <li><strong>Assessment:</strong> Skill Gate SG‑M1.1 (DeltaMath mini quiz, 10–12 items): naming lines/segments/rays; naming planes; interpreting diagram marks (∥, ⟂, ≅). Immediate feedback; automatic review set assigned for misses; Retakes are for missed sections only and are offered during office hours through end of day Wednesday (Mon/Tue office hours, Mon night block, Wed block). Score can replace up to 100%. Managed via DeltaMath.</li>
+    <li><strong>Friday:</strong> Close class with <em>Group SP Awards</em> from the class scoreboard. Log group‑worthy wins throughout the week.</li>
+  </ul>
   <a class="top-link" href="#top">↑ Back to Week Buttons</a>
 </div>
       </details>
 
       <details id="w3" class="week-section module1" open>
-        <summary><h2>Week 3 (Sept 15–19) — ∥/⟂ Through a Point; Inscribed Square</h2></summary>
-        <div class="inner">
-  <p><strong>Focus:</strong> IM U1.L5–L6–L7 • Perpendicular/angle bisectors through a point; parallel lines; inscribed square construction.</p>
-  <h3>Daily Plan (50 min each)</h3>
-  <ul>
-    <li><strong>Mon — IM U1.L5: ⟂ through a Point & Angle Bisector</strong>
-      <ul>
-        <li>5 min – Warm‑Up: Diagnose a flawed bisector</li>
-        <li>10 min – Mini: Angle bisector justification via symmetry</li>
-        <li>20 min – Activity: IM U1.L5 builds; justify with equal arcs/radii</li>
-        <li>5 min – Peer Check on correctness of intersections</li>
-        <li>5 min – Tape‑in + margin proof sentence</li>
-        <li>5 min – Reflection: “What would break this construction?”</li>
-      </ul>
-    </li>
-    <li><strong>Tue — IM U1.L6: ∥ & ⟂ Lines Through a Point</strong>
-      <ul>
-        <li>5 min – Warm‑Up: Parallel intuition sketch</li>
-        <li>10 min – Mini: Parallel via equal corresponding angles</li>
-        <li>20 min – Activity: IM U1.L6 constructions; quick ∥ checker</li>
-        <li>5 min – Peer Check: angle mark consistency</li>
-        <li>5 min – Tape‑in + 2 justifications</li>
-        <li>5 min – Reflection: “Where do we ‘use’ parallel lines later?”</li>
-      </ul>
-    </li>
-    <li><strong>Thu — IM U1.L7: Squares (Inscribed & Given Side)</strong>
-      <ul>
-        <li>5 min – Warm‑Up: What makes a square “square” (definition quality)?</li>
-        <li>10 min – Mini: Two constructions; pitfalls</li>
-        <li>25 min – Activity: IM U1.L7 builds; choose one to perfect for tape‑in</li>
-        <li>5 min – Notebook: Annotate constraints & right‑angle evidence</li>
-        <li>5 min – Reflection: “Which step ensured equal sides?”</li>
-      </ul>
-    </li>
-    <li><strong>Fri — Studio + Buffer</strong>
-      <ul>
-        <li>10 min – Warm‑Up: Wild Wonders Midpoint (mini) — connect to loci</li>
-        <li>25 min – Choice Studio: refine L5–L7 artifacts or extension challenges</li>
-        <li>10 min – Circulate for targeted feedback</li>
-        <li>5 min – Reflection: “Map a real object that could be built from these constructions.”</li>
-      </ul>
-    </li>
-  </ul>
-  <p><strong>Notebook Inserts:</strong> ∥/⟂ guide • Square‑in‑Circle template • Wild Wonders Midpoint mini</p>
-  <p><strong>Resources:</strong> IM G U1.L5–L7; Math Medic Wild Wonders (Midpoint); All Things Algebra targeted practice</p>
-  <p><strong>Next Steps:</strong> Prep Desmos Transformations Golf; ready L8 tech guide; create CAD mapping sheet.</p>
-  <a class="top-link" href="#top">↑ Back to Week Buttons</a>
-</div>
-      </details>
+  <summary><h2>Week 3 (Sept 15–19) — Vocabulary Sprint → Angles & Protractor → Definitions → Classic Construction</h2></summary>
+  <div class="inner">
+    <p><strong>Focus:</strong> Consolidate Weeks 1–2 vocabulary with visual memory hooks; name & measure angles precisely; practice <em>classify/differentiate</em> on polygons & triangle types (by sides); connect a precise definition to a classic straightedge‑and‑compass construction.</p>
+
+    <h3>Daily Plan (50 min each)</h3>
+    <ul>
+      <li><strong>Mon — Flashcard Factory (Peardeck): Vocabulary Sprint</strong>
+        <ul>
+          <li>5 min – <strong>Warm‑Up (tape‑in):</strong> Retrieval grid — list as many terms from W1–W2 as you can (1 min), then star 3 to solidify. <span class="tag">Resource: Peardeck Flashcard Factory</span></li>
+          <li>5 min – <strong>Mini:</strong> How FF works; quality criteria (clear symbolic notation on the art + concise definition on the text side). <span class="tag">Resource: Peardeck Flashcard Factory</span></li>
+          <li>25–30 min – <strong>Play:</strong> Flashcard Factory with our dictionary (ray, line segment, endpoints, coplanar, collinear, intersection, congruent, parallel, perpendicular, bisector, circle/center, radius; plus point/line/plane). Pairs produce cards; teacher tags exemplars. <span class="tag">Resource: Peardeck Flashcard Factory</span></li>
+          <li>5 min – Sort & star top exemplars; export class deck (PDF for later tape‑in). <span class="tag">Resource: Peardeck Flashcard Factory</span></li>
+          <li>5 min – <strong>Reflection (tape‑in):</strong> “Which two cards best captured meaning with the fewest words, and why?”</li>
+          <li class="tag">SP: precise diagrams • correct symbols on art • concise wording • collaborative teamwork</li>
+        </ul>
+      </li>
+
+      <li><strong>Tue — Naming & Measuring Angles + Pool Geometry</strong>
+        <ul>
+          <li>5 min – <strong>Warm‑Up (tape‑in):</strong> Protractor orientation check — mark the center point and baseline on the printed protractor image, then choose which scale (inner/outer) you’d use to measure a shown angle and explain why. <span class="tag">Resource: Angle Naming/Diagramming/Protractor Pool Game lesson</span></li>
+          <li>10 min – <strong>Mini:</strong> Angle vocabulary (vertex/rays/interior), protractor setup (center point & baseline), quick demo: angle of reflection ≈ angle of incidence. <span class="tag">Resource: Angle Naming/Diagramming/Protractor Pool Game lesson</span></li>
+          <li>20 min – <strong>Pool Table Activity:</strong> Measure and draw several shots; predict if they sink using equal‑angle reflection; label angles and measures on the diagram. <span class="tag">Resource: Angle Naming/Diagramming/Protractor Pool Game lesson</span></li>
+          <li>5–7 min – <strong>Debrief:</strong> Two‑step checklist for accurate protractor placement; tape in a <em>Protractor Micro‑Guide</em> strip. <span class="tag">Resource: Angle Naming/Diagramming/Protractor Pool Game lesson</span></li>
+          <li>8–10 min – <strong>DeltaMath #2 Work Time:</strong> Start DM‑M1‑Set 2 (measuring/drawing/identifying angles; see set list in Week Notes). <span class="tag">Resource: DeltaMath #2</span></li>
+          <li>Exit & <strong>Reflection (tape‑in):</strong> “Write a 2‑step checklist you’ll use next time to avoid common protractor mistakes.”</li>
+          <li class="tag">SP: careful protractor placement • correct naming (vertex in the middle) • clear shot diagrams</li>
+        </ul>
+      </li>
+
+      <li><strong>Thu — What Makes a Good Definition? (Polygons & Triangle Types by Sides)</strong>
+        <ul>
+          <li>5 min – <strong>Warm‑Up (tape‑in):</strong> From the provided <em>examples &amp; non‑examples</em> (Discovering Geometry), write your own one‑sentence definition of <em>polygon</em>. On a <em>separate unsigned notecard</em>, copy your polygon definition for testing. <span class="tag">Resource: Discovering Geometry</span></li>
+          <li>10 min – <strong>Mini: Test &amp; Refine Polygon Definitions</strong> — Randomly test several student notecards against tricky examples/counterexamples. Extract a <strong>final class polygon definition</strong>. Students <strong>write the final definition below their warm‑up</strong> and complete a brief reflection on the same page: “<em>What makes a good definition?</em>” (This closes out the warm‑up notebook page.) <span class="tag">Resource: Discovering Geometry</span></li>
+          <li>24 min – <strong>Definition‑Writing Circuit (3 rounds, ~8 min each)</strong>
+            <ul>
+              <li><strong>Set 1:</strong> Scalene, Isosceles (≥2 congruent sides), Equilateral (3 congruent sides)</li>
+              <li><strong>Set 2:</strong> Trapezoid, Kite, Parallelogram</li>
+              <li><strong>Set 3:</strong> Rectangle, Square, Rhombus</li>
+            </ul>
+            For each round: groups receive <em>examples &amp; non‑examples</em> for the 3 terms → draft definitions using <em>classify/differentiate</em> → trade with another group and test against counterexamples → revise → check against a <strong>verified definition</strong> and confirm wording. <span class="tag">Resource: Discovering Geometry</span>
+          </li>
+          <li><strong>Dictionary Pages (ongoing during rounds):</strong> As each set is confirmed, students fill in provided half‑sheet dictionary pages with the <strong>final definition</strong> (their wording with required precision) and tape in the provided labeled diagrams. Pages go in the same section as earlier dictionary work. </li>
+          <li class="tag">SP: crisp classify/differentiate language • effective use of non‑examples • collaborative revision • tidy dictionary tape‑ins</li>
+        </ul>
+      </li>
+
+      <li><strong>Fri — IM 1.4: Construction Techniques 2 (Equilateral Triangles)</strong>
+        <ul>
+          <li>5 min – <strong>Housekeeping</strong>: quick reminders + Weekly Notebook Form timing</li>
+          <li>5 min – <strong>Warm‑Up 4.1 (tape‑in):</strong> Notice &amp; Wonder on the IM figure</li>
+          <li>9 min – <strong>Activity 4.2:</strong> What Polygons Can You Find? (tight share‑out; no full gallery)</li>
+          <li>15 min – <strong>Activity 4.3:</strong> Spot the Equilaterals — build at least one equilateral triangle; mark congruent sides</li>
+          <li>6 min – <strong>Cool‑Down 4.4:</strong> Make Another One — second construction or inscribed version (quick check)</li>
+          <li>5 min – <strong>Reflection (tape‑in):</strong> “What construction move or idea today will you rely on next time, and why?”</li>
+          <li>5 min – <strong>Notebook Form:</strong> Submit photos of today’s construction page (or finish over the weekend)</li>
+          <li class="tag">SP: accurate arcs • clean tick‑marks • concise construction notes • on‑time submission</li>
+        </ul>
+      </li>
+    </ul>
+
+    <p><strong>DeltaMath — M1 Set 2 (introduced Tue):</strong> Measuring Angles with a Protractor; Identifying Angles from Three Points; Drawing Angles (Lv1–2); Estimate Angle Measure (Lv1–2); Angle Bisector (Draw/Estimate). <em>Built‑in work blocks:</em> Tue (8–10 min), Thu (5 min buffer if needed). Due Fri 11:59 pm with auto‑assigned review for misses.</p>
+
+    <p><strong>Notebook Inserts:</strong> Flashcard Factory exemplar strip; Naming‑Angles conventions strip; Protractor Micro‑Guide; Polygon vs. Non‑Polygon half‑sheet; Triangle + types‑by‑sides half‑sheets; Equilateral Triangle step‑card.</p>
+    <p><strong>Resources:</strong> Peardeck Flashcard Factory; protractors; Pool Geometry mats; definition frame templates; IM Geometry U1.L4 (Equilateral Triangles).</p>
+    <p><strong>To Do / Prep:</strong> Build FF set from W1–W2; print protractor guides & pool mats; copy polygon/triangle half‑sheets; prep IM L4 construction sheets; sharpen compasses.</p>
+    </ul>
+
+    <h3>Additional Notes</h3>
+    <ul>
+      <li><strong>Friday:</strong> Close class with <em>Group SP Awards</em> from the class scoreboard. Include a quick shout‑out reel of the week’s best FF cards or clean constructions.</li>
+      <li><strong>DeltaMath #2 cadence:</strong> Keep set references in Week Notes (not in the daily outline). Built‑in work blocks are Tue (8–10 min) and Thu buffer as needed.</li>
+      <li><strong>Notebook Form:</strong> Reminder that final submission happens Friday; stamps awarded Monday with exemplars.</li>
+    </ul>
+
+    <a class="top-link" href="#top">↑ Back to Week Buttons</a>
+  </div>
+</details>
 
       <details id="w4" class="week-section module1" open>
         <summary><h2>Week 4 (Sept 22–26) — Rigid Motions &amp; Symmetry; CAD On‑Ramp</h2></summary>
@@ -302,46 +392,60 @@
   <p><strong>Focus:</strong> IM U1.L8 + Transformations On‑Ramp • Using technology for constructions; symmetry & rigid motions; CAD prototype mapping.</p>
   <h3>Daily Plan (50 min each)</h3>
   <ul>
-    <li><strong>Mon — IM U1.L8: Using Technology for Constructions</strong>
+    <li><strong>Mon — Polygon Properties &amp; Quadrilateral Families</strong>
       <ul>
-        <li>5 min – Warm‑Up: Paper → digital mapping question</li>
-        <li>10 min – Mini: GeoGebra tool palette → construction equivalents</li>
-        <li>20 min – Activity: IM U1.L8 guided digital builds (capture screenshots)</li>
-        <li>5 min – Peer Check: compare paper vs digital steps</li>
-        <li>5 min – Tape‑in printouts/screenshots</li>
-        <li>5 min – Reflection: “What changed (or didn’t) when moving to tech?”</li>
+        <li><strong>Warm-Up (5 min, tape-in):</strong> Examples &amp; non-examples of <em>equilateral</em>, <em>equiangular</em>, <em>regular</em> polygons. Label each; name one property that fails for a non-example.</li>
+        <li><strong>Mini-Lesson (8 min):</strong> Quick quadrilateral family map → “naming congruent polygons” (correspondence order).</li>
+        <li><strong>Guided Practice (12 min):</strong> 6 quick IDs (mix: kite, isosceles trapezoid, rhombus, rectangle, square, generic parallelogram) + 2 congruent-naming prompts.</li>
+        <li><strong>DeltaMath Work Time (12 min):</strong> Start DM #3 in class. Teacher circulates to check tool use &amp; misconceptions.</li>
+        <li><strong>Share &amp; Micro-Reteach (8 min):</strong> 2 common DM error patterns (e.g., misplacing the perpendicular through a point; mixing up angle-bisector steps).</li>
+        <li><strong>Reflection (5 min, tape-in):</strong> “Which DM problem exposed a habit I need to fix? Write the one-line cue you’ll use next time to avoid it.”</li>
+      </ul>
+    <li><strong>Tue — Perpendicular &amp; Angle Bisectors (IM 1.5) + DeltaMath</strong>
+      <ul>
+        <li>5 min – <strong>Warm‑Up (tape‑in):</strong> Quick sketch: Draw a perpendicular bisector through a point; explain how you know it’s correct.</li>
+        <li>15 min – <strong>Lesson:</strong> Shortened IM 1.5 (perpendicular bisectors through a point &amp; angle bisectors) with more direct instruction and teacher modeling. Highlight steps and reasoning.</li>
+        <li>20 min – <strong>Independent Work:</strong> DeltaMath #3 assignment work time (focus on bisector and angle skills).</li>
+        <li>5 min – <strong>Reflection (tape‑in):</strong> “What’s one step in a bisector construction you’re most likely to forget? How will you remember it?”</li>
       </ul>
     </li>
-    <li><strong>Tue — Symmetry Studio + Desmos Transformations Golf</strong>
+    <li><strong>Thu — Coordinate Midpoint Activity &amp; Discussion</strong>
       <ul>
-        <li>5 min – Warm‑Up: Line vs rotational symmetry ID</li>
-        <li>10 min – Mini: Rigid motion recap to set up Desmos Golf</li>
-        <li>20 min – Activity: Golf holes 1–9 (screenshot best 2)</li>
-        <li>5 min – Tape‑in screenshots + short sequence descriptions</li>
-        <li>10 min – Reflection & share-out: “Which move combination saved the most time?”</li>
+        <li>5 min – <strong>Warm‑Up (tape‑in):</strong> Find the midpoint of a segment on a coordinate grid and check your answer with a neighbor.</li>
+        <li>25 min – <strong>Lesson:</strong> Math Medic 2.2 <em>Coordinate Connection: Midpoint</em> activity in full. Students work individually and then discuss in pairs.</li>
+        <li>10 min – <strong>Discussion:</strong> Connect midpoint work to earlier construction concepts (how does finding a midpoint on a grid relate to compass-and-straightedge bisectors?). Share out strategies and connections.</li>
+        <li>5 min – <strong>Reflection (tape‑in):</strong> “How can you check if a point is truly the midpoint—on paper and on a coordinate grid?”</li>
       </ul>
     </li>
-    <li><strong>Thu — CAD On‑Ramp: From Compass to Tinkercad</strong>
+    <li><strong>Fri — Construction Review Stations &amp; Performance Prep</strong>
       <ul>
-        <li>5 min – Warm‑Up: Identify printability constraints vocab (wall, tolerance)</li>
-        <li>10 min – Mini: Mapping constructions → CAD primitives & align tools</li>
-        <li>25 min – Activity: Prototype tile plan; start CAD sketch</li>
-        <li>5 min – Peer Critique #0: feasibility checklist</li>
-        <li>5 min – Reflection: “Name two geometric constraints your tile must satisfy.”</li>
-      </ul>
-    </li>
-    <li><strong>Fri — Skill Check S2 + Buffer</strong>
-      <ul>
-        <li>10 min – Warm‑Up: Identify transformation sequences (2 items)</li>
-        <li>15 min – Skill Check S2 (transformation ID/describe)</li>
-        <li>20 min – CAD work time or L8 extensions</li>
-        <li>5 min – Reflection: “What will you prototype first next week?”</li>
+        <li>5 min – <strong>Warm‑Up (tape‑in):</strong> Quick draw: Sketch and label as many different constructions as you can remember (triangle, angle bisector, perpendicular bisector, etc.).</li>
+        <li>25 min – <strong>Lesson:</strong> IM 1.6 review of all constructions—run as stations or group challenges. Students rotate, complete tasks, and check each other’s work.</li>
+        <li>10 min – <strong>Purpose:</strong> Prepare for Week 5 skill gate using IM 1.9 <em>Speedy Delivery</em> as the performance task. Preview expectations and criteria for success.</li>
+        <li>5 min – <strong>Reflection (tape‑in):</strong> “Which construction skill do you feel most ready to demonstrate, and which needs a last review?”</li>
       </ul>
     </li>
   </ul>
-  <p><strong>Notebook Inserts:</strong> Transformation organizer • CAD checklist • L8 screenshots</p>
-  <p><strong>Resources:</strong> IM G U1.L8; Desmos Transformations Golf; Tinkercad guide</p>
-  <p><strong>Next Steps:</strong> Queue printers; prepare Capstone rubric; set Peer Critique #1 protocol.</p>
+  <p><strong>Notebook Inserts:</strong> Polygon/non‑polygon example sheet • Quadrilateral family tree • Bisector and midpoint step cards • Reflection prompts for each day</p>
+  <p><strong>Resources:</strong> IM Geometry U1.L5–L6, L9; Math Medic 2.2; DeltaMath #3; construction tools</p>
+  <p><strong>Notes — DeltaMath #3 skills (Week 4):</strong></p>
+  <ul>
+    <li>Constructing an Equilateral Triangle</li>
+    <li>Constructing an Angle Bisector</li>
+    <li>Perpendicular Line Through Point On a Line</li>
+    <li>Identify Quadrilaterals (Basic & Level 1)</li>
+    <li>Midpoint Graphically</li>
+    <li>The Midpoint Formula</li>
+  </ul>
+  <p><strong>Due:</strong> Friday 11:59 pm; auto‑review for misses; retake window Mon/Tue office hours + Mon/Wed night blocks, closes Wed EOD next week.</p>
+</ul>
+  <p><strong>Next Steps:</strong> Prep Week 5 skill gate using IM 1.9 <em>Speedy Delivery</em> as the performance task; finalize construction review stations.</p>
+
+  <h3>Additional Notes</h3>
+  <ul>
+    <li><strong>Friday:</strong> Close class with <em>Group SP Awards</em> from the class scoreboard. Spotlight precise constructions and effective peer coaching observed in stations.</li>
+    <li><strong>Monday DM time:</strong> Preserve 10–12 minutes for DeltaMath #3 in‑class work; keep the detailed skill list in Notes (not in the daily timeline).</li>
+  </ul>
   <a class="top-link" href="#top">↑ Back to Week Buttons</a>
 </div>
       </details>
@@ -438,7 +542,7 @@
         <div class="inner">
           <ul>
             <li><strong>Focus:</strong> Triangle types; corresponding parts; SSS/SAS/ASA/AAS/HL overview.</li>
-            <li><strong>Activities:</strong> Triangle sort; marking conventions; IM U2.1–2.3; Math Medic proof intro.</li>
+            <li><strong>Activities:</strong> Triangle sort; marking conventions; IM U2.1–2.3; Math Medic proof intro; <em>FF Revisit warm‑ups</em> (triangle parts / CPCTC notation — 2 cards).</li>
             <li><strong>Assessment:</strong> Skill Check C1 (valid congruence info).</li>
           </ul>
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
@@ -485,7 +589,7 @@
         <summary><h2>Week 11 (Nov 10–14) — Similarity &amp; Proportions (AA, SSS~, SAS~)</h2></summary>
         <div class="inner">
           <ul>
-            <li>Proportion puzzles; triangle similarity labs; Math Medic similarity; coordinate quadrilaterals warm‑up.</li>
+            <li>Proportion puzzles; triangle similarity labs; Math Medic similarity; coordinate quadrilaterals warm‑up; <em>FF Revisit warm‑ups</em> (scale, ∥, and ~ symbols — 2 cards).</li>
           </ul>
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
@@ -594,7 +698,7 @@
         <summary><h2>Week 21 (Feb 3–7) — Circles: Vocabulary, Central &amp; Inscribed Angles</h2></summary>
         <div class="inner">
           <ul>
-            <li>IM U7.1–U7.2; Math Medic tangents intro; Mystery Measurement diagram task.</li>
+            <li>IM U7.1–U7.2; Math Medic tangents intro; Mystery Measurement diagram task; <em>FF Revisit warm‑ups</em> (center, radius, chord, tangent — 2 cards).</li>
           </ul>
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
@@ -634,7 +738,7 @@
         <summary><h2>Week 25 (Mar 3–7) — Review: Modules 4–5</h2></summary>
         <div class="inner">
           <ul>
-            <li>Spiral stations; targeted reteach; light assessment; illness/assembly buffer.</li>
+            <li>Spiral stations; targeted reteach; light assessment; illness/assembly buffer; <em>FF Deck Challenge</em> station (recreate and annotate 3 favorite cards).</li>
           </ul>
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
