@@ -5,6 +5,8 @@
   <title>📐 Geometry — Full-Year Module Calendar</title>
   <style>
     :root{
+      --module0:#e6f4f3;
+      --m0-accent:#16877f;
       --module1:#cfe8e6; /* deeper teal tint */
       --module2:#ffe3bf; /* deeper orange tint */
       --module3:#c9e0ff; /* deeper blue tint */
@@ -12,7 +14,6 @@
       --module5:#d9f0c8; /* deeper green tint */
       --synthesis:#e7d5f0; /* deeper purple tint */
       --ink:#111; --ink-muted:#444; --border:#cfcfcf; --paper:#ffffff;
-      --role-launch:#cfe8fc; --role-practice:#fff2a6; --role-synthesis:#c9efc6; --role-assess:#f6baba;
       --m1-accent:#1f8a83; --m2-accent:#d07b00; --m3-accent:#2a6ad3; --m4-accent:#bf8c00; --m5-accent:#5b8f2a; --syn-accent:#7a3ea3;
     }
     *{box-sizing:border-box}
@@ -29,6 +30,7 @@
     .calendar-nav a{padding:.4rem .8rem; border-radius:999px; text-decoration:none; color:#222; font-weight:700; border:1px solid var(--border);
       background:var(--paper); transition:transform .05s ease, background .2s ease; box-shadow:0 1px 0 rgba(0,0,0,.03); white-space:nowrap;}
     .calendar-nav a:hover{transform:translateY(-1px);}
+    .calendar-nav a.module0{background:var(--module0);}
     .calendar-nav a.module1{background:var(--module1);}
     .calendar-nav a.module2{background:var(--module2);}
     .calendar-nav a.module3{background:var(--module3);}
@@ -38,7 +40,9 @@
 
     main{padding:1rem 2rem 3rem; max-width:1100px; margin:0 auto;}
     .break{height:16px; width:100%; margin:1rem 0;}
+    .break.module0{background:var(--module0);}
     .break.module1{background:var(--module1);}
+    .break.module0{background:var(--module0);}
     .break.module2{background:var(--module2);}
     .break.module3{background:var(--module3);}
     .break.module4{background:var(--module4);}
@@ -57,6 +61,7 @@
       box-shadow:0 1px 4px rgba(0,0,0,.03);
       border-left-width:6px;
     }
+    details.week-section.module0{border-left-color:var(--m0-accent);}
     details.week-section.module1{border-left-color:var(--m1-accent);}
     details.week-section.module2{border-left-color:var(--m2-accent);}
     details.week-section.module3{border-left-color:var(--m3-accent);}
@@ -103,27 +108,27 @@
 
   <div class="calendar-nav-wrap">
     <nav class="calendar-nav">
-      <div class="group-label">Module 1 • From Definitions to Design (Weeks 1–6)</div>
-      <a class="module1" href="#w1">W1</a>
-      <a class="module1" href="#w2">W2</a>
-      <a class="module1" href="#w3">W3</a>
-      <a class="module1" href="#w4">W4</a>
-      <a class="module1" href="#w5">W5</a>
+      <div class="group-label">Module 0 • Foundations &amp; Constructions (Weeks 1–5)</div>
+      <a class="module0" href="#w1">W1</a>
+      <a class="module0" href="#w2">W2</a>
+      <a class="module0" href="#w3">W3</a>
+      <a class="module0" href="#w4">W4</a>
+      <a class="module0" href="#w5">W5</a>
+
+      <div class="group-label">Module 1 • Intersections, Symmetry &amp; Proof (Weeks 6–12)</div>
       <a class="module1" href="#w6">W6</a>
+      <a class="module1" href="#w7">W7</a>
+      <a class="module1" href="#w8">W8</a>
+      <a class="module1" href="#w9">W9</a>
+      <a class="module1" href="#w10">W10</a>
+      <a class="module1" href="#w11">W11</a>
+      <a class="module1" href="#w12">W12</a>
 
-      <div class="group-label">Module 2 • Proving Triangles (Weeks 7–9)</div>
-      <a class="module2" href="#w7">W7</a>
-      <a class="module2" href="#w8">W8</a>
-      <a class="module2" href="#w9">W9</a>
-
-      <div class="group-label">Module 3 • Symmetry &amp; Similarity (Weeks 10–16)</div>
-      <a class="module3" href="#w10">W10</a>
-      <a class="module3" href="#w11">W11</a>
-      <a class="module3" href="#w12">W12</a>
-      <a class="module3" href="#w13">W13</a>
-      <a class="module3" href="#w14">W14</a>
-      <a class="module3" href="#w15">W15</a>
-      <a class="module3" href="#w16">W16</a>
+      <div class="group-label">Fall Break &amp; Wrap (Weeks 13–16)</div>
+      <a class="synth" href="#w13">W13</a>
+      <a class="synth" href="#w14">W14</a>
+      <a class="synth" href="#w15">W15</a>
+      <a class="synth" href="#w16">W16</a>
 
       <div class="group-label">Module 4 • Trigonometry in Action (Weeks 18–20)</div>
       <a class="module4" href="#w18">W18</a>
@@ -153,10 +158,10 @@
     <!-- ========= SEMESTER 1 ========= -->
     <details class="semester" open>
       <summary>Semester 1 (Fall 2025) — Weeks 1–16</summary>
-      <div class="break module1" aria-hidden="true"></div>
+      <div class="break module0" aria-hidden="true"></div>
 
       <!-- Module 1: Weeks 1–6 (FULL) -->
-      <details id="w1" class="week-section module1" open>
+      <details id="w1" class="week-section module0" open>
         <summary><h2>Week 1 (Sept 1–5) — First Breath: Definitions &amp; Tools</h2></summary>
         <div class="inner">
   <p><strong>Focus:</strong> IM U1.L1–L2 • Launch precise definitions & tool fluency; set classroom systems. Day 1 mirrors Algebra 1 welcome flow.</p>
@@ -231,7 +236,7 @@
 </div>
       </details>
 
-      <details id="w2" class="week-section module1" open>
+      <details id="w2" class="week-section module0" open>
         <summary><h2>Week 2 (Sept 8–12) — Constructing Patterns + Perpendicular Bisectors</h2></summary>
         <div class="inner">
   <p><strong>Focus:</strong> IM U1.L2–L3 + Math Medic 2.1 “Match Mine” • Precision in written instructions; diagramming & notation (segments, rays, lines); vocabulary for lines (parallel, perpendicular); perpendicular bisector as an equidistance locus; early reasoning/proof language (“because…” stems).</p>
@@ -244,6 +249,7 @@
         <li>15 min – <strong>Activity 2.2 “Make Your Own” (in notebook):</strong> Create a pattern from a circle+radius; <em>write each step directly in the notebook</em>. Plan to <em>tape the finished design on top of the written steps</em> so it lifts to reveal the directions. <span class="tag">Resource: IM 1.2 “Make Your Own / Make Someone Else’s”</span></li>
         <li>15 min – <strong>Activity 2.3 “Make Someone Else’s”:</strong> Trade & recreate from a partner’s notebook steps; highlight clear vs. ambiguous wording <span class="tag">Resource: IM 1.2</span></li>
         <li>10 min – <strong>Cool‑down 2.4:</strong> Quick revision notes to improve precision (leave space for a taped design flap) <span class="tag">Resource: IM 1.2</span></li>
+        <li><em>60‑sec pen‑color swap</em> for visible revision before partners re‑try your steps.</li>
         <li><strong>DeltaMath Intro:</strong> Launch first DM assignment (skills TBD for Module 1); share join code and deadlines (work time tomorrow) <span class="tag">Resource: DeltaMath #1</span></li>
         <li><strong>Exit & Reflection:</strong> ClassroomScreen quick check; tape‑in Reflection prompt: “Which wording change today most improved reproducibility?”</li>
         <li class="tag">SP: precision in language • complete labeling • thoughtful revision • organized notebook layout (flap‑over design)</li>
@@ -302,12 +308,13 @@
     <li><strong>Notebook Inserts:</strong> “Make Your Own” instruction sheet (original + revised); Parallel‑line construction steps (from L2.3); Perpendicular bisector exemplar with reasons; “Because…” stem bank.</li>
     <li><strong>Assessment:</strong> Skill Gate SG‑M1.1 (DeltaMath mini quiz, 10–12 items): naming lines/segments/rays; naming planes; interpreting diagram marks (∥, ⟂, ≅). Immediate feedback; automatic review set assigned for misses; Retakes are for missed sections only and are offered during office hours through end of day Wednesday (Mon/Tue office hours, Mon night block, Wed block). Score can replace up to 100%. Managed via DeltaMath.</li>
     <li><strong>Friday:</strong> Close class with <em>Group SP Awards</em> from the class scoreboard. Log group‑worthy wins throughout the week.</li>
+    <li><strong>SP Highlight (Fri, 2 min):</strong> Project one exemplar card or construction and state the why (earns table bonus SP).</li>
   </ul>
   <a class="top-link" href="#top">↑ Back to Week Buttons</a>
 </div>
       </details>
 
-      <details id="w3" class="week-section module1" open>
+      <details id="w3" class="week-section module0" open>
   <summary><h2>Week 3 (Sept 15–19) — Vocabulary Sprint → Angles & Protractor → Definitions → Classic Construction</h2></summary>
   <div class="inner">
     <p><strong>Focus:</strong> Consolidate Weeks 1–2 vocabulary with visual memory hooks; name & measure angles precisely; practice <em>classify/differentiate</em> on polygons & triangle types (by sides); connect a precise definition to a classic straightedge‑and‑compass construction.</p>
@@ -329,9 +336,9 @@
         <ul>
           <li>5 min – <strong>Warm‑Up (tape‑in):</strong> Protractor orientation check — mark the center point and baseline on the printed protractor image, then choose which scale (inner/outer) you’d use to measure a shown angle and explain why. <span class="tag">Resource: Angle Naming/Diagramming/Protractor Pool Game lesson</span></li>
           <li>10 min – <strong>Mini:</strong> Angle vocabulary (vertex/rays/interior), protractor setup (center point & baseline), quick demo: angle of reflection ≈ angle of incidence. <span class="tag">Resource: Angle Naming/Diagramming/Protractor Pool Game lesson</span></li>
+          <li><strong>Notebook Insert:</strong> Tape in the <em>Protractor Micro‑Guide</em> strip (do this before the pool shots).</li>
           <li>20 min – <strong>Pool Table Activity:</strong> Measure and draw several shots; predict if they sink using equal‑angle reflection; label angles and measures on the diagram. <span class="tag">Resource: Angle Naming/Diagramming/Protractor Pool Game lesson</span></li>
-          <li>5–7 min – <strong>Debrief:</strong> Two‑step checklist for accurate protractor placement; tape in a <em>Protractor Micro‑Guide</em> strip. <span class="tag">Resource: Angle Naming/Diagramming/Protractor Pool Game lesson</span></li>
-          <li>8–10 min – <strong>DeltaMath #2 Work Time:</strong> Start DM‑M1‑Set 2 (measuring/drawing/identifying angles; see set list in Week Notes). <span class="tag">Resource: DeltaMath #2</span></li>
+          <li>5–7 min – <strong>Debrief:</strong> tape in pool table visual with named and measured angles. <span class="tag">Resource: Angle Naming/Diagramming/Protractor Pool Game lesson</span></li>          <li>8–10 min – <strong>DeltaMath #2 Work Time:</strong> Start DM‑M1‑Set 2 (measuring/drawing/identifying angles; see set list in Week Notes). <span class="tag">Resource: DeltaMath #2</span></li>
           <li>Exit & <strong>Reflection (tape‑in):</strong> “Write a 2‑step checklist you’ll use next time to avoid common protractor mistakes.”</li>
           <li class="tag">SP: careful protractor placement • correct naming (vertex in the middle) • clear shot diagrams</li>
         </ul>
@@ -356,14 +363,13 @@
 
       <li><strong>Fri — IM 1.4: Construction Techniques 2 (Equilateral Triangles)</strong>
         <ul>
-          <li>5 min – <strong>Housekeeping</strong>: quick reminders + Weekly Notebook Form timing</li>
           <li>5 min – <strong>Warm‑Up 4.1 (tape‑in):</strong> Notice &amp; Wonder on the IM figure</li>
+          <li>4 min – <strong>Quick reminders:</strong> notebook form timing + tool check while students finish warm‑up</li>
           <li>9 min – <strong>Activity 4.2:</strong> What Polygons Can You Find? (tight share‑out; no full gallery)</li>
           <li>15 min – <strong>Activity 4.3:</strong> Spot the Equilaterals — build at least one equilateral triangle; mark congruent sides</li>
           <li>6 min – <strong>Cool‑Down 4.4:</strong> Make Another One — second construction or inscribed version (quick check)</li>
           <li>5 min – <strong>Reflection (tape‑in):</strong> “What construction move or idea today will you rely on next time, and why?”</li>
-          <li>5 min – <strong>Notebook Form:</strong> Submit photos of today’s construction page (or finish over the weekend)</li>
-          <li class="tag">SP: accurate arcs • clean tick‑marks • concise construction notes • on‑time submission</li>
+          <li>6 min – <strong>Notebook Form:</strong> Submit photos of today’s construction page (or finish over the weekend)</li>
         </ul>
       </li>
     </ul>
@@ -373,23 +379,23 @@
     <p><strong>Notebook Inserts:</strong> Flashcard Factory exemplar strip; Naming‑Angles conventions strip; Protractor Micro‑Guide; Polygon vs. Non‑Polygon half‑sheet; Triangle + types‑by‑sides half‑sheets; Equilateral Triangle step‑card.</p>
     <p><strong>Resources:</strong> Peardeck Flashcard Factory; protractors; Pool Geometry mats; definition frame templates; IM Geometry U1.L4 (Equilateral Triangles).</p>
     <p><strong>To Do / Prep:</strong> Build FF set from W1–W2; print protractor guides & pool mats; copy polygon/triangle half‑sheets; prep IM L4 construction sheets; sharpen compasses.</p>
-    </ul>
 
     <h3>Additional Notes</h3>
     <ul>
       <li><strong>Friday:</strong> Close class with <em>Group SP Awards</em> from the class scoreboard. Include a quick shout‑out reel of the week’s best FF cards or clean constructions.</li>
       <li><strong>DeltaMath #2 cadence:</strong> Keep set references in Week Notes (not in the daily outline). Built‑in work blocks are Tue (8–10 min) and Thu buffer as needed.</li>
       <li><strong>Notebook Form:</strong> Reminder that final submission happens Friday; stamps awarded Monday with exemplars.</li>
+      <li><strong>SP Highlight (Fri, 2 min):</strong> Project one exemplar card or construction and state the why (earns table bonus SP).</li>
     </ul>
 
     <a class="top-link" href="#top">↑ Back to Week Buttons</a>
   </div>
 </details>
 
-      <details id="w4" class="week-section module1" open>
-        <summary><h2>Week 4 (Sept 22–26) — Rigid Motions &amp; Symmetry; CAD On‑Ramp</h2></summary>
+      <details id="w4" class="week-section module0" open>
+        <summary><h2>Week 4 (Sept 22–26) — Constructions Consolidation → Midpoint → Performance Prep</h2></summary>
         <div class="inner">
-  <p><strong>Focus:</strong> IM U1.L8 + Transformations On‑Ramp • Using technology for constructions; symmetry & rigid motions; CAD prototype mapping.</p>
+  <p><strong>Focus:</strong> IM U1.L5–L6 + Math Medic 2.2 (Midpoint) • Consolidate constructions; connect to coordinate midpoint; review stations to prep for IM U1.L9 “Speedy Delivery.”</p>
   <h3>Daily Plan (50 min each)</h3>
   <ul>
     <li><strong>Mon — Polygon Properties &amp; Quadrilateral Families</strong>
@@ -417,17 +423,17 @@
         <li>5 min – <strong>Reflection (tape‑in):</strong> “How can you check if a point is truly the midpoint—on paper and on a coordinate grid?”</li>
       </ul>
     </li>
-    <li><strong>Fri — Construction Review Stations &amp; Performance Prep</strong>
+    <li><strong>Fri — Skill Gate SG‑M1.2 (pre‑Challenge) &amp; Light Review</strong>
       <ul>
-        <li>5 min – <strong>Warm‑Up (tape‑in):</strong> Quick draw: Sketch and label as many different constructions as you can remember (triangle, angle bisector, perpendicular bisector, etc.).</li>
-        <li>25 min – <strong>Lesson:</strong> IM 1.6 review of all constructions—run as stations or group challenges. Students rotate, complete tasks, and check each other’s work.</li>
-        <li>10 min – <strong>Purpose:</strong> Prepare for Week 5 skill gate using IM 1.9 <em>Speedy Delivery</em> as the performance task. Preview expectations and criteria for success.</li>
-        <li>5 min – <strong>Reflection (tape‑in):</strong> “Which construction skill do you feel most ready to demonstrate, and which needs a last review?”</li>
+        <li>5 min – <strong>Warm‑Up (tape‑in):</strong> Quick ID: name two constructions from a diagram and one place you’d use each in the real world.</li>
+        <li>18–22 min – <strong>Skill Gate (DeltaMath mini‑quiz, 10–12 items):</strong> angle/segment bisectors; ⟂ through/at a point; ∥ through a point; midpoint (graph/coordinate); quick diagram interpretation. Auto‑review assigned for misses; retakes by Wed EOD next week (office hours Mon/Tue + evening blocks).</li>
+        <li>18–20 min – <strong>Targeted Review:</strong> Short station refreshers (teacher‑chosen) based on common DM errors this week. Preview that <em>IM 1.6 full review</em> happens Monday of Week 5.</li>
+        <li>5 min – <strong>Reflection (tape‑in):</strong> “Which construction do you want to see first on Monday’s review and why?”</li>
       </ul>
     </li>
   </ul>
   <p><strong>Notebook Inserts:</strong> Polygon/non‑polygon example sheet • Quadrilateral family tree • Bisector and midpoint step cards • Reflection prompts for each day</p>
-  <p><strong>Resources:</strong> IM Geometry U1.L5–L6, L9; Math Medic 2.2; DeltaMath #3; construction tools</p>
+  <p><strong>Resources:</strong> IM Geometry U1.L5–L6; Math Medic 2.2; DeltaMath #3; construction tools</p>
   <p><strong>Notes — DeltaMath #3 skills (Week 4):</strong></p>
   <ul>
     <li>Constructing an Equilateral Triangle</li>
@@ -438,8 +444,8 @@
     <li>The Midpoint Formula</li>
   </ul>
   <p><strong>Due:</strong> Friday 11:59 pm; auto‑review for misses; retake window Mon/Tue office hours + Mon/Wed night blocks, closes Wed EOD next week.</p>
-</ul>
-  <p><strong>Next Steps:</strong> Prep Week 5 skill gate using IM 1.9 <em>Speedy Delivery</em> as the performance task; finalize construction review stations.</p>
+
+  <p><strong>Next Steps:</strong> Prepare IM 1.6 full review stations for Monday (Week 5) and copy IM 1.9 <em>Speedy Delivery</em> packets for Tue/Thu.</p>
 
   <h3>Additional Notes</h3>
   <ul>
@@ -450,94 +456,128 @@
 </div>
       </details>
 
-      <details id="w5" class="week-section module1" open>
-        <summary><h2>Week 5 (Sept 29–Oct 3) — Capstone Build I (Family Weekend)</h2></summary>
-        <div class="inner">
-  <p><strong>Focus:</strong> Capstone Build I (Family Weekend) • CAD tile with ≥2 constructions + ≥1 symmetry; manage print queue.</p>
-  <h3>Daily Plan (50 min each)</h3>
-  <ul>
-    <li><strong>Mon — CAD Work Block</strong>
-      <ul>
-        <li>5 min – Warm‑Up: “Show one geometric constraint you enforced in CAD.”</li>
-        <li>10 min – Mini: Export STL checklist; scale & tolerance tips</li>
-        <li>25 min – Build: Model v1; screenshot & annotate mapping from paper</li>
-        <li>5 min – Reflection: “Biggest risk to print success?”</li>
-      </ul>
-    </li>
-    <li><strong>Tue — Peer Critique #1</strong>
-      <ul>
-        <li>5 min – Warm‑Up: Identify symmetry in a peer’s tile</li>
-        <li>10 min – Mini: Gallery protocol & feedback stems</li>
-        <li>25 min – Critique rounds (2×12 min) with rubric checkpoints</li>
-        <li>5 min – Plan revisions; commit to one change</li>
-        <li>5 min – Reflection: “One revision I will implement and why.”</li>
-      </ul>
-    </li>
-    <li><strong>Thu — Print Queue Launch</strong>
-      <ul>
-        <li>8 min – Warm‑Up: G‑code preview — what do you notice?</li>
-        <li>7 min – Mini: Slicing basics; infill & layer height</li>
-        <li>30 min – Exports + submit to queue; begin v2 polish</li>
-        <li>5 min – Reflection: “If the print fails, my backup plan is…”</li>
-      </ul>
-    </li>
-    <li><strong>Fri — Family Weekend Gallery (optional) / Buffer</strong>
-      <ul>
-        <li>10–50 min – Family Weekend Gallery (optional) / Buffer build time</li>
-      </ul>
-    </li>
-  </ul>
-  <p><strong>Assessment:</strong> Capstone Checkpoint A (spec + screenshots + mapping)</p>
-  <p><strong>Notebook Inserts:</strong> Capstone rubric • Screenshot strip • Print log</p>
-  <p><strong>Resources:</strong> Tinkercad; slicer quick guide; printer SOP</p>
-  <p><strong>Next Steps:</strong> Schedule print pickups; prepare artist’s statement template for Week 6.</p>
-  <a class="top-link" href="#top">↑ Back to Week Buttons</a>
-</div>
-      </details>
+      <details id="w5" class="week-section module0" open>
+  <summary><h2>Week 5 (Sept 29–Oct 3) — Constructions Mastery: IM 1.6 Review → IM 1.9 Speedy Delivery (Family Weekend)</h2></summary>
+  <div class="inner">
+    <p><strong>Focus:</strong> Tighten core constructions; apply to authentic decision‑making via IM 1.9. Family Weekend on Friday (visitors welcome). Monday in‑depth review replaces prior W4 placement.</p>
+
+    <h3>Daily Plan (50 min each)</h3>
+    <ul>
+      <li><strong>Mon — IM 1.6: Construction Techniques Review (Stations)</strong>
+        <ul>
+          <li>5 min – <strong>Warm‑Up (tape‑in):</strong> “Name two mistakes to avoid in an angle‑bisector construction.”</li>
+          <li>30 min – <strong>Stations:</strong> ⟂ bisector; angle bisector; ⟂ through a point (on/off line); ∥ through a point; equilateral triangle; “spot & fix the error.” Use must‑do → nice‑to‑do board; cap 4 per station.</li>
+          <li>10 min – <strong>Share & Micro‑reteach:</strong> Two common pitfalls + one efficiency tip per move.</li>
+          <li>5 min – <strong>Reflection (tape‑in):</strong> “Which two stations most prepared you for a real‑world routing decision?”</li>
+        </ul>
+      </li>
+
+      <li><strong>Tue — IM 1.9 Speedy Delivery, Part 1 (Launch & Plan)</strong>
+        <ul>
+          <li>5 min – <strong>Warm‑Up (tape‑in):</strong> “Given two towns A and B, describe a place a facility could go to be equally useful to both. Which construction models that?”</li>
+          <li>8 min – <strong>Launch:</strong> Unpack context, constraints, and deliverables. Clarify required justifications and permitted tools.</li>
+          <li>30 min – <strong>Work Time:</strong> Draft diagrams; choose constructions (with reasons); begin a clean version; checkpoint with teacher.</li>
+          <li>5–7 min – <strong>Exit Ticket:</strong> Submit your <em>Plan Card</em> (which constructions, why, and how they satisfy constraints).</li>
+        </ul>
+      </li>
+
+      <li><strong>Thu — IM 1.9 Speedy Delivery, Part 2 (Build & Justify)</strong>
+        <ul>
+          <li>5 min – <strong>Warm‑Up (tape‑in):</strong> “What evidence will convince a skeptical mayor your site is optimal?”</li>
+          <li>35 min – <strong>Build & Write‑up:</strong> Produce final construction with labeled steps; write brief justification referencing properties (equidistance, perpendicularity, parallelism).</li>
+          <li>5 min – <strong>Peer Check:</strong> Color‑swap pens; partner verifies each claim aligns with a construction fact.</li>
+          <li>5 min – <strong>Reflection (tape‑in):</strong> “Which step in your argument is the linchpin and why?”</li>
+        </ul>
+      </li>
+
+      <li><strong>Fri — Family Weekend Visitor‑Friendly: Flashcard Factory Mini + Showcase</strong>
+        <ul>
+          <li>5 min – <strong>Warm‑Up (tape‑in):</strong> Retrieval: write 5 key terms from the challenge (midpoint, equidistant, perpendicular, parallel, polygon, triangle, special quadrilateral…)</li>
+          <li>20–25 min – <strong>Flashcard Factory (mini):</strong> Pairs illustrate & label terms (clear symbols required); select visitor‑friendly exemplars.</li>
+          <li>15–18 min – <strong>Showcase Walk:</strong> Post 3–5 Speedy Delivery solutions; students explain choices to visitors using their FF cards as vocabulary supports.</li>
+          <li>2–5 min – <strong>Housekeeping:</strong> DM window reminders; optional make‑up time plan; photo‑submit notebook form if applicable.</li>
+          <li>2–3 min – <strong>Group SP Awards:</strong> celebrate table teamwork and precise vocabulary use (FF card exemplars + Speedy Delivery explanations).</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>Assessment</h3>
+    <ul>
+      <li><strong>Performance Task:</strong> IM 1.9 Speedy Delivery (scored with rubric: accuracy of constructions; completeness & clarity of diagram; correctness of geometric justifications; communication).</li>
+      <li><strong>Rubric (4 strands):</strong> 
+        Accuracy of constructions (legal moves, precision, correct loci) • 
+        Diagram clarity & labeling (readable, complete, correspondence/order) • 
+        Geometric justification (uses properties like equidistance/⊥/∥ correctly) • 
+        Communication (concise plan card, coherent write‑up, peer‑check addressed).
+      </li>
+      <li><strong>DeltaMath:</strong> Auto‑review from SG‑M1.2 continues this week for those with misses; optional extension set for fast finishers (digital constructions practice).</li>
+    </ul>
+
+    <h3>Notebook Inserts</h3>
+    <ul>
+      <li>Station check cards (Mon); Plan Card (Tue); Justification frame (Thu); mini FF exemplar strip (Fri).</li>
+    </ul>
+
+    <h3>Resources</h3>
+    <ul>
+      <li>IM Geometry U1.L6 (review), U1.L9 Speedy Delivery (task packets)</li>
+      <li>DeltaMath (constructions & midpoint review)</li>
+      <li>Peardeck Flashcard Factory (mini deck)</li>
+    </ul>
+
+    <h3>Additional Notes</h3>
+    <ul>
+      <li><strong>Visitors Friday:</strong> Keep tasks visually inviting; project 2–3 exemplar FF cards; have 3–5 student solutions ready for quick explanations.</li>
+      <li><strong>Monday Week 6:</strong> No class (Reflection Day). Use Thu/Fri to note any groups needing quick reteach the following Tuesday.</li>
+    </ul>
+
+    <a class="top-link" href="#top">↑ Back to Week Buttons</a>
+  </div>
+</details>
 
       <details id="w6" class="week-section module1" open>
-        <summary><h2>Week 6 (Oct 7–10) — Capstone Build II &amp; Share <span class="tag">Mon 10/6: Reflection Day – no class</span></h2></summary>
+        <summary><h2>Week 6 (Oct 7–10) — Post‑Challenge Consolidation & Share <span class="tag">Mon 10/6: Reflection Day – no class</span> <span class="tag">Note: IM 1.9 wrapped last week</span></h2></summary>
         <div class="inner">
-  <p><strong>Focus:</strong> Capstone Build II & Share • Finalize STL, document mapping from constructions to CAD; mini‑share. <span class="tag">Mon 10/6: Reflection Day – no class</span></p>
+  <p><strong>Focus:</strong> Consolidate reasoning from IM 1.9; document solutions clearly; mini‑share and light skills check. <span class="tag">Mon 10/6: Reflection Day – no class</span></p>
   <h3>Daily Plan (50 min each)</h3>
   <ul>
-    <li><strong>Tue — Final Build & Troubleshoot</strong>
+    <li><strong>Tue — Debrief & Tighten</strong>
       <ul>
-        <li>5 min – Warm‑Up: “What geometric guarantee did you rely on?”</li>
-        <li>10 min – Mini: Common print failures → quick fixes</li>
-        <li>30 min – Build & test; re‑slice; submit final queue</li>
-        <li>5 min – Reflection: “What would you prove about your design?”</li>
+        <li>5 min – Warm‑Up: “Circle one step in your IM 1.9 plan that could fail if a diagram were sloppy. Why?”</li>
+        <li>10 min – Mini: Common pitfalls (precision, labeling, hidden assumptions) → quick fixes.</li>
+        <li>30 min – Revision block: Improve diagrams and justifications based on feedback; add missing labels; annotate which construction guarantees which claim.</li>
+        <li>5 min – Reflection: “Which revision most increased the credibility of your solution?”</li>
       </ul>
     </li>
-    <li><strong>Thu — Documentation & Artist’s Statement</strong>
+    <li><strong>Thu — Documentation Page Build</strong>
       <ul>
-        <li>8 min – Warm‑Up: Select best photos/screens</li>
-        <li>12 min – Mini: Artist’s statement model; connect to definitions & constructions</li>
-        <li>25 min – Assemble packet: photos, mapping notes, statement draft</li>
-        <li>5 min – Reflection: “Where does symmetry show up in your tile?”</li>
+        <li>8 min – Warm‑Up: Select one photo/scan of your final diagram that best communicates your plan.</li>
+        <li>12 min – Mini: Model a one‑page documentation layout (problem, diagram, labeled steps, argument map).</li>
+        <li>25 min – Assemble packet: final diagram image, step list with construction names, and an argument map linking properties (equidistance/⊥/∥) to conclusions.</li>
+        <li>5 min – Reflection: “Where would a reader most likely misinterpret your page? Add a clarifying note.”</li>
       </ul>
     </li>
     <li><strong>Fri — Mini‑Share & Live Construction</strong>
       <ul>
-        <li>5 min – Warm‑Up: 3 rapid construction prompts</li>
-        <li>15 min – Skill Check S3: live construction (teacher‑chosen)</li>
-        <li>25 min – Mini‑share gallery; peer sticky‑notes</li>
-        <li>5 min – Reflection: “What did you learn from another design you’ll borrow?”</li>
+        <li>5 min – Warm‑Up: 3 rapid construction prompts (name the move, then sketch).</li>
+        <li>15 min – Skill Gate S3: live construction check (teacher‑chosen move).</li>
+        <li>25 min – Mini‑share gallery; peer sticky‑notes on clarity and correctness.</li>
+        <li>5 min – Reflection: “What presentation choice from a peer will you copy next time, and why?”</li>
       </ul>
     </li>
   </ul>
-  <p><strong>Assessment:</strong> Skill Check S3 + Capstone Packet (photos, mapping, statement)</p>
-  <p><strong>Notebook Inserts:</strong> Artist’s statement half‑sheet • Final print photo • Mapping diagram</p>
-  <p><strong>Resources:</strong> Capstone rubric; printer SOP; class photo station</p>
-  <p><strong>Next Steps:</strong> Transition deck into Triangle Congruence (Module 2) with proof‑language bridge.</p>
+  <p><strong>Assessment:</strong> Skill Gate S3 + Documentation page (diagram, step list, argument map).</p>
+  <p><strong>Notebook Inserts:</strong> Documentation layout half‑sheet • Final diagram photo/scan • Argument map scaffold.</p>
+  <p><strong>Resources:</strong> IM 1.9 task feedback notes • class photo/scan station.</p>
+  <p><strong>Next Steps:</strong> Transition deck into Triangle Congruence (Module 2) with a proof‑language bridge.</p>
   <a class="top-link" href="#top">↑ Back to Week Buttons</a>
 </div>
       </details>
 
       <div class="break module2" aria-hidden="true"></div>
 
-      <!-- Module 2: Weeks 7–9 (ROUGH) -->
-      <details id="w7" class="week-section module2" open>
+      <!-- Module 1: Weeks 6–12 (updated mapping) -->
+      <details id="w7" class="week-section module1" open>
         <summary><h2>Week 7 (Oct 13–17) — Module 2 Launch: Triangle Basics &amp; Congruence</h2></summary>
         <div class="inner">
           <ul>
@@ -549,7 +589,7 @@
         </div>
       </details>
 
-      <details id="w8" class="week-section module2">
+      <details id="w8" class="week-section module1">
         <summary><h2>Week 8 (Oct 20–24) — Proof Strategies: Flow/Two‑Column/Paragraph</h2></summary>
         <div class="inner">
           <ul>
@@ -561,7 +601,7 @@
         </div>
       </details>
 
-      <details id="w9" class="week-section module2">
+      <details id="w9" class="week-section module1">
         <summary><h2>Week 9 (Oct 27–31) — Applications &amp; Review</h2></summary>
         <div class="inner">
           <ul>
@@ -574,8 +614,7 @@
 
       <div class="break module3" aria-hidden="true"></div>
 
-      <!-- Module 3: Weeks 10–16 (ROUGH) -->
-      <details id="w10" class="week-section module3">
+      <details id="w10" class="week-section module1">
         <summary><h2>Week 10 (Nov 3–7) — Transformations &amp; Symmetry</h2></summary>
         <div class="inner">
           <ul>
@@ -585,7 +624,7 @@
         </div>
       </details>
 
-      <details id="w11" class="week-section module3">
+      <details id="w11" class="week-section module1">
         <summary><h2>Week 11 (Nov 10–14) — Similarity &amp; Proportions (AA, SSS~, SAS~)</h2></summary>
         <div class="inner">
           <ul>
@@ -595,7 +634,7 @@
         </div>
       </details>
 
-      <details id="w12" class="week-section module3">
+      <details id="w12" class="week-section module1">
         <summary><h2>Week 12 (Nov 17–21) — Indirect Measurement Posters (Mirror Method)</h2></summary>
         <div class="inner">
           <ul>
@@ -605,7 +644,7 @@
         </div>
       </details>
 
-      <details id="w13" class="week-section module3">
+      <details id="w13" class="week-section synth">
         <summary><h2>Week 13 (Nov 24–28) — Fall Break (short week)</h2></summary>
         <div class="inner">
           <ul>
@@ -615,7 +654,7 @@
         </div>
       </details>
 
-      <details id="w14" class="week-section module3">
+      <details id="w14" class="week-section synth">
         <summary><h2>Week 14 (Dec 1–5) — Presentations &amp; Similarity Review</h2></summary>
         <div class="inner">
           <ul>
@@ -625,7 +664,7 @@
         </div>
       </details>
 
-      <details id="w15" class="week-section module3">
+      <details id="w15" class="week-section synth">
         <summary><h2>Week 15 (Dec 8–12) — Cumulative Review (Modules 1–3)</h2></summary>
         <div class="inner">
           <ul>
@@ -635,7 +674,7 @@
         </div>
       </details>
 
-      <details id="w16" class="week-section module3">
+      <details id="w16" class="week-section synth">
         <summary><h2>Week 16 (Dec 15–19) — Semester Wrap</h2></summary>
         <div class="inner">
           <ul>
