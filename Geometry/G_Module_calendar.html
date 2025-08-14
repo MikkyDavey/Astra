@@ -5,16 +5,24 @@
   <title>📐 Geometry — Full-Year Module Calendar</title>
   <style>
     :root{
-      --module0:#e6f4f3;
-      --m0-accent:#16877f;
-      --module1:#cfe8e6; /* deeper teal tint */
-      --module2:#ffe3bf; /* deeper orange tint */
-      --module3:#c9e0ff; /* deeper blue tint */
-      --module4:#ffefc2; /* deeper amber tint */
-      --module5:#d9f0c8; /* deeper green tint */
-      --synthesis:#e7d5f0; /* deeper purple tint */
-      --ink:#111; --ink-muted:#444; --border:#cfcfcf; --paper:#ffffff;
-      --m1-accent:#1f8a83; --m2-accent:#d07b00; --m3-accent:#2a6ad3; --m4-accent:#bf8c00; --m5-accent:#5b8f2a; --syn-accent:#7a3ea3;
+      --module0:#ffe3e3; /* pastel pink/red */
+      --m0-accent:#c8556a;
+      --module1:#ffd8b5; /* soft pastel peach/orange */
+      --m1-accent:#b05e00;
+      --module2:#fff7b3; /* pastel yellow */
+      --m2-accent:#a48800;
+      --module3:#d7f5d7; /* pastel green */
+      --m3-accent:#2e7d32;
+      --module4:#dbe9ff; /* pastel blue */
+      --m4-accent:#2a6ad3;
+      --module5:#eadcff; /* pastel purple */
+      --m5-accent:#7a3ea3;
+      --synthesis:#f2edf7; /* light lavender */
+      --syn-accent:#6d5e7a;
+      --ink:#111;
+      --ink-muted:#444;
+      --border:#cfcfcf;
+      --paper:#ffffff;
     }
     *{box-sizing:border-box}
     body{font-family:Arial, sans-serif; line-height:1.6; margin:0; background:#fafafa; color:var(--ink);}
@@ -77,6 +85,14 @@
       box-shadow:0 2px 4px rgba(0,0,0,.06);
       cursor:pointer; list-style:none; display:flex; align-items:center; gap:.5rem;
     }
+    /* Tint week header bars by module for quicker visual tracking */
+    details.week-section.module0>summary{background:var(--module0)}
+    details.week-section.module1>summary{background:var(--module1)}
+    details.week-section.module2>summary{background:var(--module2)}
+    details.week-section.module3>summary{background:var(--module3)}
+    details.week-section.module4>summary{background:var(--module4)}
+    details.week-section.module5>summary{background:var(--module5)}
+    details.week-section.synth>summary{background:var(--synthesis)}
     details.week-section>summary h2{ margin:.15rem 0; font-size:1.12rem; }
     /* Remove tinted backgrounds on week sections (keep only accent border) */
     /* details.week-section.module1{background:var(--module1);} */
@@ -88,6 +104,15 @@
     details.week-section .inner{background:#fff; margin:.5rem -1rem -1rem; padding:1rem; border-top:1px solid var(--border); border-radius:0 0 8px 8px;}
     .top-link{display:inline-block; margin-top:.5rem; font-size:.9rem; color:#0645ad; text-decoration:none;}
     .tag{display:inline-block; font-size:.8rem; padding:.15rem .5rem; border:1px solid var(--border); border-radius:999px; margin-right:.4rem; background:#fff;}
+    .chip{display:inline-block; font-size:.75rem; font-weight:700; padding:.12rem .55rem; border-radius:999px; border:1px solid var(--border); letter-spacing:.02em}
+    .chip.m0{background:var(--module0); border-color:var(--m0-accent)}
+    .chip.m1{background:var(--module1); border-color:var(--m1-accent)}
+    .chip.m2{background:var(--module2); border-color:var(--m2-accent)}
+    .chip.m3{background:var(--module3); border-color:var(--m3-accent)}
+    .chip.m4{background:var(--module4); border-color:var(--m4-accent)}
+    .chip.m5{background:var(--module5); border-color:var(--m5-accent)}
+    .chip.wrap{background:var(--synthesis); border-color:var(--syn-accent)}
+    details.week-section>summary h2 .chip{margin-left:.4rem}
     
   </style>
 </head>
@@ -108,14 +133,14 @@
 
   <div class="calendar-nav-wrap">
     <nav class="calendar-nav">
-      <div class="group-label">Module 0 • Foundations &amp; Constructions (Weeks 1–5)</div>
+      <div class="group-label">Module 0 – Build: Patterns, Precision, and Reasoning (Weeks 1–5)</div>
       <a class="module0" href="#w1">W1</a>
       <a class="module0" href="#w2">W2</a>
       <a class="module0" href="#w3">W3</a>
       <a class="module0" href="#w4">W4</a>
       <a class="module0" href="#w5">W5</a>
 
-      <div class="group-label">Module 1 • Intersections, Symmetry &amp; Proof (Weeks 6–12)</div>
+      <div class="group-label">Module 1 – Move: Transformations, Intersections, and Logic (Weeks 6–12)</div>
       <a class="module1" href="#w6">W6</a>
       <a class="module1" href="#w7">W7</a>
       <a class="module1" href="#w8">W8</a>
@@ -124,26 +149,28 @@
       <a class="module1" href="#w11">W11</a>
       <a class="module1" href="#w12">W12</a>
 
-      <div class="group-label">Fall Break &amp; Wrap (Weeks 13–16)</div>
-      <a class="synth" href="#w13">W13</a>
-      <a class="synth" href="#w14">W14</a>
-      <a class="synth" href="#w15">W15</a>
-      <a class="synth" href="#w16">W16</a>
+      <div class="group-label">Module 2 – Prove: Congruence, Connections, and Argument (Weeks 14–16)</div>
+      <a class="module2" href="#w14">W14</a>
+      <a class="module2" href="#w15">W15</a>
+      <a class="module2" href="#w16">W16</a>
 
-      <div class="group-label">Module 4 • Trigonometry in Action (Weeks 18–20)</div>
-      <a class="module4" href="#w18">W18</a>
-      <a class="module4" href="#w19">W19</a>
+      <div class="group-label">Module 3 • Similarity in the Wild (Weeks 17–19)</div>
+      <a class="module3" href="#w17">W17</a>
+      <a class="module3" href="#w18">W18</a>
+      <a class="module3" href="#w19">W19</a>
+
+      <div class="group-label">Module 4 • Trigonometry in Action (Weeks 20–22)</div>
       <a class="module4" href="#w20">W20</a>
+      <a class="module4" href="#w21">W21</a>
+      <a class="module4" href="#w22">W22</a>
 
-      <div class="group-label">Module 5 • Circles in Motion (Weeks 21–24)</div>
-      <a class="module5" href="#w21">W21</a>
-      <a class="module5" href="#w22">W22</a>
+      <div class="group-label">Module 5 • Circles in Motion (Weeks 23–26)</div>
       <a class="module5" href="#w23">W23</a>
       <a class="module5" href="#w24">W24</a>
+      <a class="module5" href="#w25">W25</a>
+      <a class="module5" href="#w26">W26</a>
 
-      <div class="group-label">Synthesis &amp; Exhibition (Weeks 25–32)</div>
-      <a class="synth" href="#w25">W25</a>
-      <a class="synth" href="#w26">W26</a>
+      <div class="group-label">Wrap &amp; Exhibition (Weeks 27–32)</div>
       <a class="synth" href="#w27">W27</a>
       <a class="synth" href="#w28">W28</a>
       <a class="synth" href="#w29">W29</a>
@@ -160,9 +187,9 @@
       <summary>Semester 1 (Fall 2025) — Weeks 1–16</summary>
       <div class="break module0" aria-hidden="true"></div>
 
-      <!-- Module 1: Weeks 1–6 (FULL) -->
+      <!-- Module 1: Weeks 1–5 -->
       <details id="w1" class="week-section module0" open>
-        <summary><h2>Week 1 (Sept 1–5) — First Breath: Definitions &amp; Tools</h2></summary>
+        <summary><h2>Week 1 (Sept 1–5) — First Breath: Definitions &amp; Tools <span class="chip m0">M0 • Build</span></h2></summary>
         <div class="inner">
   <p><strong>Focus:</strong> IM U1.L1–L2 • Launch precise definitions & tool fluency; set classroom systems. Day 1 mirrors Algebra 1 welcome flow.</p>
   <h3>Class Outline (50 min each)</h3>
@@ -237,7 +264,7 @@
       </details>
 
       <details id="w2" class="week-section module0" open>
-        <summary><h2>Week 2 (Sept 8–12) — Constructing Patterns + Perpendicular Bisectors</h2></summary>
+        <summary><h2>Week 2 (Sept 8–12) — Constructing Patterns + Perpendicular Bisectors <span class="chip m0">M0 • Build</span></h2></summary>
         <div class="inner">
   <p><strong>Focus:</strong> IM U1.L2–L3 + Math Medic 2.1 “Match Mine” • Precision in written instructions; diagramming & notation (segments, rays, lines); vocabulary for lines (parallel, perpendicular); perpendicular bisector as an equidistance locus; early reasoning/proof language (“because…” stems).</p>
   <h3>Class Outline (50 min each)</h3>
@@ -315,7 +342,7 @@
       </details>
 
       <details id="w3" class="week-section module0" open>
-  <summary><h2>Week 3 (Sept 15–19) — Vocabulary Sprint → Angles & Protractor → Definitions → Classic Construction</h2></summary>
+  <summary><h2>Week 3 (Sept 15–19) — Vocabulary Sprint → Angles &amp; Protractor → Definitions → Classic Construction <span class="chip m0">M0 • Build</span></h2></summary>
   <div class="inner">
     <p><strong>Focus:</strong> Consolidate Weeks 1–2 vocabulary with visual memory hooks; name & measure angles precisely; practice <em>classify/differentiate</em> on polygons & triangle types (by sides); connect a precise definition to a classic straightedge‑and‑compass construction.</p>
 
@@ -329,6 +356,7 @@
           <li>5 min – Sort & star top exemplars; export class deck (PDF for later tape‑in). <span class="tag">Resource: Peardeck Flashcard Factory</span></li>
           <li>5 min – <strong>Reflection (tape‑in):</strong> “Which two cards best captured meaning with the fewest words, and why?”</li>
           <li class="tag">SP: precise diagrams • correct symbols on art • concise wording • collaborative teamwork</li>
+          <li><em>Brief discussion of cultural and universal nature of geometric reasoning; visual reasoning as fabric of the universe and its appearances across cultures.</em></li>
         </ul>
       </li>
 
@@ -341,6 +369,7 @@
           <li>5–7 min – <strong>Debrief:</strong> tape in pool table visual with named and measured angles. <span class="tag">Resource: Angle Naming/Diagramming/Protractor Pool Game lesson</span></li>          <li>8–10 min – <strong>DeltaMath #2 Work Time:</strong> Start DM‑M1‑Set 2 (measuring/drawing/identifying angles; see set list in Week Notes). <span class="tag">Resource: DeltaMath #2</span></li>
           <li>Exit & <strong>Reflection (tape‑in):</strong> “Write a 2‑step checklist you’ll use next time to avoid common protractor mistakes.”</li>
           <li class="tag">SP: careful protractor placement • correct naming (vertex in the middle) • clear shot diagrams</li>
+          <li><em>Brief discussion of cultural and universal nature of geometric reasoning; visual reasoning as fabric of the universe and its appearances across cultures.</em></li>
         </ul>
       </li>
 
@@ -358,16 +387,19 @@
           </li>
           <li><strong>Dictionary Pages (ongoing during rounds):</strong> As each set is confirmed, students fill in provided half‑sheet dictionary pages with the <strong>final definition</strong> (their wording with required precision) and tape in the provided labeled diagrams. Pages go in the same section as earlier dictionary work. </li>
           <li class="tag">SP: crisp classify/differentiate language • effective use of non‑examples • collaborative revision • tidy dictionary tape‑ins</li>
+          <li><em>Brief discussion of cultural and universal nature of geometric reasoning; visual reasoning as fabric of the universe and its appearances across cultures.</em></li>
         </ul>
       </li>
 
-      <li><strong>Fri — IM 1.4: Construction Techniques 2 (Equilateral Triangles)</strong>
+    <li><strong>Fri — IM 1.4: Construction Techniques 2 (Equilateral Triangles)</strong>
         <ul>
           <li>5 min – <strong>Warm‑Up 4.1 (tape‑in):</strong> Notice &amp; Wonder on the IM figure</li>
           <li>4 min – <strong>Quick reminders:</strong> notebook form timing + tool check while students finish warm‑up</li>
           <li>9 min – <strong>Activity 4.2:</strong> What Polygons Can You Find? (tight share‑out; no full gallery)</li>
           <li>15 min – <strong>Activity 4.3:</strong> Spot the Equilaterals — build at least one equilateral triangle; mark congruent sides</li>
-          <li>6 min – <strong>Cool‑Down 4.4:</strong> Make Another One — second construction or inscribed version (quick check)</li>
+          <li>6 min – <strong>Cool‑Down 4.4:</strong> Make Another One — second construction or inscribed version (quick check). <br>
+            <span class="tag">Add:</span> Copying angles from directions; students make conjecture about the method used.
+          </li>
           <li>5 min – <strong>Reflection (tape‑in):</strong> “What construction move or idea today will you rely on next time, and why?”</li>
           <li>6 min – <strong>Notebook Form:</strong> Submit photos of today’s construction page (or finish over the weekend)</li>
         </ul>
@@ -375,6 +407,7 @@
     </ul>
 
     <p><strong>DeltaMath — M1 Set 2 (introduced Tue):</strong> Measuring Angles with a Protractor; Identifying Angles from Three Points; Drawing Angles (Lv1–2); Estimate Angle Measure (Lv1–2); Angle Bisector (Draw/Estimate). <em>Built‑in work blocks:</em> Tue (8–10 min), Thu (5 min buffer if needed). Due Fri 11:59 pm with auto‑assigned review for misses.</p>
+    <p><strong>IM 1.2.3 Note:</strong> Parallel-through-a-point (on the line) completed via partner instructions after initial attempt; compare outcomes.</p>
 
     <p><strong>Notebook Inserts:</strong> Flashcard Factory exemplar strip; Naming‑Angles conventions strip; Protractor Micro‑Guide; Polygon vs. Non‑Polygon half‑sheet; Triangle + types‑by‑sides half‑sheets; Equilateral Triangle step‑card.</p>
     <p><strong>Resources:</strong> Peardeck Flashcard Factory; protractors; Pool Geometry mats; definition frame templates; IM Geometry U1.L4 (Equilateral Triangles).</p>
@@ -393,19 +426,24 @@
 </details>
 
       <details id="w4" class="week-section module0" open>
-        <summary><h2>Week 4 (Sept 22–26) — Constructions Consolidation → Midpoint → Performance Prep</h2></summary>
+        <summary><h2>Week 4 (Sept 22–26) — Constructions Consolidation → Midpoint → Performance Prep <span class="chip m0">M0 • Build</span></h2></summary>
         <div class="inner">
   <p><strong>Focus:</strong> IM U1.L5–L6 + Math Medic 2.2 (Midpoint) • Consolidate constructions; connect to coordinate midpoint; review stations to prep for IM U1.L9 “Speedy Delivery.”</p>
   <h3>Daily Plan (50 min each)</h3>
   <ul>
     <li><strong>Mon — Polygon Properties &amp; Quadrilateral Families</strong>
       <ul>
-        <li><strong>Warm-Up (5 min, tape-in):</strong> Examples &amp; non-examples of <em>equilateral</em>, <em>equiangular</em>, <em>regular</em> polygons. Label each; name one property that fails for a non-example.</li>
+        <li><strong>Warm-Up (5 min, tape-in):</strong> Examples &amp; non-examples of <em>equilateral</em>, <em>equiangular</em>, <em>regular</em> polygons. Label each; name one property that fails for a non-example.<br>
+          <em>Polygon naming in order and congruence order practice; Regular polygon and equiangular definitions (dictionary entries). Diagrams provided; students write definitions (~10 minutes).</em>
+        </li>
         <li><strong>Mini-Lesson (8 min):</strong> Quick quadrilateral family map → “naming congruent polygons” (correspondence order).</li>
         <li><strong>Guided Practice (12 min):</strong> 6 quick IDs (mix: kite, isosceles trapezoid, rhombus, rectangle, square, generic parallelogram) + 2 congruent-naming prompts.</li>
         <li><strong>DeltaMath Work Time (12 min):</strong> Start DM #3 in class. Teacher circulates to check tool use &amp; misconceptions.</li>
         <li><strong>Share &amp; Micro-Reteach (8 min):</strong> 2 common DM error patterns (e.g., misplacing the perpendicular through a point; mixing up angle-bisector steps).</li>
         <li><strong>Reflection (5 min, tape-in):</strong> “Which DM problem exposed a habit I need to fix? Write the one-line cue you’ll use next time to avoid it.”</li>
+        <li><em>Connects to DM Set #4 focus.</em></li>
+        <li><em>Legend box for diagram marks reinforced today.</em></li>
+        <li><em>Brief discussion of cultural and universal nature of geometric reasoning; visual reasoning as fabric of the universe and its appearances across cultures.</em></li>
       </ul>
     <li><strong>Tue — Perpendicular &amp; Angle Bisectors (IM 1.5) + DeltaMath</strong>
       <ul>
@@ -457,7 +495,7 @@
       </details>
 
       <details id="w5" class="week-section module0" open>
-  <summary><h2>Week 5 (Sept 29–Oct 3) — Constructions Mastery: IM 1.6 Review → IM 1.9 Speedy Delivery (Family Weekend)</h2></summary>
+  <summary><h2>Week 5 (Sept 29–Oct 3) — Constructions Mastery: IM 1.6 Review → IM 1.9 Speedy Delivery (Family Weekend) <span class="chip m0">M0 • Build</span></h2></summary>
   <div class="inner">
     <p><strong>Focus:</strong> Tighten core constructions; apply to authentic decision‑making via IM 1.9. Family Weekend on Friday (visitors welcome). Monday in‑depth review replaces prior W4 placement.</p>
 
@@ -535,10 +573,14 @@
   </div>
 </details>
 
+      <!-- Module 1 (Weeks 6–12) -->
+
+      <div class="break module1" aria-hidden="true"></div>
+
       <details id="w6" class="week-section module1" open>
-        <summary><h2>Week 6 (Oct 7–10) — Post‑Challenge Consolidation & Share <span class="tag">Mon 10/6: Reflection Day – no class</span> <span class="tag">Note: IM 1.9 wrapped last week</span></h2></summary>
+        <summary><h2>Week 6 (Oct 7–10) — Module 1 Launch: Documentation &amp; Bridge <span class="tag">Mon 10/6: Reflection Day – no class</span> <span class="chip m1">M1 • Move</span></h2></summary>
         <div class="inner">
-  <p><strong>Focus:</strong> Consolidate reasoning from IM 1.9; document solutions clearly; mini‑share and light skills check. <span class="tag">Mon 10/6: Reflection Day – no class</span></p>
+  <p><strong>Focus:</strong> Launch Module 1 (Move): introduce rigid transformations and diagram precision while we close out IM 1.9 documentation. <span class="tag">Mon 10/6: Reflection Day – no class</span></p>
   <h3>Daily Plan (50 min each)</h3>
   <ul>
     <li><strong>Tue — Debrief & Tighten</strong>
@@ -574,111 +616,121 @@
 </div>
       </details>
 
-      <div class="break module2" aria-hidden="true"></div>
-
-      <!-- Module 1: Weeks 6–12 (updated mapping) -->
       <details id="w7" class="week-section module1" open>
-        <summary><h2>Week 7 (Oct 13–17) — Module 2 Launch: Triangle Basics &amp; Congruence</h2></summary>
+        <summary><h2>Week 7 (Oct 13–17) — Rigid Transformations (visual first) <span class="chip m1">M1 • Move</span></h2></summary>
         <div class="inner">
+          <p><strong>Focus:</strong> Launch visual understanding of rigid transformations—reflections and translations—using IM and Desmos activities. Build a transformation organizer in the notebook.</p>
           <ul>
-            <li><strong>Focus:</strong> Triangle types; corresponding parts; SSS/SAS/ASA/AAS/HL overview.</li>
-            <li><strong>Activities:</strong> Triangle sort; marking conventions; IM U2.1–2.3; Math Medic proof intro; <em>FF Revisit warm‑ups</em> (triangle parts / CPCTC notation — 2 cards).</li>
-            <li><strong>Assessment:</strong> Skill Check C1 (valid congruence info).</li>
+            <li><strong>IM 1.10:</strong> Rigid transformations launch</li>
+            <li><strong>IM 1.11:</strong> Reflections</li>
+            <li><strong>IM 1.12:</strong> Translations</li>
+            <li><strong>Desmos Transformations Golf (short course):</strong> Hands-on digital practice with visual feedback</li>
+            <li><strong>Notebook insert:</strong> Transformation organizer (for definitions, diagrams, and properties)</li>
           </ul>
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
       </details>
 
       <details id="w8" class="week-section module1">
-        <summary><h2>Week 8 (Oct 20–24) — Proof Strategies: Flow/Two‑Column/Paragraph</h2></summary>
+        <summary><h2>Week 8 (Oct 20–24) — Rotations &amp; Symmetry <span class="chip m1">M1 • Move</span></h2></summary>
         <div class="inner">
+          <p><strong>Focus:</strong> Explore rotations and symmetry, including precise definitions and hands-on activities. Skill Gate on single transformations and basic symmetry.</p>
           <ul>
-            <li><strong>Focus:</strong> Build proofs with SSS/SAS/ASA; auxiliary lines.</li>
-            <li><strong>Activities:</strong> Proof lab; card sorts; Wild Wonders (Distance) ↔ Pythagorean link.</li>
-            <li><strong>Assessment:</strong> Quiz C2 (triangle proofs).</li>
+            <li><strong>IM 1.13:</strong> Incorporating rotations</li>
+            <li><strong>IM 1.14:</strong> Defining rotations</li>
+            <li><strong>IM 1.15–1.16:</strong> Symmetry (selected tasks)</li>
+            <li><strong>Skill Gate SG‑M1.T1:</strong> Identify/apply single transformations; basic symmetry</li>
           </ul>
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
       </details>
 
       <details id="w9" class="week-section module1">
-        <summary><h2>Week 9 (Oct 27–31) — Applications &amp; Review</h2></summary>
+        <summary><h2>Week 9 (Oct 27–31) — Sequences of Transformations <span class="chip m1">M1 • Move</span></h2></summary>
         <div class="inner">
+          <p><strong>Focus:</strong> Analyze and describe sequences of transformations; connect correspondence and naming for congruent polygons. Vocabulary refresh with Flashcard Factory mini.</p>
           <ul>
-            <li><strong>Focus:</strong> Apply congruence to quad properties (selective) &amp; coordinate proofs.</li>
-            <li><strong>Assessment:</strong> Module 2 Project/Reflection (student‑chosen proof + peer review).</li>
+            <li><strong>IM 1.17:</strong> Working with sequences of transformations</li>
+            <li><strong>Optional:</strong> IM 1.18 (practice)</li>
+            <li><strong>Mini bridge:</strong> Correspondence &amp; naming for congruent polygons (ties to later proofs)</li>
+            <li><strong>FF mini:</strong> Transformations vocabulary refresh</li>
           </ul>
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
       </details>
 
-      <div class="break module3" aria-hidden="true"></div>
-
       <details id="w10" class="week-section module1">
-        <summary><h2>Week 10 (Nov 3–7) — Transformations &amp; Symmetry</h2></summary>
+        <summary><h2>Week 10 (Nov 3–7) — Angle Types &amp; Angle Proofs <span class="chip m1">M1 • Move</span></h2></summary>
         <div class="inner">
+          <p><strong>Focus:</strong> Deepen understanding of angle types and proofs; connect algebra with geometric reasoning. Skill Gate on angle relationships.</p>
           <ul>
-            <li>Desmos Transformations Golf; symmetry gallery; IM U1 recap → launch similarity.</li>
+            <li><strong>Warm‑up:</strong> <em>Angle Definitions</em> sheet</li>
+            <li><strong>IM 1.19:</strong> Evidence, Angles, and Proof</li>
+            <li><strong>Short algebra angle puzzles</strong></li>
+            <li><strong>Skill Gate SG‑M1.A1:</strong> Angle types; linear pair/vertical; complementary/supplementary (incl. simple algebra)</li>
           </ul>
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
       </details>
 
       <details id="w11" class="week-section module1">
-        <summary><h2>Week 11 (Nov 10–14) — Similarity &amp; Proportions (AA, SSS~, SAS~)</h2></summary>
+        <summary><h2>Week 11 (Nov 10–14) — Parallels &amp; Triangle Sum <span class="chip m1">M1 • Move</span></h2></summary>
         <div class="inner">
+          <p><strong>Focus:</strong> Investigate properties of parallel lines and triangles, with emphasis on proofs and problem-solving.</p>
           <ul>
-            <li>Proportion puzzles; triangle similarity labs; Math Medic similarity; coordinate quadrilaterals warm‑up; <em>FF Revisit warm‑ups</em> (scale, ∥, and ~ symbols — 2 cards).</li>
+            <li><strong>IM 1.20:</strong> Transformations, Transversals, and Proof</li>
+            <li><strong>IM 1.21:</strong> One Hundred Eighty — Triangle Angle Sum</li>
+            <li><strong>DeltaMath set:</strong> Transversals angle solving; triangle interior/exterior</li>
           </ul>
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
       </details>
 
       <details id="w12" class="week-section module1">
-        <summary><h2>Week 12 (Nov 17–21) — Indirect Measurement Posters (Mirror Method)</h2></summary>
+        <summary><h2>Week 12 (Nov 17–21) — 3D‑Printed Tile <span class="chip m1">M1 • Move</span></h2></summary>
         <div class="inner">
+          <p><strong>Focus:</strong> Capstone project—design and build a 3D-printed tile with required symmetry and transformation motifs. Share and reflect.</p>
           <ul>
-            <li>Poster mini‑project; campus measurements; checkpoint/quiz on similarity &amp; proportions.</li>
+            <li><strong>Launch constraints:</strong> Required symmetry type / transformation motif</li>
+            <li><strong>Build:</strong> Create in Tinkercad and export for 3D printing</li>
+            <li><strong>Short share + reflection:</strong> Present tile and reflect on transformation use</li>
           </ul>
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
       </details>
 
-      <details id="w13" class="week-section synth">
-        <summary><h2>Week 13 (Nov 24–28) — Fall Break (short week)</h2></summary>
+        <!-- Fall Break -->
+
+        <strong>Fall Break (Nov 24–28):</strong> No classes. </br>
+
+      <div class="break module2" aria-hidden="true"></div>
+
+       <!-- Module 2 (Weeks 14–16) -->
+      <details id="w14" class="week-section module2">
+        <summary><h2>Week 14 (Dec 1–5) —  <span class="chip m2">M2 • Prove</span></h2></summary>
         <div class="inner">
           <ul>
-            <li>Project time/catch‑up as available; otherwise no new instruction.</li>
+            <li></li>
           </ul>
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
       </details>
 
-      <details id="w14" class="week-section synth">
-        <summary><h2>Week 14 (Dec 1–5) — Presentations &amp; Similarity Review</h2></summary>
+      <details id="w15" class="week-section module2">
+        <summary><h2>Week 15 (Dec 8–12) —  <span class="chip m2">M2 • Prove</span></h2></summary>
         <div class="inner">
           <ul>
-            <li>Poster gallery; feedback; targeted All Things Algebra practice.</li>
+            <li></li>
           </ul>
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
       </details>
 
-      <details id="w15" class="week-section synth">
-        <summary><h2>Week 15 (Dec 8–12) — Cumulative Review (Modules 1–3)</h2></summary>
+      <details id="w16" class="week-section module2">
+        <summary><h2>Week 16 (Dec 15–19) —  <span class="chip m2">M2 • Prove</span></h2></summary>
         <div class="inner">
           <ul>
-            <li>Spiral stations; notebook audits; light assessment.</li>
-          </ul>
-          <a class="top-link" href="#top">↑ Back to Week Buttons</a>
-        </div>
-      </details>
-
-      <details id="w16" class="week-section synth">
-        <summary><h2>Week 16 (Dec 15–19) — Semester Wrap</h2></summary>
-        <div class="inner">
-          <ul>
-            <li>Games, portfolio check, enrichment, winter‑break handoff.</li>
+            <li></li>
           </ul>
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
@@ -689,10 +741,48 @@
     <details class="semester">
       <summary>Semester 2 (Spring 2026) — Weeks 17–32</summary>
 
+      <div class="break module3" aria-hidden="true"></div>
+
+      <!-- Module 3 (Weeks 17–19) -->
+      <details id="w17" class="week-section module3">
+        <summary><h2>Week 17 (Jan 8–10) — Similarity Warm‑Start &amp; Onboarding (light) <span class="chip m3">M3 • Similarity</span></h2></summary>
+        <div class="inner">
+          <ul>
+            <li>Welcome‑back warm‑ups; onboarding new students; quick retrieval: scale factor &amp; correspondence.</li>
+            <li>Similarity preview: what stays the same / what changes (angle preservation; side ratios).</li>
+            <li>Mini FF refresh on symmetry/similarity vocabulary (2 cards).</li>
+          </ul>
+          <a class="top-link" href="#top">↑ Back to Week Buttons</a>
+        </div>
+      </details>
+
+      <details id="w18" class="week-section module3">
+        <summary><h2>Week 18 (Jan 13–17) — Triangle Similarity &amp; Proportions <span class="chip m3">M3 • Similarity</span></h2></summary>
+        <div class="inner">
+          <ul>
+            <li>AA similarity; side ratios; scale drawings.</li>
+            <li>Similarity labs with triangle dilations; set up correspondence carefully.</li>
+            <li>DeltaMath: similarity ratios &amp; missing sides.</li>
+          </ul>
+          <a class="top-link" href="#top">↑ Back to Week Buttons</a>
+        </div>
+      </details>
+      <details id="w19" class="week-section module3">
+        <summary><h2>Week 19 (Jan 20–24) — Indirect Measurement &amp; Symmetry <span class="chip m3">M3 • Similarity</span></h2></summary>
+        <div class="inner">
+          <ul>
+            <li>Mirror‑method / shadow‑method measurement (campus walk or in‑class demo).</li>
+            <li>Symmetry connections (transformations that map a figure to itself); quick gallery.</li>
+            <li>Quiz: similarity &amp; symmetry basics.</li>
+          </ul>
+          <a class="top-link" href="#top">↑ Back to Week Buttons</a>
+        </div>
+      </details>
+
       <div class="break module4" aria-hidden="true"></div>
 
-      <details id="w17" class="week-section module4">
-        <summary><h2>Week 17 (Jan 8–10) — Welcome Back &amp; Trig Preview (light)</h2></summary>
+      <details id="w20" class="week-section module4">
+        <summary><h2>Week 20 (Jan 27–31) — Welcome Back &amp; Trig Preview (light) <span class="chip m4">M4 • Trig</span></h2></summary>
         <div class="inner">
           <ul>
             <li>Warm‑ups; special‑right‑triangle refresher; calculator setup; onboarding for new students.</li>
@@ -700,10 +790,8 @@
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
       </details>
-
-      <!-- Module 4: Trig in Action -->
-      <details id="w18" class="week-section module4">
-        <summary><h2>Week 18 (Jan 13–17) — Trig Ratios: sine, cosine, tangent</h2></summary>
+      <details id="w21" class="week-section module4">
+        <summary><h2>Week 21 (Feb 3–7) — Trig Ratios: sine, cosine, tangent <span class="chip m4">M4 • Trig</span></h2></summary>
         <div class="inner">
           <ul>
             <li>Table explorations; special right triangles; SOH‑CAH‑TOA (Math Medic 7.1–7.2).</li>
@@ -711,20 +799,11 @@
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
       </details>
-      <details id="w19" class="week-section module4">
-        <summary><h2>Week 19 (Jan 20–24) — Solving Right Triangles &amp; Miracle on the Hudson</h2></summary>
+      <details id="w22" class="week-section module4">
+        <summary><h2>Week 22 (Feb 10–14) — Solving Right Triangles &amp; Trig in Action <span class="chip m4">M4 • Trig</span></h2></summary>
         <div class="inner">
           <ul>
-            <li>Apply trig to contexts; “Miracle on the Hudson” task; quiz.</li>
-          </ul>
-          <a class="top-link" href="#top">↑ Back to Week Buttons</a>
-        </div>
-      </details>
-      <details id="w20" class="week-section module4">
-        <summary><h2>Week 20 (Jan 27–31) — Trig in Action Project</h2></summary>
-        <div class="inner">
-          <ul>
-            <li>Project build &amp; presentations; rubric &amp; reflection.</li>
+            <li>Apply trig to contexts; “Miracle on the Hudson” task; launch Trig in Action mini‑project.</li>
           </ul>
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
@@ -732,9 +811,8 @@
 
       <div class="break module5" aria-hidden="true"></div>
 
-      <!-- Module 5: Circles in Motion -->
-      <details id="w21" class="week-section module5">
-        <summary><h2>Week 21 (Feb 3–7) — Circles: Vocabulary, Central &amp; Inscribed Angles</h2></summary>
+      <details id="w23" class="week-section module5">
+        <summary><h2>Week 23 (Feb 17–21) — Circles: Vocabulary, Central &amp; Inscribed Angles <span class="chip m5">M5 • Circles</span></h2></summary>
         <div class="inner">
           <ul>
             <li>IM U7.1–U7.2; Math Medic tangents intro; Mystery Measurement diagram task; <em>FF Revisit warm‑ups</em> (center, radius, chord, tangent — 2 cards).</li>
@@ -742,8 +820,8 @@
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
       </details>
-      <details id="w22" class="week-section module5">
-        <summary><h2>Week 22 (Feb 10–14) — Tangents &amp; Circle Theorems</h2></summary>
+      <details id="w24" class="week-section module5">
+        <summary><h2>Week 24 (Feb 24–28) — Tangents &amp; Circle Theorems <span class="chip m5">M5 • Circles</span></h2></summary>
         <div class="inner">
           <ul>
             <li>Perpendicular radius; tangent‑secant; inscribed quadrilaterals (selective); practice sets.</li>
@@ -751,8 +829,8 @@
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
       </details>
-      <details id="w23" class="week-section module5">
-        <summary><h2>Week 23 (Feb 17–21) — Radians, Arc Length, Sector Area</h2></summary>
+      <details id="w25" class="week-section module5">
+        <summary><h2>Week 25 (Mar 3–7) — Radians, Arc Length, Sector Area <span class="chip m5">M5 • Circles</span></h2></summary>
         <div class="inner">
           <ul>
             <li>IM U7.8–U7.11; “pi sense” visual; quiz on angles/arcs/radians.</li>
@@ -760,33 +838,11 @@
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
       </details>
-      <details id="w24" class="week-section module5">
-        <summary><h2>Week 24 (Feb 24–28) — Circle Design Challenge</h2></summary>
+      <details id="w26" class="week-section module5">
+        <summary><h2>Week 26 (Mar 10–14) — Circle Design Challenge <span class="chip m5">M5 • Circles</span></h2></summary>
         <div class="inner">
           <ul>
             <li>Design &amp; presentation; integrate trig where natural (right triangles in circles).</li>
-          </ul>
-          <a class="top-link" href="#top">↑ Back to Week Buttons</a>
-        </div>
-      </details>
-
-      <div class="break synth" aria-hidden="true"></div>
-
-      <!-- Pre-break review / enrichment -->
-      <details id="w25" class="week-section synth">
-        <summary><h2>Week 25 (Mar 3–7) — Review: Modules 4–5</h2></summary>
-        <div class="inner">
-          <ul>
-            <li>Spiral stations; targeted reteach; light assessment; illness/assembly buffer; <em>FF Deck Challenge</em> station (recreate and annotate 3 favorite cards).</li>
-          </ul>
-          <a class="top-link" href="#top">↑ Back to Week Buttons</a>
-        </div>
-      </details>
-      <details id="w26" class="week-section synth">
-        <summary><h2>Week 26 (Mar 10–14) — Pop‑Up Solids &amp; Volume (Enrichment)</h2></summary>
-        <div class="inner">
-          <ul>
-            <li>Nets, SA/Volume practice; Jenga Volume Investigation; optional if time compresses into circles.</li>
           </ul>
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
@@ -802,42 +858,42 @@
 
       <!-- After break: synthesis & exhibit -->
       <details id="w27" class="week-section synth">
-        <summary><h2>Week 27 (Apr 7–11) — Synthesis &amp; Mixed Review</h2></summary>
+        <summary><h2>Week 27 (Apr 7–11) — Synthesis &amp; Mixed Review <span class="chip wrap">Wrap</span></h2></summary>
         <div class="inner">
           <ul><li>Mixed stations across all modules; error analysis; buffer.</li></ul>
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
       </details>
       <details id="w28" class="week-section synth">
-        <summary><h2>Week 28 (Apr 14–18) — Public Math Exhibit Prep</h2></summary>
+        <summary><h2>Week 28 (Apr 14–18) — Public Math Exhibit Prep <span class="chip wrap">Wrap</span></h2></summary>
         <div class="inner">
           <ul><li>Poster/project prep; peer feedback; rubric checks.</li></ul>
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
       </details>
       <details id="w29" class="week-section synth">
-        <summary><h2>Week 29 (Apr 21–25) — Final Reflection Portfolio</h2></summary>
+        <summary><h2>Week 29 (Apr 21–25) — Final Reflection Portfolio <span class="chip wrap">Wrap</span></h2></summary>
         <div class="inner">
           <ul><li>Portfolio curation; journaling; rubric scoring.</li></ul>
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
       </details>
       <details id="w30" class="week-section synth">
-        <summary><h2>Week 30 (Apr 28–May 2) — Cumulative Problem Set</h2></summary>
+        <summary><h2>Week 30 (Apr 28–May 2) — Cumulative Problem Set <span class="chip wrap">Wrap</span></h2></summary>
         <div class="inner">
           <ul><li>Problem set + peer review; buffer slot.</li></ul>
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
       </details>
       <details id="w31" class="week-section synth">
-        <summary><h2>Week 31 (May 5–9) — Enrichment &amp; Celebration</h2></summary>
+        <summary><h2>Week 31 (May 5–9) — Enrichment &amp; Celebration <span class="chip wrap">Wrap</span></h2></summary>
         <div class="inner">
           <ul><li>Optional explorations; celebration; field‑trip tie‑ins if any.</li></ul>
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
         </div>
       </details>
       <details id="w32" class="week-section synth">
-        <summary><h2>Week 32 (May 12–15) — Wrap &amp; Festival Prep</h2></summary>
+        <summary><h2>Week 32 (May 12–15) — Wrap &amp; Festival Prep <span class="chip wrap">Wrap</span></h2></summary>
         <div class="inner">
           <ul><li>Finalize exhibits; last reflections; **Final class Fri May 15**.</li></ul>
           <a class="top-link" href="#top">↑ Back to Week Buttons</a>
